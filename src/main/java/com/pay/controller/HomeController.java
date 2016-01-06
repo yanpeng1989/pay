@@ -1,5 +1,7 @@
 package com.pay.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,7 @@ import com.pay.services.HomeService;
 
 @Controller
 public class HomeController {
-	
+
 	@Autowired
 	HomeService homeService;
 
@@ -18,6 +20,11 @@ public class HomeController {
 		model.addAttribute("name", homeService.queryAll().get(0).getName());
 		model.addAttribute("age", homeService.queryAll().get(0).getAge());
 		return "index";
+	}
+
+	@RequestMapping("kaptcha")
+	public String kaptcha(HttpServletRequest request) {
+		return "kaptcha";
 	}
 
 }

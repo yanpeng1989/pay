@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="<c:url value='/css/main.css' />" rel="stylesheet" />
 <link href="<c:url value='/css/bootstrap-theme.css' />" rel="stylesheet" />
 <link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet" />
 <script src="<c:url value='/js/jquery-2.1.4.js' />"></script>
