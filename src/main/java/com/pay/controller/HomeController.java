@@ -1,6 +1,7 @@
 package com.pay.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,8 @@ public class HomeController {
 	}
 
 	@RequestMapping("kaptcha")
-	public String kaptcha(HttpServletRequest request) {
+	public String kaptcha(HttpServletRequest request,HttpSession session) {
+		System.out.println(session.getAttribute("kaptchaExpected"));
 		return "kaptcha";
 	}
 

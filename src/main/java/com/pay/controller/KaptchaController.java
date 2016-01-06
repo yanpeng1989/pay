@@ -9,13 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 
 @Controller
+@SessionAttributes("kaptchaExpected")
 public class KaptchaController {
 	private Producer captchaProducer = null;  
 	  
@@ -25,7 +28,7 @@ public class KaptchaController {
     }
     
     @RequestMapping("captcha-image")  
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {  
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response,Model model) throws Exception {  
   
         response.setDateHeader("Expires", 0);
         response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
@@ -37,8 +40,10 @@ public class KaptchaController {
         BufferedImage bi = captchaProducer.createImage(capText);  
         ServletOutputStream out = response.getOutputStream();
         ImageIO.write(bi, "jpg", out);
+        
         String kaptchaExpected = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
         System.out.println(kaptchaExpected);
+        model.addAttribute("kaptchaExpected", kaptchaExpected);
         try {  
             out.flush();  
         } finally {  

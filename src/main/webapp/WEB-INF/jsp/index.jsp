@@ -10,6 +10,17 @@
 <script src="<c:url value='/js/bootstrap.js' />"></script>
 <title>index</title>
 </head>
+<script type="text/javascript">
+	$(function() {
+		$('#kaptchaImage').click(function() {//生成验证码  
+			$(this).hide().attr('src','${base}/pay/captcha-image.do?'+Math.floor(Math.random() * 100)).fadeIn();
+		});
+	});
+
+	function changeCode() {
+		$('#kaptchaImage').hide().attr('src','${base}/pay/captcha-image.do?' + Math.floor(Math.random() * 100)).fadeIn();
+	}
+</script>
 <body>
 	<div class="main_contain">
 		<form class="form-horizontal">
@@ -26,10 +37,22 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">Captcha</label>
+				<div class="col-sm-10" style="width: 200px">
+					<input type="password" class="form-control" id="inputPassword3" placeholder="Captcha">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword3" class="col-sm-2 control-label">Captcha</label>
+				<div class="col-sm-10" style="width: 200px">
+					<img src="${base}/pay/captcha-image.do" id="kaptchaImage"  style="margin-bottom: -3px"/>
+					<a href="#" onclick="changeCode()">看不清?换一张</a>
+				</div>
+			</div>
+			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<div class="checkbox">
-						<label> <input type="checkbox">Remember me
-						</label>
+						<label> <input type="checkbox">Remember me</label>
 					</div>
 				</div>
 			</div>
