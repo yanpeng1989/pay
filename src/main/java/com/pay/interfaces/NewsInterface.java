@@ -5,5 +5,5 @@ import java.util.List;
 import com.pay.model.News;
 
 public interface NewsInterface {
-	public List<News> pagingNews(int begin,int end);
+	public List<News> pagingNews(Integer begin,Integer end);
 }

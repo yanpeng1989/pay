@@ -13,7 +13,9 @@ public class PagingController {
 
 	@RequestMapping(value = "paging")
 	public String pagingNews() {
-		System.out.println(pagingServices.pagingNews(10, 20));
+		System.out.println(pagingServices.pagingNews(10, 20).get(0).getId());
+		System.out.println(pagingServices.pagingNews(10, 20).get(0).getTitle());
+		System.out.println(pagingServices.pagingNews(10, 20).get(0).getContent());
 		return "paging";
 	}
 }

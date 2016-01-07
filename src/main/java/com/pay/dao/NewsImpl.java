@@ -1,5 +1,6 @@
 package com.pay.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -15,8 +16,11 @@ public class NewsImpl implements NewsInterface {
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
-	public List<News> pagingNews(int begin, int end) {
-		return sqlSessionTemplate.selectList("pagingNews", new Object[] { begin, end });
+	public List<News> pagingNews(Integer begin, Integer end) {
+		HashMap<String, Integer> params=new HashMap<String, Integer>();
+		params.put("begin", begin);
+		params.put("end", end);
+		return sqlSessionTemplate.selectList("pagingNews", params);
 	}
 
 }

@@ -1,9 +1,13 @@
 package com.pay.model;
 
-public class News {
+import java.io.Serializable;
+
+public class News implements Serializable{
+	
 	private int id;
 	private String title;
 	private String content;
+	private static final long serialVersionUID = 1L;
 
 	public int getId() {
 		return id;
@@ -27,5 +31,9 @@ public class News {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	@Override
+	public String toString() {
+		return null;
 	}
 }
