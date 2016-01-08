@@ -22,5 +22,9 @@ public class NewsImpl implements NewsInterface {
 		params.put("end", end);
 		return sqlSessionTemplate.selectList("pagingNews", params);
 	}
+	@Override
+	public int numberNews() {
+		return 0;
+	}
 
 }

@@ -7,18 +7,13 @@
 
 	<cache />
 	
-	<resultMap type="user" id="resultListUser">
-		<id column="id" property="id" />
-		<result column="name" property="name"/>
-		<result column="age" property="age" />
-		<result column="address" property="address" />
-		<result column="comment" property="comment" />
-	</resultMap>
-	
 	<select id="queryAll" resultType="user">
 		SELECT * FROM user
 	</select>
 	<select id="pagingNews" parameterType="map" resultType="com.pay.model.News">
 		SELECT * from news LIMIT #{begin},#{end}
+	</select>
+	<select id="numberNews"  resultType="java.lang.Integer">
+		SELECT COUNT(*) AS number FROM news
 	</select>
 </mapper>

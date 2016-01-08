@@ -21,4 +21,5 @@ public class UserImpl implements UserInterface {
 		ls = sqlSessionTemplate.selectList("queryAll");
 		return ls;
 	}
+	
 }

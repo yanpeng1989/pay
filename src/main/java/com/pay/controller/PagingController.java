@@ -1,7 +1,13 @@
 package com.pay.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.pay.model.News;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pay.services.PagingServices;
@@ -12,10 +18,9 @@ public class PagingController {
 	private PagingServices pagingServices;
 
 	@RequestMapping(value = "paging")
-	public String pagingNews() {
-		System.out.println(pagingServices.pagingNews(10, 20).get(0).getId());
-		System.out.println(pagingServices.pagingNews(10, 20).get(0).getTitle());
-		System.out.println(pagingServices.pagingNews(10, 20).get(0).getContent());
+	public String pagingNews(Model model) {
+		List<News> list = pagingServices.pagingNews(10, 20);
+		model.addAttribute("list", list);
 		return "paging";
 	}
 }

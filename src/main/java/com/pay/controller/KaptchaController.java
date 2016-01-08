@@ -42,7 +42,7 @@ public class KaptchaController {
         ImageIO.write(bi, "jpg", out);
         
         String kaptchaExpected = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-        System.out.println(kaptchaExpected);
+        
         model.addAttribute("kaptchaExpected", kaptchaExpected);
         try {  
             out.flush();  
