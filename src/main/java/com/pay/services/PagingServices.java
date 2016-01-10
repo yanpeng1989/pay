@@ -16,4 +16,8 @@ public class PagingServices {
 	public List<News> pagingNews(int begin, int end) {
 		return newsImpl.pagingNews(begin, end);
 	}
+
+	public int numberNews() {
+		return newsImpl.numberNews();
+	}
 }
