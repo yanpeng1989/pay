@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pay.model.News;
 import com.pay.services.PagingServices;
@@ -22,5 +24,14 @@ public class PagingController {
 		model.addAttribute("list", list);
 		model.addAttribute("number", number);
 		return "paging";
+	}
+	@RequestMapping(value = "paging")
+	@ResponseBody
+	public String pagingNewsAjax(Model model) {
+		List<News> list = pagingServices.pagingNews(10, 20);
+		int number = pagingServices.numberNews()/10+1;
+		model.addAttribute("list", list);
+		model.addAttribute("number", number);
+		return "paging_ajax";
 	}
 }

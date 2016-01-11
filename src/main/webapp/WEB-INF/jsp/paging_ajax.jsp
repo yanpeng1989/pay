@@ -9,7 +9,7 @@
 <link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet" />
 <script src="<c:url value='/js/jquery-2.1.4.js' />"></script>
 <script src="<c:url value='/js/bootstrap.js' />"></script>
-<title>paging</title>
+<title>paging_ajax</title>
 </head>
 <script type="text/javascript">
 $(function(){
@@ -20,7 +20,15 @@ $(function(){
 	});
 });
 function ax(url,data){
-	
+	$.ajax({
+		type:'GET',
+		contentType:'application/json',
+		url:'',
+		data:'',
+		dataType:'',
+		success:function(){},
+		error:function(){}
+	});
 }
 </script>
 <body style="text-align: center;">
