@@ -1,5 +1,6 @@
 package com.pay.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pay.model.News;
 import com.pay.services.PagingServices;
 
@@ -22,22 +24,34 @@ public class PagingController {
 	@RequestMapping(value = "paging")
 	public String pagingNews(Model model) {
 		List<News> list = pagingServices.pagingNews(10, 20);
-		int number = pagingServices.numberNews()/10+1;
+		int number = pagingServices.numberNews() / 10 + 1;
 		model.addAttribute("list", list);
 		model.addAttribute("number", number);
 		return "paging";
 	}
+
 	@RequestMapping(value = "paging_ajax")
 	public String pagingNewsAjax() {
 		return "paging_ajax";
 	}
-	@RequestMapping(value = "paging_ajax_do",method=RequestMethod.GET)
+
+	@RequestMapping(value = "paging_ajax_do", method = RequestMethod.GET)
 	@ResponseBody
-	public HashMap<String,String> pagingNewsAjaxDo(@RequestParam(value="number") int number) {
-		String str=String.valueOf(number) ;
-		HashMap<String,String> map =new HashMap<String,String>(); 
-		map.put("str", str);
-		return map;
+	public String pagingNewsAjaxDo(@RequestParam(value = "number") int number) {
+		String str = String.valueOf(number);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("id", str);
+		map.put("name", str);
+		String result = "";
+		List<HashMap<String,String>> list=new ArrayList<HashMap<String,String>>();
+		list.add(map);
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			result = objectMapper.writeValueAsString(list);
+			System.out.println(list);
+		} catch (Exception e) {
+		}
+		return result;
 	}
-	
+
 }

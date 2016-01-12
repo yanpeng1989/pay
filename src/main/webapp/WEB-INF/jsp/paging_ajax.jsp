@@ -20,10 +20,13 @@
 			data : "number=10",
 			dataType : 'json',
 			success : function(data) {
-				alert(JSON.parse(data));
+				for ( var i = 0; i < data.length; i++) {
+					alert(data[i].id + '+' + data[0].name);
+				}
 			},
 			error : function(data) {
 				alert("加载失败" + data.msg);
+				s
 			}
 		});
 	});

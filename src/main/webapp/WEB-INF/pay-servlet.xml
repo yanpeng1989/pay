@@ -14,10 +14,13 @@
 	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
 
 	<context:component-scan base-package="com.pay.controller" />
-	<!-- 定义拦截器 -->
-	<mvc:annotation-driven />
+	
 	<!-- 不拦截静态资源 -->
 	<mvc:default-servlet-handler />
+	
+	<!-- 定义拦截器 -->
+	<mvc:annotation-driven />
+	
 
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
 </beans>
