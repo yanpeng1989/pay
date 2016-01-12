@@ -38,18 +38,14 @@ public class PagingController {
 	@RequestMapping(value = "paging_ajax_do", method = RequestMethod.GET)
 	@ResponseBody
 	public String pagingNewsAjaxDo(@RequestParam(value = "number") int number) {
-		String str = String.valueOf(number);
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("id", str);
-		map.put("name", str);
 		String result = "";
-		List<HashMap<String,String>> list=new ArrayList<HashMap<String,String>>();
-		list.add(map);
+		List<News> list = pagingServices.pagingNews(10, 20);
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
 			result = objectMapper.writeValueAsString(list);
-			System.out.println(list);
+			System.out.println(result);
 		} catch (Exception e) {
+			
 		}
 		return result;
 	}

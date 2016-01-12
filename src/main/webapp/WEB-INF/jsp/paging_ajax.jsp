@@ -21,12 +21,11 @@
 			dataType : 'json',
 			success : function(data) {
 				for ( var i = 0; i < data.length; i++) {
-					alert(data[i].id + '+' + data[0].name);
+					alert(data[i].id + '+' + data[0].title+'+'+data[i].content);
 				}
 			},
 			error : function(data) {
 				alert("加载失败" + data.msg);
-				s
 			}
 		});
 	});
