@@ -7,6 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9" />
 <link href="<c:url value='/css/bootstrap-theme.css' />" rel="stylesheet" />
 <link href="<c:url value='/css/bootstrap.css' />" rel="stylesheet" />
+<link href="<c:url value='/css/style.css' />" rel="stylesheet" />
 <script src="<c:url value='/js/jquery-2.1.4.js' />"></script>
 <script src="<c:url value='/js/bootstrap.js' />"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
