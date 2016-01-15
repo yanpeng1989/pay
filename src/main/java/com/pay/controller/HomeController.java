@@ -16,10 +16,17 @@ public class HomeController {
 	@Autowired
 	HomeService homeService;
 
+	@RequestMapping(value = "sign-in")
+	public String sign_in(Model model) {
+		return "sign-in";
+	}
+	
+	@RequestMapping(value = "sign-up")
+	public String sign_up(Model model) {
+		return "sign-up";
+	}
 	@RequestMapping(value = "index")
 	public String Test(Model model) {
-		model.addAttribute("name", homeService.queryAll().get(0).getName());
-		model.addAttribute("age", homeService.queryAll().get(0).getAge());
 		return "index";
 	}
 
