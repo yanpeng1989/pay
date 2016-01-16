@@ -83,7 +83,6 @@
 
 		<div class="navbar-collapse collapse" style="height: 1px;"></div>
 	</div>
-	</div>
 	<div class="dialog"
 		style="margin-top: 300px; filter: alpha(opacity = 80); -moz-opacity: 0.8; -khtml-opacity: 0.8; opacity: 0.8;">
 		<div class="panel panel-default">
@@ -91,28 +90,62 @@
 			<div class="panel-body">
 				<form>
 					<div class="form-group">
-						<label>用户名</label> <input type="text" class="form-control span12">
+						<label>用户名</label> <input id="username" type="text" class="form-control span12">
 					</div>
 					<div class="form-group">
-						<label>密码</label> <input type="password" class="form-control span12 form-control">
+						<label>密码</label> <input id="password" type="password" class="form-control span12 form-control">
 					</div>
 					<div class="form-group">
-						<label>验证码</label> <input type="password" class="form-control span12 form-control">
+						<label>验证码</label> <input id="captcha" type="text" class="form-control span12 form-control">
 					</div>
-					<a href="index.do" class="btn btn-primary pull-right">登陆</a> <label class="remember-me"><input
-						type="checkbox">记住我</label>
+					<div class="form-group">
+						<img src="${base}/pay/captcha-image.do" id="kaptchaImage"  style="margin-bottom: -3px"/>
+     					<a href="#" onclick="changeCode()">看不清?换一张</a>
+					</div>
+					<a id="sign_in" href="#" class="btn btn-primary pull-right">登陆</a> 
+					<label class="remember-me"><input type="checkbox">记住我</label>
 					<div class="clearfix"></div>
 				</form>
 			</div>
 		</div>
-		<p class="pull-right" style="">
-			<a href="#" target="blank" style="font-size: .75em; margin-top: .25em;">关于我们</a>
+		<p class="pull-right" style="font-family: 微软雅黑;">
+			<a href="sign-up.do" target="blank" style="font-size: .75em; margin-top: .25em;">新建账户</a>
 		</p>
 		<p>
-			<a href="reset-password.do">忘记密码?</a>
+			<a href="#" style="font-family: 微软雅黑;">忘记密码?</a>
 		</p>
 	</div>
 	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#sign_in").click(
+				function(){
+					var username=$("#username").val();
+					var password=$("#password").val();
+					var captcha=$("#captcha").val();
+					$.ajax({
+						type : "GET",
+						contentType : "application/json",
+						url : "../pay/login-in.do",
+						data : 'username='+username+'&password='+password+"&captcha="+captcha,
+						dataType : 'json',
+						success : function(data) {
+							if(data.msg=='success'){
+								
+							}else if(data.msg=='unsuccess'){
+								
+							}else{
+								
+							}
+						},
+						error : function(data) {
+							alert("加载失败");
+						}
+					});
+				}
+			);
+		});
+	</script>
 	<script type="text/javascript">
 		$("[rel=tooltip]").tooltip();
 		$(function() {
@@ -120,6 +153,17 @@
 				return false;
 			});
 		});
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			$('#kaptchaImage').click(function() {//生成验证码  
+				$(this).hide().attr('src','${base}/pay/captcha-image.do?'+Math.floor(Math.random() * 100)).fadeIn();
+			});
+		});
+
+		function changeCode() {
+			$('#kaptchaImage').hide().attr('src','${base}/pay/captcha-image.do?' + Math.floor(Math.random() * 100)).fadeIn();
+		}
 	</script>
 </body>
 </html>

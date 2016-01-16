@@ -1,13 +1,18 @@
 package com.pay.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pay.services.HomeService;
 
 @Controller
@@ -17,8 +22,27 @@ public class HomeController {
 	HomeService homeService;
 
 	@RequestMapping(value = "sign-in")
-	public String sign_in(Model model) {
+	public String sign_in() {
 		return "sign-in";
+	}
+	@RequestMapping(value = "login-in",method = RequestMethod.GET)
+	@ResponseBody
+	public String login_in(Model model,@RequestParam(value = "username") String username,@RequestParam(value = "password") String password,@RequestParam(value = "captcha") String captcha,HttpSession session) {
+		String session_captcha=String.valueOf( session.getAttribute("kaptchaExpected"));
+		System.out.println(session_captcha);
+		System.out.println(username+"+"+password+"+"+captcha);
+		String result="";
+		HashMap<String,String> map=new HashMap<String,String>();
+		map.put("result", "success");
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			result = objectMapper.writeValueAsString(map);
+			System.out.println(result);
+		} catch (Exception e) {
+			
+		}
+		
+		return result;
 	}
 	
 	@RequestMapping(value = "sign-up")
@@ -31,7 +55,7 @@ public class HomeController {
 	}
 
 	@RequestMapping("kaptcha")
-	public String kaptcha(HttpServletRequest request,HttpSession session) {
+	public String kaptcha(HttpSession session) {
 		System.out.println(session.getAttribute("kaptchaExpected"));
 		return "kaptcha";
 	}
