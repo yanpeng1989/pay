@@ -19,7 +19,7 @@ public class PagingController {
 	@Autowired
 	private PagingServices pagingServices;
 
-	@RequestMapping(value = "paging")
+	@RequestMapping(value = "pagin1")
 	public String pagingNews(Model model) {
 		List<News> list = pagingServices.pagingNews(10, 20);
 		int number = pagingServices.numberNews() / 10 + 1;
@@ -33,7 +33,7 @@ public class PagingController {
 		return "paging_ajax";
 	}
 
-	@RequestMapping(value = "paging_ajax_do", method = RequestMethod.GET)
+	@RequestMapping(value = "paging_aja1_do", method = RequestMethod.GET)
 	@ResponseBody
 	public String pagingNewsAjaxDo(@RequestParam(value = "number") int number) {
 		String result = "";

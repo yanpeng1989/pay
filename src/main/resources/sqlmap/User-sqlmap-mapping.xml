@@ -10,6 +10,11 @@
 	<select id="queryAll" resultType="user">
 		SELECT * FROM user
 	</select>
+	<!-- 登陆 -->
+	<select id="userLogin" parameterType="map" resultType="Map">
+		SELECT * from user where sign_id=#{sign_id} and password_1=#{password_1}
+	</select>
+	
 	<select id="pagingNews" parameterType="map" resultType="com.pay.model.News">
 		SELECT * from news LIMIT #{begin},#{end}
 	</select>

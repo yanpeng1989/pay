@@ -115,7 +115,31 @@
 			<a href="#" style="font-family: 微软雅黑;">忘记密码?</a>
 		</p>
 	</div>
+	<!-- 模态框 Begin-->
+	<div id="alert_msg" class="modal fade" >
+  		<div class="modal-dialog">
+   			<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       				<h4 class="modal-title" style="font-family: 微软雅黑;">登陆失败</h4>
+      			</div>
+      		<div class="modal-body">
+        		<p id="alert_data" style="font-family: 微软雅黑;">您的登陆信息有误，请核实账户后再登陆&hellip;</p>
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+      		</div>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!-- 模态框 End-->
 	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		function show_model(content){
+			$("#alert_data").html(content);
+			$('#alert_msg').modal('show');
+		}
+	</script>
 	<script type="text/javascript">
 		$(function(){
 			$("#sign_in").click(
@@ -123,19 +147,33 @@
 					var username=$("#username").val();
 					var password=$("#password").val();
 					var captcha=$("#captcha").val();
+					
+					if(username==''){
+						show_model("请输入用户名");
+						return;
+					}else if(password==''){
+						show_model("请输入密码");
+						return;
+					}else if(captcha==''){
+						show_model("请输入验证码");
+						return;
+					}
+					
 					$.ajax({
 						type : "GET",
 						contentType : "application/json",
 						url : "../pay/login-in.do",
-						data : 'username='+username+'&password='+password+"&captcha="+captcha,
+						data : 'sign_id='+username+'&password_1='+password+"&captcha="+captcha,
 						dataType : 'json',
 						success : function(data) {
-							if(data.msg=='success'){
-								
-							}else if(data.msg=='unsuccess'){
-								
-							}else{
-								
+							if(data.result=='sign_success'){
+								window.location.href = "../pay/index.do";
+							}else if(data.result=='sign_unsuccess'){
+								show_model("账户不存在或用户名密码错误");
+							}else if(data.result=='captcha_error'){
+								show_model("验证码错误");
+							}else if(data.result=='sign_error'){
+								show_model("请输入用户名和密码");
 							}
 						},
 						error : function(data) {
