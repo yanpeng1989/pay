@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.pay.interfaces">
 
 	<cache />
-	
+
 	<select id="queryAll" resultType="user">
 		SELECT * FROM user
 	</select>
@@ -14,11 +14,18 @@
 	<select id="userLogin" parameterType="map" resultType="Map">
 		SELECT * from user where sign_id=#{sign_id} and password_1=#{password_1}
 	</select>
-	
+	<!-- 注册 -->
+	<select id="userCheck" parameterType="map" resultType="Map">
+		SELECT sign_id from user where sign_id=#{sign_id}
+	</select>
+	<insert id="userSign_up" parameterType="map">
+		insert into user(sign_id,name,tel,password_1,recommend_id_1) values(#{sign_id},#{name},#{tel},#{password_1},#{recommend_id_1})
+	</insert>
+
 	<select id="pagingNews" parameterType="map" resultType="com.pay.model.News">
 		SELECT * from news LIMIT #{begin},#{end}
 	</select>
-	<select id="numberNews"  resultType="java.lang.Integer">
+	<select id="numberNews" resultType="java.lang.Integer">
 		SELECT COUNT(*) AS number FROM news
 	</select>
 </mapper>

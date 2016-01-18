@@ -84,7 +84,7 @@
 		<div class="navbar-collapse collapse" style="height: 1px;"></div>
 	</div>
 	<div class="dialog"
-		style="margin-top: 300px; filter: alpha(opacity = 80); -moz-opacity: 0.8; -khtml-opacity: 0.8; opacity: 0.8;">
+		style="filter: alpha(opacity = 80); -moz-opacity: 0.8; -khtml-opacity: 0.8; opacity: 0.8;">
 		<div class="panel panel-default">
 			<p class="panel-heading no-collapse" style="font-family: 微软雅黑;">登陆</p>
 			<div class="panel-body">
@@ -175,9 +175,11 @@
 							}else if(data.result=='sign_error'){
 								show_model("请输入用户名和密码");
 							}
+							changeCode();
 						},
 						error : function(data) {
-							alert("加载失败");
+							show_model("加载失败");
+							changeCode();
 						}
 					});
 				}

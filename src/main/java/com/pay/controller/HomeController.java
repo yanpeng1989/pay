@@ -33,9 +33,6 @@ public class HomeController {
 	public String login_in(Model model, @RequestParam(value = "sign_id") String sign_id, @RequestParam(value = "password_1") String password_1, @RequestParam(value = "captcha") String captcha, HttpSession session) {
 		String session_captcha = String.valueOf(session.getAttribute("kaptchaExpected"));
 		String result = "";
-		
-		System.out.println("sign_id="+sign_id+";password_1="+password_1);
-		
 		HashMap<String, String> map_json = new HashMap<String, String>();
 		if (!session_captcha.equals(captcha)) {
 			map_json.put("result", "captcha_error");
@@ -50,14 +47,13 @@ public class HomeController {
 				} else {
 					map_json.put("result", "sign_unsuccess");
 				}
-			}else{
+			} else {
 				map_json.put("result", "sign_error");
 			}
 		}
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
 			result = objectMapper.writeValueAsString(map_json);
-			System.out.println(result);
 		} catch (Exception e) {
 		}
 		return result;
@@ -68,8 +64,36 @@ public class HomeController {
 		return "sign-up";
 	}
 
+	@RequestMapping(value = "login-up")
+	@ResponseBody
+	public String login_up(Model model, @RequestParam(value = "tel") String tel, @RequestParam(value = "sign_id") String sign_id, @RequestParam(value = "username") String username, @RequestParam(value = "password") String password, @RequestParam(value = "recommend_id") String recommend_id, @RequestParam(value = "captcha") String captcha, HttpSession session) {
+		String session_captcha = String.valueOf(session.getAttribute("kaptchaExpected"));
+		String result = "";
+		HashMap<String, String> map_json = new HashMap<String, String>();
+		if (!session_captcha.equals(captcha)) {
+			map_json.put("result", "captcha_error");
+		} else if (!tel.equals("") && !sign_id.equals("")&& !username.equals("") && !password.equals("") && !captcha.equals("")) {
+			String register_result = homeService.userSign_up(sign_id, username, tel, password, recommend_id);
+			if (register_result.equals("exist")) {
+				map_json.put("result", "exist");
+			} else if(register_result.equals("inexistent")){
+				map_json.put("result", "success");
+				model.addAttribute("sign_id", sign_id);
+				model.addAttribute("name", username);
+			}else{
+				map_json.put("result", "error");
+			}
+		}
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			result = objectMapper.writeValueAsString(map_json);
+		} catch (Exception e) {
+		}
+		return result;
+	}
+
 	@RequestMapping(value = "index")
-	public String index(Model model,HttpSession session) {
+	public String index(Model model, HttpSession session) {
 		System.out.println(session.getAttribute("name"));
 		model.addAttribute("name", session.getAttribute("name"));
 		return "index";
