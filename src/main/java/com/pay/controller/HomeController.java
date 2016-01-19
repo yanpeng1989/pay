@@ -99,6 +99,26 @@ public class HomeController {
 		return "index";
 	}
 
+	@RequestMapping("faq")
+	public String faq(Model model, HttpSession session) {
+		
+		return "faq";
+	}
+	@RequestMapping("news")
+	public String news(Model model, HttpSession session) {
+		
+		return "news";
+	}
+	@RequestMapping("guestbook")
+	public String guestbook(Model model, HttpSession session) {
+		
+		return "guestbook";
+	}
+	@RequestMapping("user")
+	public String user(Model model, HttpSession session) {
+		
+		return "user";
+	}
 	@RequestMapping("kaptcha")
 	public String kaptcha(HttpSession session) {
 		System.out.println(session.getAttribute("kaptchaExpected"));

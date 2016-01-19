@@ -120,7 +120,6 @@
 			</ul>
 		</div>
 	</div>
-	</div>
 
 
 	<div class="sidebar-nav">
@@ -148,14 +147,13 @@
 			<li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-legal"></i>会员资料<i class="fa fa-collapse"></i></a></li>
 			<li><ul class="legal-menu nav nav-list collapse">
-					<li><a href="#"><span class="fa fa-caret-right"></span>基本资料修改</a></li>
 					<li><a href="#"><span class="fa fa-caret-right"></span>交易资料修改</a></li>
 					<li><a href="#"><span class="fa fa-caret-right"></span>密码修改</a></li>
 					<li><a href="#"><span class="fa fa-caret-right"></span>密保修改</a></li>
 				</ul></li>
-			<li><a href="#" class="nav-header"><i class="fa fa-fw fa-question-circle"></i>留言反馈</a></li>
-			<li><a href="#" class="nav-header"><i class="fa fa-fw fa-comment"></i>常见问题</a></li>
-			<li><a href="#" class="nav-header" target="blank"><i class="fa fa-fw fa-heart"></i>新闻公告</a></li>
+			<li><a href="../pay/guestbook.do" class="nav-header"><i class="fa fa-fw fa-question-circle"></i>留言反馈</a></li>
+			<li><a href="../pay/faq.do" class="nav-header"><i class="fa fa-fw fa-comment"></i>常见问题</a></li>
+			<li><a href="../pay/news.do" class="nav-header"><i class="fa fa-fw fa-heart"></i>新闻公告</a></li>
 		</ul>
 	</div>
 
