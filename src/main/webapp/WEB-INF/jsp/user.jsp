@@ -141,7 +141,7 @@
 			<li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-legal"></i>会员资料<i class="fa fa-collapse"></i></a></li>
 			<li><ul class="legal-menu nav nav-list collapse">
-					<li><a href="#"><span class="fa fa-caret-right"></span>交易资料</a></li>
+					<li><a href="../pay/user.do"><span class="fa fa-caret-right"></span>交易资料</a></li>
 					<li><a href="#"><span class="fa fa-caret-right"></span>密码修改</a></li>
 					<li><a href="#"><span class="fa fa-caret-right"></span>密保修改</a></li>
 				</ul></li>
@@ -160,57 +160,52 @@
 				<li><a href="users.do">交易资料</a></li>
 				<li class="active">${name}</li>
 			</ul>
-
 		</div>
 		<div class="main-content">
-
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#home" data-toggle="tab">用户资料</a></li>
+				<li class="active"><a href="#home" data-toggle="tab">${user_name}用户资料</a></li>
 			</ul>
-
 			<div class="row">
 				<div class="col-md-4">
 					<br>
 					<div id="myTabContent" class="tab-content">
 						<div class="tab-pane active in" id="home">
-							<form id="tab">
 								<div class="form-group">
-									<label>姓名</label> <input type="text" placeholder="姓名" class="form-control">
+									<label>收款人</label> <input id="user_name" type="text" value="${user_name}" placeholder="姓名" class="form-control" disabled>
 								</div>
 								<div class="form-group">
-									<label>银行名称</label> <select name="DropDownTimezone" id="DropDownTimezone" class="form-control">
+									<label>银行名称</label> 
+									<select id="bank_name" class="form-control" disabled>
+										<option value="${bank_name}" selected="selected" >${bank_name}</option>
 										<option value="建设银行">建设银行</option>
 										<option value="工商银行">工商银行</option>
-										<option selected="selected" value="农业银行">农业银行</option>
+										<option value="农业银行">农业银行</option>
 									</select>
 								</div>
 								<div class="form-group">
-									<label>银行卡号</label> <input type="text" placeholder="银行卡号" class="form-control">
+									<label>银行卡号</label> <input id="bank_id" type="text" value="${bank_id}" placeholder="银行卡号" class="form-control" disabled>
 								</div>
 								<div class="form-group">
-									<label>发卡行</label> <input type="text" placeholder="发卡行" class="form-control">
+									<label>发卡行</label> <input id="bank_branch" type="text" value="${bank_branch}" placeholder="发卡行" class="form-control" disabled>
 								</div>
 								<div class="form-group">
-									<label>微信账号</label> <input type="text" placeholder="微信账号" class="form-control">
+									<label>微信账号</label> <input id="wechat" type="text" value="${wechat}" placeholder="微信账号" class="form-control" disabled>
 								</div>
 								<div class="form-group">
-									<label>支付宝账号</label> <input type="text" placeholder="支付宝账号" class="form-control">
+									<label>支付宝账号</label> <input id="alipay" type="text" value="${alipay}" placeholder="支付宝账号" class="form-control" disabled>
 								</div>
-							</form>
 						</div>
 					</div>
-
 					<div class="btn-toolbar list-toolbar">
-						<button class="btn btn-primary">
+						<button id="save" class="btn btn-primary">
 							<i class="fa fa-save"></i>保存
 						</button>
-						<a href="#myModal" data-toggle="modal" class="btn btn-danger">修改</a>
+						<a href="" id="update" data-toggle="modal" class="btn btn-danger">修改</a>
 					</div>
 				</div>
 			</div>
 			<footer>
 				<hr>
-				<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
 				<p class="pull-right">
 					A <a href="#" >Free Bootstrap Theme</a> by <a
 						href="#" >Portnine</a>
@@ -221,8 +216,93 @@
 			</footer>
 		</div>
 	</div>
-
-
+	<!-- 模态框 Begin-->
+	<div id="alert_msg" class="modal fade" >
+  		<div class="modal-dialog">
+   			<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       				<h4 class="modal-title" style="font-family: 微软雅黑;">友情提示</h4>
+      			</div>
+      		<div class="modal-body">
+        		<p id="alert_data" style="font-family: 微软雅黑;">&hellip;</p>
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+      		</div>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!-- 模态框 End-->
+	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		function show_model(content){
+			$("#alert_data").html(content);
+			$('#alert_msg').modal('show');
+		}
+	</script>
+	<script type="text/javascript">
+		$(function(){
+			$("#update").click(function(){
+				$("#user_name").attr('disabled',false);
+				$("#bank_name").attr('disabled',false);
+				$("#bank_id").attr('disabled',false);
+				$("#bank_branch").attr('disabled',false);
+				$("#wechat").attr('disabled',false);
+				$("#alipay").attr('disabled',false);
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		$(function(){
+			$("#save").click(
+				function(){
+					var user_name=$("#user_name").val();
+					var bank_name=$("#bank_name").val();
+					var bank_id=$("#bank_id").val();
+					var bank_branch=$("#bank_branch").val();
+					
+					if(user_name==''){
+						show_model("请输入收款人");
+						return;
+					}else if(bank_name==''){
+						show_model("请输入银行名称");
+						return;
+					}else if(bank_id==''){
+						show_model("请输入银行卡号");
+						return;
+					}else if(bank_branch==''){
+						show_model("请输入开户银行");
+						return;
+					}
+					var params="user_name="+user_name+"&bank_name="+bank_name+"&bank_id="+bank_id+"&bank_branch="+bank_branch+"&wechat="+wechat+"&alipay="+alipay;
+					$.ajax({
+						type : "GET",
+						contentType : "application/json",
+						url : "../pay/login-in.do",
+						data : params,
+						dataType : 'json',
+						success : function(data) {
+							if(data.result=='sign_success'){
+								window.location.href = "../pay/index.do";
+							}else if(data.result=='sign_unsuccess'){
+								show_model("账户不存在或用户名密码错误");
+							}else if(data.result=='captcha_error'){
+								show_model("验证码错误");
+							}else if(data.result=='sign_error'){
+								show_model("请输入用户名和密码");
+							}
+							changeCode();
+						},
+						error : function(data) {
+							show_model("加载失败");
+							changeCode();
+						}
+					});
+				}
+			);
+		});
+	</script>
 	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">
 		$("[rel=tooltip]").tooltip();
@@ -232,7 +312,8 @@
 			});
 		});
 	</script>
-
-
+	<script type="text/javascript">
+		
+	</script>
 </body>
 </html>

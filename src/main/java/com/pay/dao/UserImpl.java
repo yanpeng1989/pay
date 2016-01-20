@@ -50,4 +50,31 @@ public class UserImpl implements UserInterface {
 			return "inexistent";
 		}
 	}
+
+	@Override
+	public String accountOperate(String sign_id, String user_name, String bank_id, String bank_name, String bank_branch, String wechat, String alipay) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("sign_id", sign_id);
+		params.put("user_name", user_name);
+		params.put("bank_name", bank_name);
+		params.put("bank_branch", bank_branch);
+		params.put("wechat", wechat);
+		params.put("alipay", alipay);
+		HashMap<String, String> accountmap = sqlSessionTemplate.selectOne("accountCheck", params);
+		if (accountmap != null && accountmap.size() > 0) {
+			sqlSessionTemplate.update("accountUpdate", params);
+			return "update";
+		} else {
+			sqlSessionTemplate.insert("accountInsert", params);
+			return "insert";
+		}
+	}
+
+	@Override
+	public HashMap<String, String> accountCheck(String sign_id) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("sign_id", sign_id);
+		HashMap<String, String> result = sqlSessionTemplate.selectOne("accountCheck", params);
+		return result;
+	}
 }

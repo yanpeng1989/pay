@@ -21,7 +21,17 @@
 	<insert id="userSign_up" parameterType="map">
 		insert into user(sign_id,name,tel,password_1,recommend_id_1) values(#{sign_id},#{name},#{tel},#{password_1},#{recommend_id_1})
 	</insert>
-
+	<!--交易资料 -->
+	<select id="accountCheck" parameterType="map" resultType="Map">
+		SELECT user_name,bank_id,bank_name,bank_branch,wechat,alipay from account where sign_id=#{sign_id}
+	</select>
+	<insert id="accountInsert" parameterType="map">
+		insert into account(sign_id,user_name,bank_id,bank_name,bank_branch,wechat,alipay) values(#{sign_id},#{user_name},#{bank_id},#{bank_name},#{bank_branch},#{wechat},#{alipay})
+	</insert>
+	<update id="accountUpdate" parameterType="map" >
+        update user set user_name=#{user_name},bank_id=#{bank_id},bank_name=#{bank_name},bank_branch=#{bank_branch},wechat=#{wechat},alipay=#{alipay} where sign_id=#{sign_id}
+    </update>
+    
 	<select id="pagingNews" parameterType="map" resultType="com.pay.model.News">
 		SELECT * from news LIMIT #{begin},#{end}
 	</select>

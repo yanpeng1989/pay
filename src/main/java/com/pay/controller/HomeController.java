@@ -72,15 +72,15 @@ public class HomeController {
 		HashMap<String, String> map_json = new HashMap<String, String>();
 		if (!session_captcha.equals(captcha)) {
 			map_json.put("result", "captcha_error");
-		} else if (!tel.equals("") && !sign_id.equals("")&& !username.equals("") && !password.equals("") && !captcha.equals("")) {
+		} else if (!tel.equals("") && !sign_id.equals("") && !username.equals("") && !password.equals("") && !captcha.equals("")) {
 			String register_result = homeService.userSign_up(sign_id, username, tel, password, recommend_id);
 			if (register_result.equals("exist")) {
 				map_json.put("result", "exist");
-			} else if(register_result.equals("inexistent")){
+			} else if (register_result.equals("inexistent")) {
 				map_json.put("result", "success");
 				model.addAttribute("sign_id", sign_id);
 				model.addAttribute("name", username);
-			}else{
+			} else {
 				map_json.put("result", "error");
 			}
 		}
@@ -101,24 +101,37 @@ public class HomeController {
 
 	@RequestMapping("faq")
 	public String faq(Model model, HttpSession session) {
-		
+
 		return "faq";
 	}
+
 	@RequestMapping("news")
 	public String news(Model model, HttpSession session) {
-		
+
 		return "news";
 	}
+
 	@RequestMapping("guestbook")
 	public String guestbook(Model model, HttpSession session) {
-		
+
 		return "guestbook";
 	}
+
 	@RequestMapping("user")
 	public String user(Model model, HttpSession session) {
-		
+
+		model.addAttribute("name", session.getAttribute("name"));
+		String sign_id = String.valueOf(session.getAttribute("sign_id"));
+		System.out.println(sign_id);
+		HashMap<String, String> accountMsg = homeService.accountCheck(sign_id);
+		if (accountMsg != null && accountMsg.size() > 0) {
+			String user_name=accountMsg.get("user_name");
+			model.addAttribute("user_name",user_name);
+			model.addAllAttributes(accountMsg);
+		}
 		return "user";
 	}
+
 	@RequestMapping("kaptcha")
 	public String kaptcha(HttpSession session) {
 		System.out.println(session.getAttribute("kaptchaExpected"));

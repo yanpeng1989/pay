@@ -147,7 +147,7 @@
 			<li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-legal"></i>会员资料<i class="fa fa-collapse"></i></a></li>
 			<li><ul class="legal-menu nav nav-list collapse">
-					<li><a href="#"><span class="fa fa-caret-right"></span>交易资料修改</a></li>
+					<li><a href="../pay/user.do"><span class="fa fa-caret-right"></span>交易资料</a></li>
 					<li><a href="#"><span class="fa fa-caret-right"></span>密码修改</a></li>
 					<li><a href="#"><span class="fa fa-caret-right"></span>密保修改</a></li>
 				</ul></li>
