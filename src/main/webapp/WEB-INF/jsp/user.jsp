@@ -268,7 +268,8 @@
 						show_model("请输入开户银行");
 						return;
 					}
-					var params="user_name="+user_name+"&bank_name="+bank_name+"&bank_id="+bank_id+"&bank_branch="+bank_branch+"&wechat="+wechat+"&alipay="+alipay;
+					var params='{"user_name":"'+user_name+'","bank_name":"'+bank_name+'","bank_id":"'+bank_id+'","bank_branch":"'+bank_branch+'","wechat":"'+wechat+'","alipay":"'+alipay+'"}';
+					
 					$.ajax({
 						type : "POST",
 						contentType : "application/json;",
@@ -289,7 +290,7 @@
 							$("#alipay").attr('disabled',true);
 						},
 						error : function(data) {
-							show_model("加载失败");
+							show_model(params);
 						}
 					});
 				}

@@ -1,12 +1,14 @@
 package com.pay.controller;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -135,12 +137,19 @@ public class HomeController {
 		return "user";
 	}
 
-	@RequestMapping(value="account",method = RequestMethod.GET)
+	@RequestMapping(value="account",method = RequestMethod.POST)
 	@ResponseBody
-	public String account(HttpSession session, @RequestParam(value = "user_name") String user_name, @RequestParam(value = "bank_name") String bank_name, @RequestParam(value = "bank_id") String bank_id, @RequestParam(value = "bank_branch") String bank_branch, @RequestParam(value = "wechat") String wechat, @RequestParam(value = "alipay") String alipay) {
+	public String account(HttpSession session,@RequestBody Map<String,String> params) {
+		
+		String user_name=params.get("user_name");
+		String bank_id=params.get("bank_id");
+		String bank_name=params.get("bank_name");
+		String bank_branch=params.get("bank_branch");
+		String wechat=params.get("wechat");
+		String alipay=params.get("alipay");
+		
 		String sign_id = String.valueOf(session.getAttribute("sign_id"));
 		String result = "";
-		System.out.println(user_name);
 		HashMap<String, String> map_json = new HashMap<String, String>();
 		homeService.accountOperate(sign_id, user_name, bank_id, bank_name, bank_branch, wechat, alipay);
 		map_json.put("result", "success");
