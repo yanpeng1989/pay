@@ -56,6 +56,7 @@ public class UserImpl implements UserInterface {
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("sign_id", sign_id);
 		params.put("user_name", user_name);
+		params.put("bank_id", sign_id);
 		params.put("bank_name", bank_name);
 		params.put("bank_branch", bank_branch);
 		params.put("wechat", wechat);

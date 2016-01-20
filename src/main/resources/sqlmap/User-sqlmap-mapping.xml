@@ -29,7 +29,7 @@
 		insert into account(sign_id,user_name,bank_id,bank_name,bank_branch,wechat,alipay) values(#{sign_id},#{user_name},#{bank_id},#{bank_name},#{bank_branch},#{wechat},#{alipay})
 	</insert>
 	<update id="accountUpdate" parameterType="map" >
-        update user set user_name=#{user_name},bank_id=#{bank_id},bank_name=#{bank_name},bank_branch=#{bank_branch},wechat=#{wechat},alipay=#{alipay} where sign_id=#{sign_id}
+        update account set user_name=#{user_name},bank_id=#{bank_id},bank_name=#{bank_name},bank_branch=#{bank_branch},wechat=#{wechat},alipay=#{alipay} where sign_id=#{sign_id}
     </update>
     
 	<select id="pagingNews" parameterType="map" resultType="com.pay.model.News">

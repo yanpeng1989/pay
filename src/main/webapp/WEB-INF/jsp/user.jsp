@@ -13,19 +13,11 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="../pay/template/lib/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="../pay/template/lib/font-awesome/css/font-awesome.css">
-
 <script src="../pay/template/lib/jquery-1.11.1.js" type="text/javascript"></script>
-
-
-
 <link rel="stylesheet" type="text/css" href="../pay/template/stylesheets/theme.css">
 <link rel="stylesheet" type="text/css" href="../pay/template/stylesheets/premium.css">
-
 </head>
 <body class=" theme-blue">
-
-	<!-- Demo page code -->
-
 	<script type="text/javascript">
 		$(function() {
 			var match = document.cookie.match(new RegExp('color=([^;]+)'));
@@ -44,7 +36,7 @@
 
 		});
 	</script>
-	<style type="text/css">
+<style type="text/css">
 #line-chart {
 	height: 300px;
 	width: 800px;
@@ -57,13 +49,13 @@
 }
 </style>
 
-	<script type="text/javascript">
-		$(function() {
-			var uls = $('.sidebar-nav > ul > *').clone();
-			uls.addClass('visible-xs');
-			$('#main-menu').append(uls.clone());
-		});
-	</script>
+<script type="text/javascript">
+	$(function() {
+		var uls = $('.sidebar-nav > ul > *').clone();
+		uls.addClass('visible-xs');
+		$('#main-menu').append(uls.clone());
+	});
+</script>
 
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
@@ -163,7 +155,7 @@
 		</div>
 		<div class="main-content">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#home" data-toggle="tab">${user_name}用户资料</a></li>
+				<li class="active"><a href="#home" data-toggle="tab">用户资料</a></li>
 			</ul>
 			<div class="row">
 				<div class="col-md-4">
@@ -261,7 +253,8 @@
 					var bank_name=$("#bank_name").val();
 					var bank_id=$("#bank_id").val();
 					var bank_branch=$("#bank_branch").val();
-					
+					var wechat=$("#wechat").val();
+					var alipay=$("#alipay").val();
 					if(user_name==''){
 						show_model("请输入收款人");
 						return;
@@ -277,26 +270,26 @@
 					}
 					var params="user_name="+user_name+"&bank_name="+bank_name+"&bank_id="+bank_id+"&bank_branch="+bank_branch+"&wechat="+wechat+"&alipay="+alipay;
 					$.ajax({
-						type : "GET",
-						contentType : "application/json",
-						url : "../pay/login-in.do",
+						type : "POST",
+						contentType : "application/json;",
+						url : "../pay/account.do",
 						data : params,
 						dataType : 'json',
 						success : function(data) {
-							if(data.result=='sign_success'){
-								window.location.href = "../pay/index.do";
-							}else if(data.result=='sign_unsuccess'){
-								show_model("账户不存在或用户名密码错误");
-							}else if(data.result=='captcha_error'){
-								show_model("验证码错误");
-							}else if(data.result=='sign_error'){
-								show_model("请输入用户名和密码");
+							if(data.result=='success'){
+								show_model("更新成功");
+							}else{
+								show_model("更新失败");
 							}
-							changeCode();
+							$("#user_name").attr('disabled',true);
+							$("#bank_name").attr('disabled',true);
+							$("#bank_id").attr('disabled',true);
+							$("#bank_branch").attr('disabled',true);
+							$("#wechat").attr('disabled',true);
+							$("#alipay").attr('disabled',true);
 						},
 						error : function(data) {
 							show_model("加载失败");
-							changeCode();
 						}
 					});
 				}
