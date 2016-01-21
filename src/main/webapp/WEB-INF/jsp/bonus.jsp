@@ -23,9 +23,6 @@
 
 </head>
 <body class=" theme-blue">
-
-	<!-- Demo page code -->
-
 	<script type="text/javascript">
 		$(function() {
 			var match = document.cookie.match(new RegExp('color=([^;]+)'));
@@ -44,7 +41,7 @@
 
 		});
 	</script>
-	<style type="text/css">
+<style type="text/css">
 #line-chart {
 	height: 300px;
 	width: 800px;
@@ -64,6 +61,7 @@
 			$('#main-menu').append(uls.clone());
 		});
 	</script>
+
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -75,13 +73,13 @@
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-
 	<!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
 	<!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
 	<!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
 	<!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
 	<!--[if (gt IE 9)|!(IE)]><!-->
 	<!--<![endif]-->
+
 	<div class="navbar navbar-default" role="navigation">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -144,77 +142,190 @@
 			<li><a href="../pay/news.do" class="nav-header"><i class="fa fa-fw fa-heart"></i>新闻公告</a></li>
 		</ul>
 	</div>
+
 	<div class="content">
 		<div class="header">
-			<h1 class="page-title">新闻公告</h1>
+
+			<h1 class="page-title">奖金明细</h1>
 			<ul class="breadcrumb">
-				<li><a href="index.do">主页</a></li>
-				<li class="active">新闻公告</li>
+				<li><a href="../pay/index.do">主页</a></li>
+				<li class="active">奖金明细</li>
 			</ul>
+
 		</div>
 		<div class="main-content">
+			<div class="btn-toolbar list-toolbar">
+				<button class="btn btn-danger btn-lg">
+					<i class="fa fa-plus"></i>申请提供帮助
+				</button>
+				<button class="btn btn-success btn-lg">
+					<i class="fa fa-plus"></i>申请接受帮助
+				</button>
+				<div class="btn-group"></div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading no-collapse" style="font-family: 微软雅黑;">
+							静态奖金<span class="label label-warning">+10</span>
+						</div>
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Username</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Mark</td>
+									<td>Tompson</td>
+									<td>the_mark7</td>
+								</tr>
+								<tr>
+									<td>Ashley</td>
+									<td>Jacobs</td>
+									<td>ash11927</td>
+								</tr>
+								<tr>
+									<td>Audrey</td>
+									<td>Ann</td>
+									<td>audann84</td>
+								</tr>
+								<tr>
+									<td>John</td>
+									<td>Robinson</td>
+									<td>jr5527</td>
+								</tr>
+								<tr>
+									<td>Aaron</td>
+									<td>Butler</td>
+									<td>aaron_butler</td>
+								</tr>
+								<tr>
+									<td>Chris</td>
+									<td>Albert</td>
+									<td>cab79</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6">
+					<div class="panel panel-default">
+						<a href="#widget1container" class="panel-heading" data-toggle="collapse" style="font-family: 微软雅黑;">静态奖金说明</a>
+						<div id="widget1container" class="panel-body collapse in">
+							<h2>Here's a Tip</h2>
+							<p>
+								This template was developed with <a href="http://middlemanapp.com/" target="_blank">Middleman</a> and includes
+								.erb layouts and views.
+							</p>
+							<p>All of the views you see here (sign in, sign up, users, etc) are already split up so you don't have to
+								waste your time doing it yourself!</p>
+							<p>The layout.erb file includes the header, footer, and side navigation and all of the views are broken out
+								into their own files.</p>
+							<p>If you aren't using Ruby, there is also a set of plain HTML files for each page, just like you would
+								expect.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading no-collapse" style="font-family: 微软雅黑;">
+							动态奖金<span class="label label-warning">+10</span>
+						</div>
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Username</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Mark</td>
+									<td>Tompson</td>
+									<td>the_mark7</td>
+								</tr>
+								<tr>
+									<td>Ashley</td>
+									<td>Jacobs</td>
+									<td>ash11927</td>
+								</tr>
+								<tr>
+									<td>Audrey</td>
+									<td>Ann</td>
+									<td>audann84</td>
+								</tr>
+								<tr>
+									<td>John</td>
+									<td>Robinson</td>
+									<td>jr5527</td>
+								</tr>
+								<tr>
+									<td>Aaron</td>
+									<td>Butler</td>
+									<td>aaron_butler</td>
+								</tr>
+								<tr>
+									<td>Chris</td>
+									<td>Albert</td>
+									<td>cab79</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6">
+					<div class="panel panel-default">
+						<a href="#widget1container" class="panel-heading" data-toggle="collapse" style="font-family: 微软雅黑;">动态奖金说明 </a>
+						<div id="widget1container" class="panel-body collapse in">
+							<h2>Here's a Tip</h2>
+							<p>
+								This template was developed with <a href="http://middlemanapp.com/" target="_blank">Middleman</a> and includes
+								.erb layouts and views.
+							</p>
+							<p>All of the views you see here (sign in, sign up, users, etc) are already split up so you don't have to
+								waste your time doing it yourself!</p>
+							<p>The layout.erb file includes the header, footer, and side navigation and all of the views are broken out
+								into their own files.</p>
+							<p>If you aren't using Ruby, there is also a set of plain HTML files for each page, just like you would
+								expect.</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-			<h3>Terms of Use</h3>
-			These Terms and Conditions constitute an agreement (“Agreement”) between you (“you”, “your”, “user”, “Customer”) and
-			the Company.Avocado gumbo artichoke ricebean groundnut tigernut. Daikon kakadu plum water spinach garbanzo eggplant
-			fava bean chard rock melon carrot rutabaga water chestnut broccoli courgette onion.
-
-			<h3>Eligibility and Identity.</h3>
-			To be eligible to use our Services, you must be at least 13 years old. Sorrel jícama tomato silver beet wattle seed
-			black-eyed pea garlic fennel tigernut okra beetroot shallot. Soko shallot melon dandelion bamboo shoot chickpea
-			soybean pumpkin kakadu plum parsley ricebean grape courgette courgette jícama tatsoi. Black-eyed pea gourd tomatillo
-			arugula cucumber celery mustard black-eyed pea cauliflower soybean rutabaga turnip groundnut.
-
-			<h3>Termination</h3>
-			You may terminate this Agreement at any time by ceasing all use of the Services and by notifying us. The Company may
-			terminate this Agreement, at any time, without notice to you, if it believes, in its sole judgment, that you have
-			breached or may breach any term or condition of this Agreement. Fennel garlic melon broccoli kohlrabi dulse
-			black-eyed pea chicory watercress shallot bamboo shoot cucumber rutabaga ricebean gourd chickweed gumbo. Burdock
-			fennel sorrel cress collard greens tomato tigernut salad chickweed yarrow water spinach catsear earthnut pea cabbage
-			dulse potato. Onion courgette bitterleaf rutabaga tomatillo tigernut groundnut courgette water spinach tomato. Celery
-			ricebean cabbage salsify caulie watercress cress collard greens potato chard gourd pea sprouts cucumber dulse gram.
-			Leek summer purslane tatsoi catsear celtuce broccoli rabe onion zucchini.
-
-			<h3>Use of Services & Account</h3>
-			You represent and warrant that you possess the legal right and ability to enter into this Agreement. You agree not to
-			use the Materials, Content, Services, and your Account for any unlawful or abusive purpose or in any way which
-			interferes with our ability to provide Services to our customers, or which damages our property. Chickpea gourd
-			coriander daikon zucchini lettuce tomatillo sierra leone bologi maize parsnip grape melon kohlrabi welsh onion.
-			Celery wakame corn garlic courgette silver beet cabbage gram amaranth jícama bitterleaf. Ricebean bunya nuts prairie
-			turnip water chestnut artichoke cauliflower watercress gourd cabbage okra broccoli rabe. Burdock leek sorrel
-			radicchio azuki bean collard greens winter purslane broccoli rabe gourd water chestnut pumpkin gumbo. Azuki bean
-			green bean kohlrabi kombu aubergine salsify lotus root turnip lentil radicchio nori eggplant sorrel.
-
-			<h3>Modification to Service</h3>
-			The Company may change, suspend, or discontinue all or any part of the Service at any time, with or without reason.
-			You acknowledge that the operation of the Service may from time to time encounter technical or other problems and may
-			not necessarily continue uninterrupted or without technical or other errors and The Company shall not be responsible
-			to you or others for any such interruptions, errors or problems or an outright discontinuance of the Service.
-
-			<h3>Intellectual Property Ownership</h3>
-			All Materials, Services, Accounts, and content, including, but not limited to, policy information, text, software,
-			music, sound, photographs, video, graphics, the arrangement of text and images, commercially produced information,
-			and other material contained on the Site or through the Services (“Content”), are provided by The Company unless
-			indicated otherwise. Welsh onion tigernut broccoli asparagus brussels sprout jícama eggplant earthnut pea cress
-			chickpea gourd zucchini. Radicchio lentil cucumber groundnut endive kohlrabi winter purslane. Seakale plantain
-			quandong celtuce shallot fennel seakale epazote groundnut dandelion.
-
-			<h3>Privacy</h3>
-			Please see our <a href="privacy-policy.do">Privacy Policy</a> as set forth on the site.
-
-			<h3>About These Terms</h3>
-			<p>These Terms and Conditions are just a sample and are not legally binding. Real Terms of Services do not
-				(usually) contain vegetables...</p>
+			<div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã</button>
+							<h3 id="myModalLabel">Delete Confirmation</h3>
+						</div>
+						<div class="modal-body">
+							<p class="error-text">
+								<i class="fa fa-warning modal-icon"></i>Are you sure you want to delete the user?<br>This cannot be undone.
+							</p>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+							<button class="btn btn-danger" data-dismiss="modal">Delete</button>
+						</div>
+					</div>
+				</div>
+			</div>
 			<footer>
-				<hr>
-
-				<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-				<p class="pull-right">
-					A <a href="#" target="_blank">Free Bootstrap Theme</a> by <a
-						href="#" target="_blank">Portnine</a>
+				<hr><p class="pull-right">
+					A <a href="#" >Free Bootstrap Theme</a> by <a href="#">Portnine</a>
 				</p>
 				<p>
-					© 2014 <a href="#" target="_blank">Portnine</a>
+					Â© 2014 <a href="#">Portnine</a>
 				</p>
 			</footer>
 		</div>
@@ -228,7 +339,5 @@
 			});
 		});
 	</script>
-
-
 </body>
 </html>

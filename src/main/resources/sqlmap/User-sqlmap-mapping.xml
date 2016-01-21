@@ -33,7 +33,7 @@
     </update>
     <!--交易资料 -->
     <select id="guestbookCheck" parameterType="map" resultType="Map">
-		select title,tel,question,answer FROM guestbook where sign_id=#{sign_id} limit 3
+		select title,tel,question,answer FROM guestbook where sign_id=#{sign_id} order by temps desc limit 0,3  
 	</select>
     <insert id="guestbookInsert" parameterType="map">
 		insert into guestbook(sign_id,title,tel,question,answer) values(#{sign_id},#{title},#{tel},#{question},#{answer})

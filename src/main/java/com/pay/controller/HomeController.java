@@ -117,8 +117,13 @@ public class HomeController {
 
 	@RequestMapping("news")
 	public String news(Model model, HttpSession session) {
-
-		return "news";
+		if (session.getAttribute("name") != null) {
+			String name = String.valueOf(session.getAttribute("name"));
+			model.addAttribute("name", name);
+			return "news";
+		} else {
+			return "sign-in";
+		}
 	}
 
 	@RequestMapping("guestbook")
@@ -164,13 +169,17 @@ public class HomeController {
 
 	@RequestMapping("user")
 	public String user(Model model, HttpSession session) {
-		model.addAttribute("name", session.getAttribute("name"));
-		String sign_id = String.valueOf(session.getAttribute("sign_id"));
-		HashMap<String, String> accountMsg = homeService.accountCheck(sign_id);
-		if (accountMsg != null && accountMsg.size() > 0) {
-			model.addAllAttributes(accountMsg);
+		if (session.getAttribute("sign_id") != null) {
+			model.addAttribute("name", session.getAttribute("name"));
+			String sign_id = String.valueOf(session.getAttribute("sign_id"));
+			HashMap<String, String> accountMsg = homeService.accountCheck(sign_id);
+			if (accountMsg != null && accountMsg.size() > 0) {
+				model.addAllAttributes(accountMsg);
+			}
+			return "user";
+		} else {
+			return "sign-in";
 		}
-		return "user";
 	}
 
 	@RequestMapping(value = "account", method = RequestMethod.POST)
@@ -195,6 +204,15 @@ public class HomeController {
 		} catch (Exception e) {
 		}
 		return result;
+	}
+
+	@RequestMapping("bonus")
+	public String bonus(HttpSession session) {
+		if (session.getAttribute("sign_id") != null) {
+			return "bonus";
+		} else {
+			return "sign-in";
+		}
 	}
 
 	@RequestMapping("kaptcha")

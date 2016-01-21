@@ -118,7 +118,7 @@
 					class="fa fa-fw fa-briefcase"></i>资金管理 <span class="label label-info">+2</span></a></li>
 			<li><ul class="accounts-menu-2 nav nav-list collapse">
 					<li><a href="#"><span class="fa fa-caret-right"></span>资金明细</a></li>
-					<li><a href="#"><span class="fa fa-caret-right"></span>奖金明细</a></li>
+					<li><a href="../pay/bonus.do"><span class="fa fa-caret-right"></span>奖金明细</a></li>
 				</ul></li>
 
 			<li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
