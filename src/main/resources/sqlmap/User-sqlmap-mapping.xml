@@ -31,7 +31,14 @@
 	<update id="accountUpdate" parameterType="map" >
         update account set user_name=#{user_name},bank_id=#{bank_id},bank_name=#{bank_name},bank_branch=#{bank_branch},wechat=#{wechat},alipay=#{alipay} where sign_id=#{sign_id}
     </update>
-    
+    <!--交易资料 -->
+    <select id="guestbookCheck" parameterType="map" resultType="Map">
+		select title,tel,question,answer FROM guestbook where sign_id=#{sign_id} limit 3
+	</select>
+    <insert id="guestbookInsert" parameterType="map">
+		insert into guestbook(sign_id,title,tel,question,answer) values(#{sign_id},#{title},#{tel},#{question},#{answer})
+	</insert>
+	
 	<select id="pagingNews" parameterType="map" resultType="com.pay.model.News">
 		SELECT * from news LIMIT #{begin},#{end}
 	</select>

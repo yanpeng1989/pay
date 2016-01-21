@@ -78,4 +78,22 @@ public class UserImpl implements UserInterface {
 		HashMap<String, String> result = sqlSessionTemplate.selectOne("accountCheck", params);
 		return result;
 	}
+
+	@Override
+	public List<HashMap<String, String>> guestbookCheck(String sign_id) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("sign_id", sign_id);
+		return sqlSessionTemplate.selectList("guestbookCheck", params);
+	}
+
+	@Override
+	public void guestbookInsert(String sign_id, String title, String tel, String question, String answer) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("sign_id", sign_id);
+		params.put("title", title);
+		params.put("tel", tel);
+		params.put("question", question);
+		params.put("answer", answer);
+		sqlSessionTemplate.insert("guestbookInsert", params);
+	}
 }

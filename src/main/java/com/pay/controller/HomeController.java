@@ -1,6 +1,7 @@
 package com.pay.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -99,7 +100,7 @@ public class HomeController {
 		if (session.getAttribute("name") != null) {
 			model.addAttribute("name", session.getAttribute("name"));
 			return "index";
-		}else{
+		} else {
 			return "sign-in";
 		}
 	}
@@ -109,7 +110,7 @@ public class HomeController {
 		if (session.getAttribute("name") != null) {
 			model.addAttribute("name", session.getAttribute("name"));
 			return "faq";
-		}else{
+		} else {
 			return "sign-in";
 		}
 	}
@@ -122,8 +123,43 @@ public class HomeController {
 
 	@RequestMapping("guestbook")
 	public String guestbook(Model model, HttpSession session) {
+		if (session.getAttribute("sign_id") != null) {
+			String sign_id = String.valueOf(session.getAttribute("sign_id"));
+			List<HashMap<String, String>> result = homeService.guestbookCheck(sign_id);
+			model.addAttribute("result", result);
+			return "guestbook";
+		} else {
+			return "sign-in";
+		}
+	}
 
-		return "guestbook";
+	@RequestMapping(value = "guestbookInsert", method = RequestMethod.POST)
+	@ResponseBody
+	public String guestbookInsert(HttpSession session, @RequestBody Map<String, String> params) {
+		String result = "";
+		HashMap<String, String> map_json = new HashMap<String, String>();
+		if (session.getAttribute("sign_id") != null) {
+			String sign_id = String.valueOf(session.getAttribute("sign_id"));
+			String title = params.get("title");
+			String tel = params.get("tel");
+			String question = params.get("question");
+			homeService.guestbookInsert(sign_id, title, tel, question, "");
+			map_json.put("result", "success");
+			try {
+				ObjectMapper objectMapper = new ObjectMapper();
+				result = objectMapper.writeValueAsString(map_json);
+			} catch (Exception e) {
+			}
+			return result;
+		} else {
+			map_json.put("result", "unsuccess");
+			try {
+				ObjectMapper objectMapper = new ObjectMapper();
+				result = objectMapper.writeValueAsString(map_json);
+			} catch (Exception e) {
+			}
+			return result;
+		}
 	}
 
 	@RequestMapping("user")
@@ -137,17 +173,17 @@ public class HomeController {
 		return "user";
 	}
 
-	@RequestMapping(value="account",method = RequestMethod.POST)
+	@RequestMapping(value = "account", method = RequestMethod.POST)
 	@ResponseBody
-	public String account(HttpSession session,@RequestBody Map<String,String> params) {
-		
-		String user_name=params.get("user_name");
-		String bank_id=params.get("bank_id");
-		String bank_name=params.get("bank_name");
-		String bank_branch=params.get("bank_branch");
-		String wechat=params.get("wechat");
-		String alipay=params.get("alipay");
-		
+	public String account(HttpSession session, @RequestBody Map<String, String> params) {
+
+		String user_name = params.get("user_name");
+		String bank_id = params.get("bank_id");
+		String bank_name = params.get("bank_name");
+		String bank_branch = params.get("bank_branch");
+		String wechat = params.get("wechat");
+		String alipay = params.get("alipay");
+
 		String sign_id = String.valueOf(session.getAttribute("sign_id"));
 		String result = "";
 		HashMap<String, String> map_json = new HashMap<String, String>();

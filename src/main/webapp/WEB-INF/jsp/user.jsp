@@ -69,13 +69,11 @@
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
 
-
 	<!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
 	<!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
 	<!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
 	<!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
 	<!--[if (gt IE 9)|!(IE)]><!-->
-
 	<!--<![endif]-->
 
 	<div class="navbar navbar-default" role="navigation">
@@ -106,8 +104,6 @@
 			</ul>
 		</div>
 	</div>
-
-
 	<div class="sidebar-nav">
 		<ul>
 			<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
@@ -269,7 +265,6 @@
 						return;
 					}
 					var params='{"user_name":"'+user_name+'","bank_name":"'+bank_name+'","bank_id":"'+bank_id+'","bank_branch":"'+bank_branch+'","wechat":"'+wechat+'","alipay":"'+alipay+'"}';
-					
 					$.ajax({
 						type : "POST",
 						contentType : "application/json;",
@@ -290,7 +285,7 @@
 							$("#alipay").attr('disabled',true);
 						},
 						error : function(data) {
-							show_model(params);
+							show_model("加载失败");
 						}
 					});
 				}

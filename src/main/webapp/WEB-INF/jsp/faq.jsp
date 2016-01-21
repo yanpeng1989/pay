@@ -8,23 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../pay/template/lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../pay/template/lib/font-awesome/css/font-awesome.css">
-
     <script src="../pay/template/lib/jquery-1.11.1.js" type="text/javascript"></script>
-
-    
-
     <link rel="stylesheet" type="text/css" href="../pay/template/stylesheets/theme.css">
     <link rel="stylesheet" type="text/css" href="../pay/template/stylesheets/premium.css">
-
 </head>
 <body class=" theme-blue">
-
     <!-- Demo page code -->
-
     <script type="text/javascript">
         $(function() {
             var match = document.cookie.match(new RegExp('color=([^;]+)'));
@@ -35,9 +27,7 @@
                 })
                 $('body').addClass('theme-' + color);
             }
-
             $('[data-popover="true"]').popover({html: true});
-            
         });
     </script>
     <style type="text/css">

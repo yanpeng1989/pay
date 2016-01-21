@@ -16,4 +16,8 @@ public interface UserInterface {
 	public String accountOperate(String sign_id, String user_name, String bank_id, String bank_name, String bank_branch, String wechat, String alipay);
 
 	public HashMap<String, String> accountCheck(String sign_id);
+
+	public List<HashMap<String, String>> guestbookCheck(String sign_id);
+
+	public void guestbookInsert(String sign_id, String title, String tel, String question, String answer);
 }

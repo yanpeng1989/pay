@@ -39,4 +39,13 @@ public class HomeService {
 	public String accountOperate(String sign_id, String user_name, String bank_id, String bank_name, String bank_branch, String wechat, String alipay) {
 		return userImpl.accountOperate(sign_id, user_name, bank_id, bank_name, bank_branch, wechat, alipay);
 	}
+	//用户历史提问
+	public List<HashMap<String, String>> guestbookCheck(String sign_id) {
+		return userImpl.guestbookCheck(sign_id);
+	}
+
+	//用户新建提问
+	public void guestbookInsert(String sign_id, String title, String tel, String question, String answer) {
+		userImpl.guestbookInsert(sign_id, title, tel, question, answer);
+	}
 }
