@@ -32,7 +32,6 @@ public class PagingController {
 	public String pagingNewsAjax() {
 		return "paging_ajax";
 	}
-
 	@RequestMapping(value = "paging_aja1_do", method = RequestMethod.GET)
 	@ResponseBody
 	public String pagingNewsAjaxDo(@RequestParam(value = "number") int number) {
@@ -43,7 +42,6 @@ public class PagingController {
 			result = objectMapper.writeValueAsString(list);
 			System.out.println(result);
 		} catch (Exception e) {
-			
 		}
 		return result;
 	}

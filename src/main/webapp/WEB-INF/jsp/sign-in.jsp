@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Bootstrap Admin</title>
+<title>量子基金互助</title>
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

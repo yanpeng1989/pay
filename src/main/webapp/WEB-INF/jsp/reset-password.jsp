@@ -16,7 +16,6 @@
 <script src="../pay/template/lib/jquery-1.11.1.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="../pay/template/stylesheets/theme.css">
 <link rel="stylesheet" type="text/css" href="../pay/template/stylesheets/premium.css">
-
 </head>
 <body class=" theme-blue">
 	<script type="text/javascript">
@@ -37,7 +36,7 @@
 
 		});
 	</script>
-	<style type="text/css">
+<style type="text/css">
 #line-chart {
 	height: 300px;
 	width: 800px;
@@ -49,13 +48,15 @@
 	color: #fff;
 }
 </style>
-	<script type="text/javascript">
-		$(function() {
-			var uls = $('.sidebar-nav > ul > *').clone();
-			uls.addClass('visible-xs');
-			$('#main-menu').append(uls.clone());
-		});
-	</script>
+
+<script type="text/javascript">
+	$(function() {
+		var uls = $('.sidebar-nav > ul > *').clone();
+		uls.addClass('visible-xs');
+		$('#main-menu').append(uls.clone());
+	});
+</script>
+
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -74,6 +75,7 @@
 	<!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
 	<!--[if (gt IE 9)|!(IE)]><!-->
 	<!--<![endif]-->
+
 	<div class="navbar navbar-default" role="navigation">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -125,57 +127,90 @@
 
 			<li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-legal"></i>会员资料<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="legal-menu nav nav-list collapse">
+			<li><ul class="legal-menu nav nav-list collapse in">
 					<li><a href="../pay/user.do"><span class="fa fa-caret-right"></span>交易资料</a></li>
-					<li><a href="../pay/reset-password.do"><span class="fa fa-caret-right"></span>密码修改</a></li>
+					<li class="active"><a href="../pay/reset-password.do"><span class="fa fa-caret-right"></span>密码修改</a></li>
 					<li><a href="../pay/protect-password.do"><span class="fa fa-caret-right"></span>密保修改</a></li>
 				</ul></li>
 			<li><a href="../pay/guestbook.do" class="nav-header"><i class="fa fa-fw fa-question-circle"></i>留言反馈</a></li>
 			<li><a href="../pay/faq.do" class="nav-header"><i class="fa fa-fw fa-comment"></i>常见问题</a></li>
-			<li><a href="../pay/news.do" class="nav-header"><i class="fa fa-fw fa-heart"></i>新闻公告</a></li>
+			<li><a href="../pay/news.do" class="nav-header" target="blank"><i class="fa fa-fw fa-heart"></i>新闻公告</a></li>
 		</ul>
 	</div>
+
 	<div class="content">
 		<div class="header">
-			<h1 class="page-title">留言反馈</h1>
+
+			<h1 class="page-title">交易资料</h1>
 			<ul class="breadcrumb">
 				<li><a href="index.do">主页</a></li>
-				<li class="active">留言反馈</li>
+				<li><a href="users.do">密码修改</a></li>
+				<li class="active">${name}</li>
 			</ul>
 		</div>
 		<div class="main-content">
-			<div class="col-sm-9 main-content">
-				<h3>新建留言</h3>
-				<div class="form-group">
-					<label for="name">标题</label> <input id="title" type="text" class="form-control" name="name">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#home" data-toggle="tab">修改登陆密码</a></li>
+			</ul>
+			<div class="row">
+				<div class="col-md-4">
+					<br>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane active in" id="home">
+								<div class="form-group">
+									<label>原登陆密码</label> <input id="password_1" type="text" value="" placeholder="原登陆密码" class="form-control">
+								</div>
+								<div class="form-group">
+									<label>新登陆密码</label> <input id="password_1_new_1" type="text" value="" placeholder="新登陆密码" class="form-control">
+								</div>
+								<div class="form-group">
+									<label>新登陆密码</label> <input id="password_1_new_2" type="text" value="" placeholder="新登陆密码" class="form-control">
+								</div>
+						</div>
+					</div>
+					<div class="btn-toolbar list-toolbar">
+						<button id="save_password_1" class="btn btn-primary">
+							<i class="fa fa-save"></i>保存
+						</button>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="name">联系方式</label> <input id="tel" type="text" class="form-control" name="name">
-				</div>
-				<div class="form-group">
-					<label for="message">问题描述</label>
-					<textarea id="question" class="form-control" rows="8" name="message"></textarea>
-				</div>
-				<input id="sunmit" type="submit" value="提交" class="btn btn-primary" style="display: block;">
 			</div>
-			<div class="col-sm-9 main-content">
-				<c:forEach var="result" items="${result}">
-					<h4>${result.title}</h4>
-					<h5>问题</h5>
-					${result.question}
-					<h5>答案</h5>
-					${result.answer}
-				</c:forEach>
-				<footer>
-					<hr>
-					<p class="pull-right">
-						A <a href="#">Free Bootstrap Theme</a> by <a href="#" target="_blank">Portnine</a>
-					</p>
-					<p>
-						© 2014 <a href="#" >Portnine</a>
-					</p>
-				</footer>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#home" data-toggle="tab">修改交易密码</a></li>
+			</ul>
+			<div class="row">
+				<div class="col-md-4">
+					<br>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane active in" id="home">
+								<div class="form-group">
+									<label>原交易密码</label> <input id="password_2" type="text" value="" placeholder="原交易密码" class="form-control">
+								</div>
+								<div class="form-group">
+									<label>新交易密码</label> <input id="password_2_new_1" type="text" value="" placeholder="新交易密码" class="form-control">
+								</div>
+								<div class="form-group">
+									<label>新交易密码</label> <input id="password_2_new_2" type="text" value="" placeholder="新交易密码" class="form-control">
+								</div>
+						</div>
+					</div>
+					<div class="btn-toolbar list-toolbar">
+						<button id="save_password_2" class="btn btn-primary">
+							<i class="fa fa-save"></i>保存
+						</button>
+					</div>
+				</div>
 			</div>
+			<footer>
+				<hr>
+				<p class="pull-right">
+					A <a href="#" >Free Bootstrap Theme</a> by <a
+						href="#" >Portnine</a>
+				</p>
+				<p>
+					© 2014 <a href="#" target="_blank">Portnine</a>
+				</p>
+			</footer>
 		</div>
 	</div>
 	<!-- 模态框 Begin-->
@@ -196,51 +231,46 @@
   		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	<!-- 模态框 End-->
-	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
-	<script type="text/javascript">
-		$("[rel=tooltip]").tooltip();
-		$(function() {
-			$('.demo-cancel-click').click(function() {
-				return false;
-			});
-		});
-	</script>
 	<script type="text/javascript">
 		function show_model(content){
 			$("#alert_data").html(content);
 			$('#alert_msg').modal('show');
 		}
 	</script>
+	<!-- 修改登陆密码 -->
 	<script type="text/javascript">
 		$(function(){
-			$("#sunmit").click(
+			$("#save_password_1").click(
 				function(){
-					var title=$("#title").val();
-					var tel=$("#tel").val();
-					var question=$("#question").val();
-					if(title==''){
-						show_model("请输入问题标题");
+					var password_1=$("#password_1").val();
+					var password_1_new_1=$("#password_1_new_1").val();
+					var password_1_new_2=$("#password_1_new_2").val();
+					if(password_1==''){
+						show_model("请输入原始登陆密码");
 						return;
-					}else if(tel==''){
-						show_model("请输入您的联系方式");
+					}else if(password_1_new_1==''){
+						show_model("请输入新的登陆密码");
 						return;
-					}else if(question==''){
-						show_model("请输入您的问题");
+					}else if(password_1_new_2==''){
+						show_model("请再次输入新的登陆密码");
 						return;
 					}
-					var params='{"title":"'+title+'","tel":"'+tel+'","question":"'+question+'"}';
+					var params='{"password_1":"'+password_1+'","password_1_new_1":"'+password_1_new_1+'","password_1_new_2":"'+password_1_new_2+'"}';
 					$.ajax({
 						type : "POST",
 						contentType : "application/json;",
-						url : "../pay/guestbookInsert.do",
+						url : "../pay/reset-update-1.do",
 						data : params,
 						dataType : 'json',
 						success : function(data) {
 							if(data.result=='success'){
-								show_model("留言成功，近期我们的服务人员将为您解答");
+								show_model("更新成功");
 							}else{
-								show_model("留言失败，请严格按照格式留言");
+								show_model("更新失败");
 							}
+							$("#password_1").attr('password_1',true);
+							$("#password_1_new_1").attr('password_1_new_1',true);
+							$("#password_1_new_2").attr('password_1_new_2',true);
 						},
 						error : function(data) {
 							show_model("加载失败");
@@ -248,6 +278,58 @@
 					});
 				}
 			);
+		});
+	</script>
+	<!-- 修改登陆密码 -->
+	<script type="text/javascript">
+		$(function(){
+			$("#save_password_2").click(
+				function(){
+					var password_2=$("#password_2").val();
+					var password_2_new_2=$("#password_2_new_1").val();
+					var password_2_new_2=$("#password_2_new_2").val();
+					if(password_2==''){
+						show_model("请输入原始登陆密码");
+						return;
+					}else if(password_2_new_1==''){
+						show_model("请输入新的登陆密码");
+						return;
+					}else if(password_2_new_2==''){
+						show_model("请再次输入新的登陆密码");
+						return;
+					}
+					var params='{"password_2":"'+password_2+'","password_2_new_1":"'+password_2_new_1+'","password_2_new_2":"'+password_2_new_2+'"}';
+					$.ajax({
+						type : "POST",
+						contentType : "application/json;",
+						url : "../pay/reset-update-2.do",
+						data : params,
+						dataType : 'json',
+						success : function(data) {
+							if(data.result=='success'){
+								show_model("更新成功");
+							}else{
+								show_model("更新失败");
+							}
+							$("#password_1").attr('password_1',true);
+							$("#password_1_new_1").attr('password_1_new_1',true);
+							$("#password_1_new_2").attr('password_1_new_2',true);
+						},
+						error : function(data) {
+							show_model("加载失败");
+						}
+					});
+				}
+			);
+		});
+	</script>
+	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript">
+		$("[rel=tooltip]").tooltip();
+		$(function() {
+			$('.demo-cancel-click').click(function() {
+				return false;
+			});
 		});
 	</script>
 </body>

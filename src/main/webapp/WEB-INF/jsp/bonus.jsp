@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Bootstrap Admin</title>
+<title>量子基金互助</title>
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -112,10 +112,9 @@
 		<ul>
 			<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="dashboard-menu nav nav-list collapse in">
-					<li><a href="#"><span class="fa fa-caret-right"></span>会员注册</a></li>
+			<li><ul class="dashboard-menu nav nav-list collapse">
+					<li><a href="../pay/index.do"><span class="fa fa-caret-right"></span>个人中心</a></li>
 					<li><a href="#"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
-					<li><a href="#"><span class="fa fa-caret-right"></span>激活会员</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-briefcase"></i>交易管理 <span class="label label-info">+1</span></a></li>
@@ -125,17 +124,17 @@
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu-2" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-briefcase"></i>资金管理 <span class="label label-info">+2</span></a></li>
-			<li><ul class="accounts-menu-2 nav nav-list collapse">
-					<li><a href="#"><span class="fa fa-caret-right"></span>资金明细</a></li>
-					<li><a href="../pay/bonus.do"><span class="fa fa-caret-right"></span>奖金明细</a></li>
+			<li><ul class="accounts-menu-2 nav nav-list collapse in">
+					<li ><a href="../pay/fund.do"><span class="fa fa-caret-right"></span>资金明细</a></li>
+					<li class="active"><a href="../pay/bonus.do"><span class="fa fa-caret-right"></span>奖金明细</a></li>
 				</ul></li>
 
 			<li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-legal"></i>会员资料<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="legal-menu nav nav-list collapse">
+			<li><ul class="legal-menu nav nav-list collapse ">
 					<li><a href="../pay/user.do"><span class="fa fa-caret-right"></span>交易资料</a></li>
-					<li><a href="#"><span class="fa fa-caret-right"></span>密码修改</a></li>
-					<li><a href="#"><span class="fa fa-caret-right"></span>密保修改</a></li>
+					<li><a href="../pay/reset-password.do"><span class="fa fa-caret-right"></span>密码修改</a></li>
+					<li><a href="../pay/protect-password.do"><span class="fa fa-caret-right"></span>密保修改</a></li>
 				</ul></li>
 			<li><a href="../pay/guestbook.do" class="nav-header"><i class="fa fa-fw fa-question-circle"></i>留言反馈</a></li>
 			<li><a href="../pay/faq.do" class="nav-header"><i class="fa fa-fw fa-comment"></i>常见问题</a></li>
@@ -167,46 +166,46 @@
 				<div class="col-sm-6 col-md-6">
 					<div class="panel panel-default">
 						<div class="panel-heading no-collapse" style="font-family: 微软雅黑;">
-							静态奖金<span class="label label-warning">+10</span>
+							静态奖金<span class="label label-warning">获取奖金总额：1000元</span>
 						</div>
 						<table class="table table-bordered table-striped">
 							<thead>
 								<tr>
-									<th>First Name</th>
-									<th>Last Name</th>
-									<th>Username</th>
+									<th>日期</th>
+									<th>来源</th>
+									<th>奖金</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>Mark</td>
+									<td>2015-12-01</td>
 									<td>Tompson</td>
-									<td>the_mark7</td>
+									<td>10元</td>
 								</tr>
 								<tr>
-									<td>Ashley</td>
+									<td>2015-12-01</td>
 									<td>Jacobs</td>
-									<td>ash11927</td>
+									<td>10元</td>
 								</tr>
 								<tr>
-									<td>Audrey</td>
+									<td>2015-12-01</td>
 									<td>Ann</td>
-									<td>audann84</td>
+									<td>10元</td>
 								</tr>
 								<tr>
-									<td>John</td>
+									<td>2015-12-01</td>
 									<td>Robinson</td>
-									<td>jr5527</td>
+									<td>10元</td>
 								</tr>
 								<tr>
-									<td>Aaron</td>
+									<td>2015-12-01</td>
 									<td>Butler</td>
-									<td>aaron_butler</td>
+									<td>10元</td>
 								</tr>
 								<tr>
-									<td>Chris</td>
-									<td>Albert</td>
-									<td>cab79</td>
+									<td>...</td>
+									<td>...</td>
+									<td>...</td>
 								</tr>
 							</tbody>
 						</table>
@@ -214,8 +213,8 @@
 				</div>
 				<div class="col-sm-6 col-md-6">
 					<div class="panel panel-default">
-						<a href="#widget1container" class="panel-heading" data-toggle="collapse" style="font-family: 微软雅黑;">静态奖金说明</a>
-						<div id="widget1container" class="panel-body collapse in">
+						<a href="#widget1container_static" class="panel-heading" data-toggle="collapse" style="font-family: 微软雅黑;">静态奖金说明</a>
+						<div id="widget1container_static" class="panel-body collapse in">
 							<h2>Here's a Tip</h2>
 							<p>
 								This template was developed with <a href="http://middlemanapp.com/" target="_blank">Middleman</a> and includes
@@ -235,46 +234,46 @@
 				<div class="col-sm-6 col-md-6">
 					<div class="panel panel-default">
 						<div class="panel-heading no-collapse" style="font-family: 微软雅黑;">
-							动态奖金<span class="label label-warning">+10</span>
+							动态奖金<span class="label label-warning">获取奖金总额：1000元</span>
 						</div>
 						<table class="table table-bordered table-striped">
 							<thead>
 								<tr>
-									<th>First Name</th>
-									<th>Last Name</th>
-									<th>Username</th>
+									<th>日期</th>
+									<th>来源</th>
+									<th>奖金</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>Mark</td>
+									<td>2015-12-01</td>
 									<td>Tompson</td>
-									<td>the_mark7</td>
+									<td>10元</td>
 								</tr>
 								<tr>
-									<td>Ashley</td>
+									<td>2015-12-01</td>
 									<td>Jacobs</td>
-									<td>ash11927</td>
+									<td>10元</td>
 								</tr>
 								<tr>
-									<td>Audrey</td>
+									<td>2015-12-01</td>
 									<td>Ann</td>
-									<td>audann84</td>
+									<td>10元</td>
 								</tr>
 								<tr>
-									<td>John</td>
+									<td>2015-12-01</td>
 									<td>Robinson</td>
-									<td>jr5527</td>
+									<td>10元</td>
 								</tr>
 								<tr>
-									<td>Aaron</td>
+									<td>2015-12-01</td>
 									<td>Butler</td>
-									<td>aaron_butler</td>
+									<td>10元</td>
 								</tr>
 								<tr>
-									<td>Chris</td>
-									<td>Albert</td>
-									<td>cab79</td>
+									<td>...</td>
+									<td>...</td>
+									<td>...</td>
 								</tr>
 							</tbody>
 						</table>

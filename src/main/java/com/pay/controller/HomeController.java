@@ -30,7 +30,7 @@ public class HomeController {
 	public String sign_in() {
 		return "sign-in";
 	}
-
+	//用户登陆
 	@RequestMapping(value = "login-in", method = RequestMethod.GET)
 	@ResponseBody
 	public String login_in(Model model, @RequestParam(value = "sign_id") String sign_id, @RequestParam(value = "password_1") String password_1, @RequestParam(value = "captcha") String captcha, HttpSession session) {
@@ -66,7 +66,7 @@ public class HomeController {
 	public String sign_up(Model model) {
 		return "sign-up";
 	}
-
+	//无推荐人注册
 	@RequestMapping(value = "login-up", method = RequestMethod.GET)
 	@ResponseBody
 	public String login_up(Model model, @RequestParam(value = "tel") String tel, @RequestParam(value = "sign_id") String sign_id, @RequestParam(value = "username") String username, @RequestParam(value = "password") String password, @RequestParam(value = "recommend_id") String recommend_id, @RequestParam(value = "captcha") String captcha, HttpSession session) {
@@ -137,7 +137,7 @@ public class HomeController {
 			return "sign-in";
 		}
 	}
-
+	//留言反馈
 	@RequestMapping(value = "guestbookInsert", method = RequestMethod.POST)
 	@ResponseBody
 	public String guestbookInsert(HttpSession session, @RequestBody Map<String, String> params) {
@@ -182,6 +182,7 @@ public class HomeController {
 		}
 	}
 
+	//交易资料修改
 	@RequestMapping(value = "account", method = RequestMethod.POST)
 	@ResponseBody
 	public String account(HttpSession session, @RequestBody Map<String, String> params) {
@@ -205,7 +206,7 @@ public class HomeController {
 		}
 		return result;
 	}
-
+	//奖金明细
 	@RequestMapping("bonus")
 	public String bonus(HttpSession session) {
 		if (session.getAttribute("sign_id") != null) {
@@ -215,10 +216,61 @@ public class HomeController {
 		}
 	}
 
+	@RequestMapping("reset-password")
+	public String reset_password(HttpSession session) {
+		if (session.getAttribute("sign_id") != null) {
+			return "reset-password";
+		} else {
+			return "sign-in";
+		}
+	}
+	//重置登陆密码
+	@RequestMapping("reset-update-1")
+	public String reset_update_1(HttpSession session) {
+		if (session.getAttribute("sign_id") != null) {
+			return "reset-password_1";
+		} else {
+			return "sign-in";
+		}
+	}
+	//重置交易密码
+	@RequestMapping("reset-update-2")
+	public String reset_update_2(HttpSession session) {
+		if (session.getAttribute("sign_id") != null) {
+			return "reset-password";
+		} else {
+			return "sign-in";
+		}
+	}
+	
+	@RequestMapping("protect-password")
+	public String protect_password(HttpSession session) {
+		if (session.getAttribute("sign_id") != null) {
+			return "protect-password";
+		} else {
+			return "sign-in";
+		}
+	}
+	//重置密码保护
+	@RequestMapping("protect-update")
+	public String protect_update(HttpSession session) {
+		if (session.getAttribute("sign_id") != null) {
+			return "protect-password";
+		} else {
+			return "sign-in";
+		}
+	}
+	@RequestMapping("fund")
+	public String fund(HttpSession session) {
+		if (session.getAttribute("sign_id") != null) {
+			return "fund";
+		} else {
+			return "sign-in";
+		}
+	}
 	@RequestMapping("kaptcha")
 	public String kaptcha(HttpSession session) {
 		System.out.println(session.getAttribute("kaptchaExpected"));
 		return "kaptcha";
 	}
-
 }
