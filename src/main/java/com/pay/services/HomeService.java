@@ -26,8 +26,8 @@ public class HomeService {
 	}
 
 	// 注册
-	public String userSign_up(String sign_id, String name, String tel, String password_1, String recommend_id_1) {
-		return userImpl.userSign_up(sign_id, name, tel, password_1, recommend_id_1);
+	public String userSign_up(String sign_id, String name,String card_id, String tel, String password_1) {
+		return userImpl.userSign_up(sign_id, name,card_id, tel, password_1);
 	}
 
 	// 获取交易账户

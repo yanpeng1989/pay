@@ -114,9 +114,9 @@
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-briefcase"></i>交易管理 <span class="label label-info">+1</span></a></li>
-			<li><ul class="accounts-menu nav nav-list collapse">
+			<li><ul class="accounts-menu nav nav-list collapse in">
 					<li><a href="../pay/match-status.do"><span class="fa fa-caret-right"></span>匹配详情</a></li>
-					<li><a href="../pay/account-transfer.do"><span class="fa fa-caret-right"></span>账户转账</a></li>
+					<li class="active"><a href="../pay/account-transfer.do"><span class="fa fa-caret-right"></span>账户转账</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu-2" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-briefcase"></i>资金管理 <span class="label label-info">+2</span></a></li>
@@ -127,8 +127,8 @@
 
 			<li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-legal"></i>会员资料<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="legal-menu nav nav-list collapse in">
-					<li class="active"><a href="../pay/user.do"><span class="fa fa-caret-right"></span>交易资料</a></li>
+			<li><ul class="legal-menu nav nav-list collapse ">
+					<li><a href="../pay/user.do"><span class="fa fa-caret-right"></span>交易资料</a></li>
 					<li><a href="../pay/reset-password.do"><span class="fa fa-caret-right"></span>密码修改</a></li>
 					<li><a href="../pay/protect-password.do"><span class="fa fa-caret-right"></span>密保修改</a></li>
 				</ul></li>
@@ -141,10 +141,10 @@
 	<div class="content">
 		<div class="header">
 
-			<h1 class="page-title">交易资料</h1>
+			<h1 class="page-title">账户转账</h1>
 			<ul class="breadcrumb">
 				<li><a href="index.do">主页</a></li>
-				<li><a href="users.do">交易资料</a></li>
+				<li><a href="users.do">账户转账</a></li>
 				<li class="active">${name}</li>
 			</ul>
 		</div>
@@ -158,28 +158,31 @@
 					<div id="myTabContent" class="tab-content">
 						<div class="tab-pane active in" id="home">
 								<div class="form-group">
-									<label>收款人</label> <input id="user_name" type="text" value="${user_name}" placeholder="姓名" class="form-control" disabled>
+									<label>编号</label> <input id="user_name" type="text" value="${user_name}" placeholder="匹配订单编号" class="form-control" disabled>
 								</div>
 								<div class="form-group">
-									<label>银行名称</label> 
+									<label>订单状态</label> <input id="user_name" type="text" value="${user_name}" placeholder="是否超过转账时间" class="form-control" disabled>
+								</div>
+								<div class="form-group">
+									<label>订单状态</label> <input id="bank_id" type="text" value="${bank_id}" placeholder="已完成" class="form-control" disabled>
+								</div>
+								<div class="form-group">
+									<label>金额</label> <input id="bank_branch" type="text" value="${bank_branch}" placeholder="金额" class="form-control" disabled>
+								</div>
+								<div class="form-group">
+									<label>付款方式</label> 
 									<select id="bank_name" class="form-control" disabled>
-										<option value="${bank_name}" selected="selected" >${bank_name}</option>
-										<option value="建设银行">建设银行</option>
-										<option value="工商银行">工商银行</option>
-										<option value="农业银行">农业银行</option>
+										<option value="建设银行">银行转账</option>
+										<option value="工商银行">支付宝转账</option>
+										<option value="农业银行">银行卡转账</option>
 									</select>
 								</div>
 								<div class="form-group">
-									<label>银行卡号</label> <input id="bank_id" type="text" value="${bank_id}" placeholder="银行卡号" class="form-control" disabled>
+									<label>转账证明</label> <input id="bank_id" type="file" value="${bank_id}" placeholder="银行卡号" class="form-control" disabled>
 								</div>
 								<div class="form-group">
-									<label>发卡行</label> <input id="bank_branch" type="text" value="${bank_branch}" placeholder="发卡行" class="form-control" disabled>
-								</div>
-								<div class="form-group">
-									<label>微信账号</label> <input id="wechat" type="text" value="${wechat}" placeholder="微信账号" class="form-control" disabled>
-								</div>
-								<div class="form-group">
-									<label>支付宝账号</label> <input id="alipay" type="text" value="${alipay}" placeholder="支付宝账号" class="form-control" disabled>
+									<label>证明图片</label>
+									<img alt="" src="../pay/images/sss.png">
 								</div>
 						</div>
 					</div>

@@ -34,13 +34,13 @@ public class UserImpl implements UserInterface {
 	}
 
 	@Override
-	public String userSign_up(String sign_id, String name, String tel, String password_1, String recommend_id_1) {
+	public String userSign_up(String sign_id, String name, String card_id,String tel, String password_1) {
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("sign_id", sign_id);
 		params.put("name", name);
 		params.put("tel", tel);
 		params.put("password_1", password_1);
-		params.put("recommend_id_1", recommend_id_1);
+		params.put("card_id", card_id);
 		HashMap<String, String> usermap = sqlSessionTemplate.selectOne("userCheck", params);
 		if (usermap != null && usermap.size() > 0) {
 			return "exist";

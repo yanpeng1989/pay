@@ -128,13 +128,13 @@
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
 			<li><ul class="dashboard-menu nav nav-list collapse in">
 					<li class="active"><a href="../pay/index.do"><span class="fa fa-caret-right"></span>个人中心</a></li>
-					<li><a href="#"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
+					<li><a href="../pay/membership.do"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-briefcase"></i>交易管理 <span class="label label-info">+1</span></a></li>
 			<li><ul class="accounts-menu nav nav-list collapse">
-					<li><a href="#"><span class="fa fa-caret-right"></span>匹配详情</a></li>
-					<li><a href="#"><span class="fa fa-caret-right"></span>账户转账</a></li>
+					<li><a href="../pay/match-status.do"><span class="fa fa-caret-right"></span>匹配详情</a></li>
+					<li><a href="../pay/account-transfer.do"><span class="fa fa-caret-right"></span>账户转账</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu-2" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-briefcase"></i>资金管理 <span class="label label-info">+2</span></a></li>
@@ -177,23 +177,25 @@
 		</div>
 		<div class="main-content">
 			<div class="btn-toolbar list-toolbar">
+				<a href="../pay/offer-help.do">
 				<button class="btn btn-danger btn-lg">
 					<i class="fa fa-plus"></i>申请提供帮助
 				</button>
+				</a>
+				<a href="../pay/receive-help.do">
 				<button class="btn btn-success btn-lg">
 					<i class="fa fa-plus"></i>申请接受帮助
 				</button>
-				<div class="btn-group"></div>
+				</a>
 			</div>
 			<div class="form-group">
     			<label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
     			<div class="input-group">
       				<div class="input-group-addon">我的推广链接：</div>
-      					<input type="text" class="form-control" placeholder="http://loes-fund.com?sign_id=403130540">
+      					<label class="form-control">http://loes-fund.com?sign_id=403130540</label>
       				<div class="input-group-addon">点击复制推广</div>
     			</div>
   			</div>
-  			
 			<div class="panel panel-default">
 				<a href="#page-stats" class="panel-heading" data-toggle="collapse" style="font-family: 微软雅黑;">个人账户基本信息</a>
 				<div id="page-stats" class="panel-collapse panel-body collapse in">

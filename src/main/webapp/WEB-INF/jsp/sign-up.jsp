@@ -96,11 +96,12 @@
 						<label>姓名</label> <input id="username" type="text" class="form-control span12" placeholder="姓名">
 					</div>
 					<div class="form-group">
-						<label>密码</label> <input id="password" type="password" class="form-control span12" placeholder="密码">
+						<label>身份号</label> <input id="card_id" type="text" class="form-control span12" placeholder="推荐人">
 					</div>
 					<div class="form-group">
-						<label>推荐人</label> <input id="recommend_id" type="text" class="form-control span12" placeholder="推荐人">
+						<label>密码</label> <input id="password" type="password" class="form-control span12" placeholder="密码">
 					</div>
+					
 					<div class="form-group">
 						<label>验证码</label> <input id="captcha" type="text" class="form-control span12" placeholder="验证码">
 					</div>
@@ -153,7 +154,7 @@
 					var sign_id=$("#sign_id").val();
 					var username=$("#username").val();
 					var password=$("#password").val();
-					var recommend_id=$("#recommend_id").val();
+					var card_id=$("#card_id").val();
 					var captcha=$("#captcha").val();
 					
 					if(tel==''){
@@ -164,6 +165,9 @@
 						return;
 					}else if(username==''){
 						show_model("请输入姓名");
+						return;
+					}else if(card_id==''){
+						show_model("请输入个人身份证号");
 						return;
 					}else if(password==''){
 						show_model("请输入密码");
