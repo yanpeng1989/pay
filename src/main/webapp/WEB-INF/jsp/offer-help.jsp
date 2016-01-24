@@ -126,14 +126,15 @@
 		<ul>
 			<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="dashboard-menu nav nav-list collapse in">
-					<li class="active"><a href="../pay/index.do"><span class="fa fa-caret-right"></span>个人中心</a></li>
+			<li><ul class="dashboard-menu nav nav-list collapse">
+					<li><a href="../pay/index.do"><span class="fa fa-caret-right"></span>个人中心</a></li>
 					<li><a href="../pay/membership.do"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-briefcase"></i>交易管理 <span class="label label-info">+1</span></a></li>
-			<li><ul class="accounts-menu nav nav-list collapse">
-					<li><a href="../pay/match-status.do"><span class="fa fa-caret-right"></span>匹配详情</a></li>
+			<li><ul class="accounts-menu nav nav-list collapse in">
+					<li class="active"><a href="../pay/offer-help.do"><span class="fa fa-caret-right"></span>提供帮助</a></li>
+					<li><a href="../pay/receive-help.do"><span class="fa fa-caret-right"></span>接受帮助</a></li>
 					<li><a href="../pay/account-transfer.do"><span class="fa fa-caret-right"></span>账户转账</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu-2" class="nav-header collapsed" data-toggle="collapse"><i
@@ -233,7 +234,9 @@
 							<th>订单号</th>
 							<th>金额</th>
 							<th>时间</th>
-							<th>受助人编号</th>
+							<th>提供帮助人</th>
+							<th>联系方式</th>
+							<th>订单状态</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -241,37 +244,49 @@
 							<td>1</td>
 							<td>1000</td>
 							<td>2015-12-13</td>
-							<td>123456</td>
+							<td>王斌</td>
+							<td>13611177881</td>
+							<td>等待确认</td>
 						</tr>
 						<tr>
 							<td>2</td>
 							<td>1000</td>
 							<td>2015-12-13</td>
-							<td>123456</td>
+							<td>王斌</td>
+							<td>13611177881</td>
+							<td>等待确认</td>
 						</tr>
 						<tr>
 							<td>3</td>
 							<td>1000</td>
 							<td>2015-12-13</td>
-							<td>123456</td>
+							<td>王斌</td>
+							<td>13611177881</td>
+							<td>已完成</td>
 						</tr>
 						<tr>
 							<td>4</td>
 							<td>1000</td>
 							<td>2015-12-13</td>
-							<td>123456</td>
+							<td>王斌</td>
+							<td>13611177881</td>
+							<td>已完成</td>
 						</tr>
 						<tr>
 							<td>5</td>
 							<td>1000</td>
 							<td>2015-12-13</td>
-							<td>123456</td>
+							<td>王斌</td>
+							<td>13611177881</td>
+							<td>已完成</td>
 						</tr>
 						<tr>
 							<td>6</td>
 							<td>1000</td>
 							<td>2015-12-13</td>
-							<td>123456</td>
+							<td>王斌</td>
+							<td>13611177881</td>
+							<td>已完成</td>
 						</tr>
 					</tbody>
 				</table>
