@@ -128,6 +128,7 @@
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
 			<li><ul class="dashboard-menu nav nav-list collapse in">
 					<li class="active"><a href="../pay/index.do"><span class="fa fa-caret-right"></span>个人中心</a></li>
+					<li><a href="../pay/user-register.do"><span class="fa fa-caret-right"></span>会员注册</a></li>
 					<li><a href="../pay/membership.do"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
@@ -179,21 +180,135 @@
 		<div class="main-content">
 			<div class="btn-toolbar list-toolbar">
 				<a href="../pay/offer-help.do">
-				<button class="btn btn-danger btn-lg">
+				<button class="btn btn-danger btn-lg btn-block">
 					<i class="fa fa-plus"></i>申请提供帮助
 				</button>
+				<br/>
 				</a>
 				<a href="../pay/receive-help.do">
-				<button class="btn btn-success btn-lg">
+				<button class="btn btn-success btn-lg btn-block">
 					<i class="fa fa-plus"></i>申请接受帮助
 				</button>
 				</a>
 			</div>
+			
+			<div class="row">
+				<div class="col-sm-6 col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading no-collapse" style="font-family: 微软雅黑;">
+							等待打款订单<span class="label label-warning">总额：10000元</span>
+						</div>
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>编号</th>
+									<th>状态</th>
+									<th>金额</th>
+									<th>转款人</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>001</td>
+									<td>已确认</td>
+									<td>10元</td>
+									<td>张三</td>
+									<td><a href="#">点击查看详情</a></td>
+								</tr>
+								<tr>
+									<td>001</td>
+									<td>已确认</td>
+									<td>10元</td>
+									<td>张三</td>
+									<td><a href="#">点击查看详情</a></td>
+								</tr>
+								<tr>
+									<td>001</td>
+									<td>已确认</td>
+									<td>10元</td>
+									<td>张三</td>
+									<td><a href="#">点击查看详情</a></td>
+								</tr>
+								<tr>
+									<td>001</td>
+									<td>已确认</td>
+									<td>10元</td>
+									<td>张三</td>
+									<td><a href="#">点击查看详情</a></td>
+								</tr>
+								<tr>
+									<td>001</td>
+									<td>未转款</td>
+									<td>10元</td>
+									<td>张三</td>
+									<td><a href="#">点击查看详情</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading no-collapse" style="font-family: 微软雅黑;">
+							等待转款订单<span class="label label-warning">总额：10000元</span>
+						</div>
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>编号</th>
+									<th>状态</th>
+									<th>金额</th>
+									<th>转款人</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>001</td>
+									<td>已确认</td>
+									<td>10元</td>
+									<td>张三</td>
+									<td><a href="#">点击查看详情</a></td>
+								</tr>
+								<tr>
+									<td>001</td>
+									<td>已确认</td>
+									<td>10元</td>
+									<td>张三</td>
+									<td><a href="#">点击查看详情</a></td>
+								</tr>
+								<tr>
+									<td>001</td>
+									<td>已确认</td>
+									<td>10元</td>
+									<td>张三</td>
+									<td><a href="#">点击查看详情</a></td>
+								</tr>
+								<tr>
+									<td>001</td>
+									<td>已确认</td>
+									<td>10元</td>
+									<td>张三</td>
+									<td><a href="#">点击查看详情</a></td>
+								</tr>
+								<tr>
+									<td>001</td>
+									<td>已确认</td>
+									<td>10元</td>
+									<td>张三</td>
+									<td><a href="#">点击查看详情</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			
 			<div class="form-group">
-    			<label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
     			<div class="input-group">
       				<div class="input-group-addon">我的推广链接：</div>
-      					<label class="form-control">http://loes-fund.com?sign_id=403130540</label>
+      					<span class="form-control" style="overflow: hidden;font-size: 18px;">http://loes-fund.com?sign_id=403130540</span>
       				<div class="input-group-addon">点击复制推广</div>
     			</div>
   			</div>

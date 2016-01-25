@@ -128,6 +128,7 @@
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
 			<li><ul class="dashboard-menu nav nav-list collapse in">
 					<li><a href="../pay/index.do"><span class="fa fa-caret-right"></span>个人中心</a></li>
+					<li><a href="../pay/user-register.do"><span class="fa fa-caret-right"></span>会员注册</a></li>
 					<li  class="active"><a href="../pay/membership.do"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
@@ -170,21 +171,22 @@
 					<span class="label label-danger">15</span>公告
 				</p>
 			</div>
-			<h1 class="page-title">接受帮助</h1>
+			<h1 class="page-title">直推会员统计</h1>
 			<ul class="breadcrumb">
 				<li><a href="#">个人中心</a></li>
-				<li class="active">接受帮助</li>
+				<li class="active">直推会员统计</li>
 			</ul>
 		</div>
 		<div class="main-content">
 			<div class="btn-toolbar list-toolbar">
 				<a href="../pay/offer-help.do">
-				<button class="btn btn-danger btn-lg">
+				<button class="btn btn-danger btn-lg btn-block">
 					<i class="fa fa-plus"></i>申请提供帮助
 				</button>
 				</a>
+				<br/>
 				<a href="../pay/receive-help.do">
-				<button class="btn btn-success btn-lg">
+				<button class="btn btn-success btn-lg btn-block">
 					<i class="fa fa-plus"></i>申请接受帮助
 				</button>
 				</a>

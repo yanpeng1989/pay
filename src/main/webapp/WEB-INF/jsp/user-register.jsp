@@ -36,7 +36,7 @@
 
 		});
 	</script>
-<style type="text/css">
+	<style type="text/css">
 #line-chart {
 	height: 300px;
 	width: 800px;
@@ -49,13 +49,13 @@
 }
 </style>
 
-<script type="text/javascript">
-	$(function() {
-		var uls = $('.sidebar-nav > ul > *').clone();
-		uls.addClass('visible-xs');
-		$('#main-menu').append(uls.clone());
-	});
-</script>
+	<script type="text/javascript">
+		$(function() {
+			var uls = $('.sidebar-nav > ul > *').clone();
+			uls.addClass('visible-xs');
+			$('#main-menu').append(uls.clone());
+		});
+	</script>
 
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
@@ -108,9 +108,9 @@
 		<ul>
 			<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="dashboard-menu nav nav-list collapse">
+			<li><ul class="dashboard-menu nav nav-list collapse in">
 					<li><a href="../pay/index.do"><span class="fa fa-caret-right"></span>个人中心</a></li>
-					<li><a href="../pay/user-register.do"><span class="fa fa-caret-right"></span>会员注册</a></li>
+					<li class="active"><a href="../pay/user-register.do"><span class="fa fa-caret-right"></span>会员注册</a></li>
 					<li><a href="../pay/membership.do"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
@@ -118,7 +118,6 @@
 			<li><ul class="accounts-menu nav nav-list collapse">
 					<li><a href="../pay/offer-help.do"><span class="fa fa-caret-right"></span>提供帮助</a></li>
 					<li><a href="../pay/receive-help.do"><span class="fa fa-caret-right"></span>接受帮助</a></li>
-					<li><a href="../pay/account-transfer.do"><span class="fa fa-caret-right"></span>账户转账</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu-2" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-briefcase"></i>资金管理 <span class="label label-info">+2</span></a></li>
@@ -129,9 +128,9 @@
 
 			<li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-legal"></i>会员资料<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="legal-menu nav nav-list collapse in">
+			<li><ul class="legal-menu nav nav-list collapse">
 					<li><a href="../pay/user.do"><span class="fa fa-caret-right"></span>交易资料</a></li>
-					<li class="active"><a href="../pay/reset-password.do"><span class="fa fa-caret-right"></span>密码修改</a></li>
+					<li><a href="../pay/reset-password.do"><span class="fa fa-caret-right"></span>密码修改</a></li>
 					<li><a href="../pay/protect-password.do"><span class="fa fa-caret-right"></span>密保修改</a></li>
 				</ul></li>
 			<li><a href="../pay/guestbook.do" class="nav-header"><i class="fa fa-fw fa-question-circle"></i>留言反馈</a></li>
@@ -143,186 +142,154 @@
 	<div class="content">
 		<div class="header">
 
-			<h1 class="page-title">交易资料</h1>
+			<h1 class="page-title">用户注册</h1>
 			<ul class="breadcrumb">
 				<li><a href="index.do">主页</a></li>
-				<li><a href="users.do">密码修改</a></li>
+				<li><a href="users.do">用户注册</a></li>
 				<li class="active">${name}</li>
 			</ul>
 		</div>
 		<div class="main-content">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#home" data-toggle="tab">修改登陆密码</a></li>
+				<li class="active"><a href="#" data-toggle="tab">用户注册</a></li>
 			</ul>
 			<div class="row">
 				<div class="col-md-4">
 					<br>
 					<div id="myTabContent" class="tab-content">
 						<div class="tab-pane active in" id="home">
-								<div class="form-group">
-									<label>原登陆密码</label> <input id="password_1" type="text" value="" placeholder="原登陆密码" class="form-control">
-								</div>
-								<div class="form-group">
-									<label>新登陆密码</label> <input id="password_1_new_1" type="text" value="" placeholder="新登陆密码" class="form-control">
-								</div>
-								<div class="form-group">
-									<label>新登陆密码</label> <input id="password_1_new_2" type="text" value="" placeholder="新登陆密码" class="form-control">
-								</div>
+							<div class="form-group">
+								<label>手机号</label> <input id="tel" type="text" class="form-control span12" placeholder="手机号">
+							</div>
+							<div class="form-group">
+								<label>登陆账号</label> <input id="sign_id" type="text" class="form-control span12" placeholder="登陆账号">
+							</div>
+							<div class="form-group">
+								<label>姓名</label> <input id="username" type="text" class="form-control span12" placeholder="姓名">
+							</div>
+							<div class="form-group">
+								<label>身份号</label> <input id="card_id" type="text" class="form-control span12" placeholder="身份号">
+							</div>
+							<div class="form-group">
+								<label>密码</label> <input id="password" type="text" class="form-control span12" placeholder="密码">
+							</div>
+							<div class="form-group">
+								<label>推荐人</label> <input id="recommend_id" type="text" value="${sign_id}" class="form-control span12" placeholder="推荐人" disabled>
+							</div>
+							<div class="form-group">
+								<a id="sign_up" class="btn btn-danger btn-lg btn-block">注册</a>
+							</div>
 						</div>
-					</div>
-					<div class="btn-toolbar list-toolbar">
-						<button id="save_password_1" class="btn btn-primary">
-							<i class="fa fa-save"></i>保存
-						</button>
 					</div>
 				</div>
 			</div>
-			<ul class="nav nav-tabs">
-				<li class="active"><a href="#home" data-toggle="tab">修改交易密码</a></li>
-			</ul>
-			<div class="row">
-				<div class="col-md-4">
-					<br>
-					<div id="myTabContent" class="tab-content">
-						<div class="tab-pane active in" id="home">
-								<div class="form-group">
-									<label>原交易密码</label> <input id="password_2" type="text" value="" placeholder="原交易密码" class="form-control">
-								</div>
-								<div class="form-group">
-									<label>新交易密码</label> <input id="password_2_new_1" type="text" value="" placeholder="新交易密码" class="form-control">
-								</div>
-								<div class="form-group">
-									<label>新交易密码</label> <input id="password_2_new_2" type="text" value="" placeholder="新交易密码" class="form-control">
-								</div>
-						</div>
-					</div>
-					<div class="btn-toolbar list-toolbar">
-						<button id="save_password_2" class="btn btn-primary">
-							<i class="fa fa-save"></i>保存
-						</button>
-					</div>
-				</div>
-			</div>
-			<footer>
-				<hr>
-				<p class="pull-right">
-					A <a href="#" >Free Bootstrap Theme</a> by <a
-						href="#" >Portnine</a>
-				</p>
-				<p>
-					© 2014 <a href="#" target="_blank">Portnine</a>
-				</p>
-			</footer>
 		</div>
 	</div>
 	<!-- 模态框 Begin-->
-	<div id="alert_msg" class="modal fade" >
-  		<div class="modal-dialog">
-   			<div class="modal-content">
-      			<div class="modal-header">
-        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       				<h4 class="modal-title" style="font-family: 微软雅黑;">友情提示</h4>
-      			</div>
-      		<div class="modal-body">
-        		<p id="alert_data" style="font-family: 微软雅黑;">&hellip;</p>
-      		</div>
-      		<div class="modal-footer">
-        		<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
-      		</div>
-    		</div><!-- /.modal-content -->
-  		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+	<div id="alert_msg" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" style="font-family: 微软雅黑;">友情提示</h4>
+				</div>
+				<div class="modal-body">
+					<p id="alert_data" style="font-family: 微软雅黑;">&hellip;</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
 	<!-- 模态框 End-->
 	<script type="text/javascript">
-		function show_model(content){
+		function show_model(content) {
 			$("#alert_data").html(content);
 			$('#alert_msg').modal('show');
 		}
 	</script>
-	<!-- 修改登陆密码 -->
 	<script type="text/javascript">
-		$(function(){
-			$("#save_password_1").click(
-				function(){
-					var password_1=$("#password_1").val();
-					var password_1_new_1=$("#password_1_new_1").val();
-					var password_1_new_2=$("#password_1_new_2").val();
-					if(password_1==''){
-						show_model("请输入原始登陆密码");
-						return;
-					}else if(password_1_new_1==''){
-						show_model("请输入新的登陆密码");
-						return;
-					}else if(password_1_new_2==''){
-						show_model("请再次输入新的登陆密码");
-						return;
-					}
-					var params='{"password_1":"'+password_1+'","password_1_new_1":"'+password_1_new_1+'","password_1_new_2":"'+password_1_new_2+'"}';
-					$.ajax({
-						type : "POST",
-						contentType : "application/json;",
-						url : "../pay/reset-update-1.do",
-						data : params,
-						dataType : 'json',
-						success : function(data) {
-							if(data.result=='success'){
-								show_model("更新成功");
-							}else{
-								show_model("更新失败");
-							}
-							$("#password_1").attr('password_1',true);
-							$("#password_1_new_1").attr('password_1_new_1',true);
-							$("#password_1_new_2").attr('password_1_new_2',true);
-						},
-						error : function(data) {
-							show_model("加载失败");
-						}
-					});
+		$(function() {
+			$("#update").click(function() {
+				$("#bank_name").attr('disabled', false);
+				$("#bank_id").attr('disabled', false);
+				$("#bank_branch").attr('disabled', false);
+				$("#wechat").attr('disabled', false);
+				$("#alipay").attr('disabled', false);
+				if ($("#password_2").val() != '') {
+					$("#password_2").attr('disabled', true);
+				} else {
+					$("#password_2").attr('disabled', false);
 				}
-			);
+			});
 		});
 	</script>
-	<!-- 修改登陆密码 -->
 	<script type="text/javascript">
-		$(function(){
-			$("#save_password_2").click(
-				function(){
-					var password_2=$("#password_2").val();
-					var password_2_new_2=$("#password_2_new_1").val();
-					var password_2_new_2=$("#password_2_new_2").val();
-					if(password_2==''){
-						show_model("请输入原始登陆密码");
-						return;
-					}else if(password_2_new_1==''){
-						show_model("请输入新的登陆密码");
-						return;
-					}else if(password_2_new_2==''){
-						show_model("请再次输入新的登陆密码");
-						return;
-					}
-					var params='{"password_2":"'+password_2+'","password_2_new_1":"'+password_2_new_1+'","password_2_new_2":"'+password_2_new_2+'"}';
-					$.ajax({
-						type : "POST",
-						contentType : "application/json;",
-						url : "../pay/reset-update-2.do",
-						data : params,
-						dataType : 'json',
-						success : function(data) {
-							if(data.result=='success'){
-								show_model("更新成功");
-							}else{
-								show_model("更新失败");
-							}
-							$("#password_1").attr('password_1',true);
-							$("#password_1_new_1").attr('password_1_new_1',true);
-							$("#password_1_new_2").attr('password_1_new_2',true);
-						},
-						error : function(data) {
-							show_model("加载失败");
+		$(function() {
+			$("#save").click(
+					function() {
+						var user_name = $("#user_name").val();
+						var bank_name = $("#bank_name").val();
+						var bank_id = $("#bank_id").val();
+						var bank_branch = $("#bank_branch").val();
+						var wechat = $("#wechat").val();
+						var alipay = $("#alipay").val();
+						var password_2 = $("#password_2").val();
+						if (user_name == '') {
+							show_model("请输入收款人");
+							return;
+						} else if (bank_name == '') {
+							show_model("请输入银行名称");
+							return;
+						} else if (bank_id == '') {
+							show_model("请输入银行卡号");
+							return;
+						} else if (bank_branch == '') {
+							show_model("请输入开户银行");
+							return;
+						} else if (password_2 == '') {
+							show_model("请输入交易密码");
+							return;
 						}
+						var params = '{"user_name":"' + user_name
+								+ '","bank_name":"' + bank_name
+								+ '","bank_id":"' + bank_id
+								+ '","bank_branch":"' + bank_branch
+								+ '","bank_branch":"' + bank_branch
+								+ '","wechat":"' + wechat + '","alipay":"'
+								+ alipay + '","password_2":"' + password_2
+								+ '"}';
+						$.ajax({
+							type : "POST",
+							contentType : "application/json;",
+							url : "../pay/account.do",
+							data : params,
+							dataType : 'json',
+							success : function(data) {
+								if (data.result == 'success') {
+									show_model("更新成功");
+								} else {
+									show_model("更新失败");
+								}
+								$("#user_name").attr('disabled', true);
+								$("#bank_name").attr('disabled', true);
+								$("#bank_id").attr('disabled', true);
+								$("#bank_branch").attr('disabled', true);
+								$("#wechat").attr('disabled', true);
+								$("#alipay").attr('disabled', true);
+								$("#password_2").attr('disabled', true);
+							},
+							error : function(data) {
+								show_model("加载失败");
+							}
+						});
 					});
-				}
-			);
 		});
 	</script>
 	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>

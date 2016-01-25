@@ -179,7 +179,7 @@
 		<div class="main-content">
 			<div class="btn-toolbar list-toolbar">
 				<a href="../pay/offer-help.do">
-					<button class="btn btn-danger btn-lg">
+					<button class="btn btn-danger btn-lg btn-block">
 						<i class="fa fa-plus"></i>申请提供帮助
 					</button>
 				</a>

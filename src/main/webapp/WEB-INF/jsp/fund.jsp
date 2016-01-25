@@ -114,6 +114,7 @@
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
 			<li><ul class="dashboard-menu nav nav-list collapse">
 					<li><a href="../pay/index.do"><span class="fa fa-caret-right"></span>个人中心</a></li>
+					<li><a href="../pay/user-register.do"><span class="fa fa-caret-right"></span>会员注册</a></li>
 					<li><a href="../pay/membership.do"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
@@ -156,12 +157,13 @@
 		<div class="main-content">
 			<div class="btn-toolbar list-toolbar">
 				<a href="../pay/offer-help.do">
-				<button class="btn btn-danger btn-lg">
+				<button class="btn btn-danger btn-lg btn-block">
 					<i class="fa fa-plus"></i>申请提供帮助
 				</button>
 				</a>
+				<br/>
 				<a href="../pay/receive-help.do">
-				<button class="btn btn-success btn-lg">
+				<button class="btn btn-success btn-lg btn-block">
 					<i class="fa fa-plus"></i>申请接受帮助
 				</button>
 				</a>
