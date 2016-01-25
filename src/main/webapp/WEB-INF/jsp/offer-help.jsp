@@ -212,6 +212,7 @@
 							<th>金额</th>
 							<th>时间</th>
 							<th>受助人编号</th>
+							<th>订单状态</th>
 							<th>去转款</th>
 						</tr>
 					</thead>
@@ -221,6 +222,7 @@
 							<td>1000</td>
 							<td>2015-12-13</td>
 							<td>123456</td>
+							<td>未转款</td>
 							<td><a href="account-transfer.do"><i class="fa fa-pencil"></i></a></td>
 						</tr>
 					</tbody>
@@ -291,17 +293,6 @@
 					</tbody>
 				</table>
 			</div>
-			<footer>
-				<hr>
-
-				<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-				<p class="pull-right">
-					A <a href="">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a>
-				</p>
-				<p>
-					© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a>
-				</p>
-			</footer>
 		</div>
 	</div>
 

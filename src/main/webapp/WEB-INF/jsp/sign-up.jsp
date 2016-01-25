@@ -96,12 +96,14 @@
 						<label>姓名</label> <input id="username" type="text" class="form-control span12" placeholder="姓名">
 					</div>
 					<div class="form-group">
-						<label>身份号</label> <input id="card_id" type="text" class="form-control span12" placeholder="推荐人">
+						<label>身份号</label> <input id="card_id" type="text" class="form-control span12" placeholder="身份号">
 					</div>
 					<div class="form-group">
 						<label>密码</label> <input id="password" type="password" class="form-control span12" placeholder="密码">
 					</div>
-					
+					<div class="form-group">
+						<label>推荐人</label> <input id="recommend_id" type="password" class="form-control span12" placeholder="推荐人">
+					</div>
 					<div class="form-group">
 						<label>验证码</label> <input id="captcha" type="text" class="form-control span12" placeholder="验证码">
 					</div>
@@ -155,8 +157,8 @@
 					var username=$("#username").val();
 					var password=$("#password").val();
 					var card_id=$("#card_id").val();
+					var recommend_id=$("#recommend_id").val();
 					var captcha=$("#captcha").val();
-					
 					if(tel==''){
 						show_model("请输入手机号");
 						return;
@@ -176,7 +178,7 @@
 						show_model("请输入验证码");
 						return;
 					}
-					var params="tel="+tel+"&sign_id="+sign_id+"&username="+username+"&password="+password+"&recommend_id="+recommend_id+"&captcha="+captcha;
+					var params="tel="+tel+"&sign_id="+sign_id+"&username="+username+"&password="+password+"&card_id="+card_id+"&recommend_id="+recommend_id+"&captcha="+captcha;
 					$.ajax({
 						type : "GET",
 						contentType : "application/json",
@@ -185,7 +187,7 @@
 						dataType : 'json',
 						success : function(data) {
 							if(data.result=='success'){
-								window.location.href = "../pay/index.do";
+								window.location.href = "../pay/user.do";
 							}else if(data.result=='exist'){
 								show_model("登陆账号已存在，请换一个登陆账号");
 							}else if(data.result=='captcha_error'){

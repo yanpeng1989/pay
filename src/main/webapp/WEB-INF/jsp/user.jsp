@@ -151,7 +151,7 @@
 		</div>
 		<div class="main-content">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#home" data-toggle="tab">用户资料</a></li>
+				<li class="active"><a href="#" data-toggle="tab">用户资料</a></li>
 			</ul>
 			<div class="row">
 				<div class="col-md-4">
@@ -159,7 +159,7 @@
 					<div id="myTabContent" class="tab-content">
 						<div class="tab-pane active in" id="home">
 								<div class="form-group">
-									<label>收款人</label> <input id="user_name" type="text" value="${user_name}" placeholder="姓名" class="form-control" disabled>
+									<label>收款人</label> <input id="user_name" type="text" value="${name}" placeholder="姓名" class="form-control" disabled>
 								</div>
 								<div class="form-group">
 									<label>银行名称</label> 
@@ -182,6 +182,9 @@
 								<div class="form-group">
 									<label>支付宝账号</label> <input id="alipay" type="text" value="${alipay}" placeholder="支付宝账号" class="form-control" disabled>
 								</div>
+								<div class="form-group">
+									<label>交易密码</label> <input id="password_2" type="password" value="${password_2}" placeholder="交易密码" class="form-control" disabled>
+								</div>
 						</div>
 					</div>
 					<div class="btn-toolbar list-toolbar">
@@ -192,16 +195,6 @@
 					</div>
 				</div>
 			</div>
-			<footer>
-				<hr>
-				<p class="pull-right">
-					A <a href="#" >Free Bootstrap Theme</a> by <a
-						href="#" >Portnine</a>
-				</p>
-				<p>
-					© 2014 <a href="#" target="_blank">Portnine</a>
-				</p>
-			</footer>
 		</div>
 	</div>
 	<!-- 模态框 Begin-->
@@ -231,12 +224,16 @@
 	<script type="text/javascript">
 		$(function(){
 			$("#update").click(function(){
-				$("#user_name").attr('disabled',false);
 				$("#bank_name").attr('disabled',false);
 				$("#bank_id").attr('disabled',false);
 				$("#bank_branch").attr('disabled',false);
 				$("#wechat").attr('disabled',false);
 				$("#alipay").attr('disabled',false);
+				if($("#password_2").val()!=''){
+					$("#password_2").attr('disabled',true);
+				}else{
+					$("#password_2").attr('disabled',false);
+				}
 			});
 		});
 	</script>
@@ -250,6 +247,7 @@
 					var bank_branch=$("#bank_branch").val();
 					var wechat=$("#wechat").val();
 					var alipay=$("#alipay").val();
+					var password_2=$("#password_2").val();
 					if(user_name==''){
 						show_model("请输入收款人");
 						return;
@@ -263,7 +261,11 @@
 						show_model("请输入开户银行");
 						return;
 					}
-					var params='{"user_name":"'+user_name+'","bank_name":"'+bank_name+'","bank_id":"'+bank_id+'","bank_branch":"'+bank_branch+'","wechat":"'+wechat+'","alipay":"'+alipay+'"}';
+					else if(password_2==''){
+						show_model("请输入交易密码");
+						return;
+					}
+					var params='{"user_name":"'+user_name+'","bank_name":"'+bank_name+'","bank_id":"'+bank_id+'","bank_branch":"'+bank_branch+'","bank_branch":"'+bank_branch+'","wechat":"'+wechat+'","alipay":"'+alipay+'","password_2":"'+password_2+'"}';
 					$.ajax({
 						type : "POST",
 						contentType : "application/json;",
@@ -282,6 +284,7 @@
 							$("#bank_branch").attr('disabled',true);
 							$("#wechat").attr('disabled',true);
 							$("#alipay").attr('disabled',true);
+							$("#password_2").attr('disabled',true);
 						},
 						error : function(data) {
 							show_model("加载失败");

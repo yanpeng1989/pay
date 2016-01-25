@@ -19,17 +19,17 @@
 		SELECT sign_id from user where sign_id=#{sign_id}
 	</select>
 	<insert id="userSign_up" parameterType="map">
-		insert into user(sign_id,name,card_id,tel,password_1) values(#{sign_id},#{name},#{card_id},#{tel},#{password_1})
+		insert into user(sign_id,name,card_id,tel,password_1,recommend_id) values(#{sign_id},#{name},#{card_id},#{tel},#{password_1},#{recommend_id})
 	</insert>
 	<!--交易资料 -->
 	<select id="accountCheck" parameterType="map" resultType="Map">
-		SELECT user_name,bank_id,bank_name,bank_branch,wechat,alipay from account where sign_id=#{sign_id}
+		SELECT user_name,bank_id,bank_name,bank_branch,wechat,alipay,password_2 from account where sign_id=#{sign_id}
 	</select>
 	<insert id="accountInsert" parameterType="map">
-		insert into account(sign_id,user_name,bank_id,bank_name,bank_branch,wechat,alipay) values(#{sign_id},#{user_name},#{bank_id},#{bank_name},#{bank_branch},#{wechat},#{alipay})
+		insert into account(sign_id,user_name,bank_id,bank_name,bank_branch,wechat,alipay,password_2) values(#{sign_id},#{user_name},#{bank_id},#{bank_name},#{bank_branch},#{wechat},#{alipay},#{password_2})
 	</insert>
 	<update id="accountUpdate" parameterType="map" >
-        update account set user_name=#{user_name},bank_id=#{bank_id},bank_name=#{bank_name},bank_branch=#{bank_branch},wechat=#{wechat},alipay=#{alipay} where sign_id=#{sign_id}
+        update account set user_name=#{user_name},bank_id=#{bank_id},bank_name=#{bank_name},bank_branch=#{bank_branch},wechat=#{wechat},alipay=#{alipay},password_2=#{password_2} where sign_id=#{sign_id}
     </update>
     <!--交易资料 -->
     <select id="guestbookCheck" parameterType="map" resultType="Map">

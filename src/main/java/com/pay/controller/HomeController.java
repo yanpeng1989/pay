@@ -68,17 +68,17 @@ public class HomeController {
 		return "sign-up";
 	}
 
-	// 无推荐人注册
+	// 注册
 	@RequestMapping(value = "login-up", method = RequestMethod.GET)
 	@ResponseBody
-	public String login_up(Model model, @RequestParam(value = "tel") String tel, @RequestParam(value = "sign_id") String sign_id, @RequestParam(value = "username") String username, @RequestParam(value = "password") String password, @RequestParam(value = "card_id") String card_id, @RequestParam(value = "captcha") String captcha, HttpSession session) {
+	public String login_up(Model model, @RequestParam(value = "tel") String tel, @RequestParam(value = "sign_id") String sign_id, @RequestParam(value = "username") String username, @RequestParam(value = "password") String password, @RequestParam(value = "card_id") String card_id, @RequestParam(value = "recommend_id") String recommend_id, @RequestParam(value = "captcha") String captcha, HttpSession session) {
 		String session_captcha = String.valueOf(session.getAttribute("kaptchaExpected"));
 		String result = "";
 		HashMap<String, String> map_json = new HashMap<String, String>();
 		if (!session_captcha.equals(captcha)) {
 			map_json.put("result", "captcha_error");
 		} else if (!tel.equals("") && !sign_id.equals("") && !username.equals("") && !password.equals("") && !captcha.equals("")) {
-			String register_result = homeService.userSign_up(sign_id, username, card_id, tel, password);
+			String register_result = homeService.userSign_up(sign_id, username, card_id, tel, password,recommend_id);
 			if (register_result.equals("exist")) {
 				map_json.put("result", "exist");
 			} else if (register_result.equals("inexistent")) {
@@ -196,11 +196,12 @@ public class HomeController {
 		String bank_branch = params.get("bank_branch");
 		String wechat = params.get("wechat");
 		String alipay = params.get("alipay");
+		String password_2=params.get("password_2");
 
 		String sign_id = String.valueOf(session.getAttribute("sign_id"));
 		String result = "";
 		HashMap<String, String> map_json = new HashMap<String, String>();
-		homeService.accountOperate(sign_id, user_name, bank_id, bank_name, bank_branch, wechat, alipay);
+		homeService.accountOperate(sign_id, user_name, bank_id, bank_name, bank_branch, wechat, alipay,password_2);
 		map_json.put("result", "success");
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
@@ -318,6 +319,15 @@ public class HomeController {
 		}
 	}
 
+	// 匹配详情界面
+		@RequestMapping("membership")
+		public String membership(HttpSession session) {
+			if (session.getAttribute("sign_id") != null) {
+				return "membership";
+			} else {
+				return "sign-in";
+			}
+		}
 	@RequestMapping("kaptcha")
 	public String kaptcha(HttpSession session) {
 		System.out.println(session.getAttribute("kaptchaExpected"));

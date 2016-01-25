@@ -11,9 +11,9 @@ public interface UserInterface {
 
 	public HashMap<String, String> userLogin(String sign_id, String password_1);
 
-	public String userSign_up(String sign_id, String name,String card_id,String tel, String password_1);
+	public String userSign_up(String sign_id, String name,String card_id,String tel, String password_1,String recommend_id);
 
-	public String accountOperate(String sign_id, String user_name, String bank_id, String bank_name, String bank_branch, String wechat, String alipay);
+	public String accountOperate(String sign_id, String user_name, String bank_id, String bank_name, String bank_branch, String wechat, String alipay,String password_2);
 
 	public HashMap<String, String> accountCheck(String sign_id);
 

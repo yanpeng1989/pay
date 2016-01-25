@@ -155,13 +155,16 @@
 		</div>
 		<div class="main-content">
 			<div class="btn-toolbar list-toolbar">
+				<a href="../pay/offer-help.do">
 				<button class="btn btn-danger btn-lg">
 					<i class="fa fa-plus"></i>申请提供帮助
 				</button>
+				</a>
+				<a href="../pay/receive-help.do">
 				<button class="btn btn-success btn-lg">
 					<i class="fa fa-plus"></i>申请接受帮助
 				</button>
-				<div class="btn-group"></div>
+				</a>
 			</div>
 			<div class="row">
 				<div class="col-sm-6 col-md-6">

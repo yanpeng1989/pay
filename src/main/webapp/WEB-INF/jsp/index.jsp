@@ -197,6 +197,24 @@
       				<div class="input-group-addon">点击复制推广</div>
     			</div>
   			</div>
+  			<hr/>
+			<form class="form-inline">
+				<div class="form-group">
+					<label class="sr-only"></label>
+					<p class="form-control-static">您的直接推荐会员人数为：100人</p>
+				</div>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="form-group">
+					<label class="sr-only"></label>
+					<p class="form-control-static">您累计获得静态金额为：10000元</p>
+				</div>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="form-group">
+					<label class="sr-only"></label>
+					<p class="form-control-static">您的等级为：5星</p>
+				</div>
+			</form>
+			<hr/>
 			<div class="panel panel-default">
 				<a href="#page-stats" class="panel-heading" data-toggle="collapse" style="font-family: 微软雅黑;">个人账户基本信息</a>
 				<div id="page-stats" class="panel-collapse panel-body collapse in">
@@ -232,18 +250,6 @@
 					</div>
 				</div>
 			</div>
-			<footer>
-				<hr>
-
-				<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-				<p class="pull-right">
-					A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a
-						href="http://www.portnine.com" target="_blank">Portnine</a>
-				</p>
-				<p>
-					© 2014 <a href="http://www.portnine.com" target="_blank">Portnine</a>
-				</p>
-			</footer>
 		</div>
 	</div>
 

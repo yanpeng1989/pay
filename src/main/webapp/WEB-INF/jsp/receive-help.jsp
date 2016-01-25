@@ -211,19 +211,21 @@
 					<p class="form-control-static">动态帮助金额：</p>
 				</div>
 				<div class="form-group" style="width: 200px;"> 
-					<input type="text" class="form-control" style="width: 175px;" placeholder="输入诚意金号码">
+					<input type="text" class="form-control" style="width: 175px;" placeholder="动态帮助金额">
 				</div>
 				<button type="submit" class="btn btn-default">提交</button>
 			</form>
 			<hr/>
 			<div class="panel panel-default">
-				<label class="panel-heading" style="font-family: 微软雅黑;">正在匹配帮助订单</label>
+				<label class="panel-heading" style="font-family: 微软雅黑;">正在匹配帮助</label>
 				<table class="table">
 					<thead>
 						<tr>
 							<th>订单号</th>
 							<th>金额</th>
 							<th>时间</th>
+							<th>匹配状态</th>
+							<th>订单状态</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -231,12 +233,14 @@
 							<td>1</td>
 							<td>1000</td>
 							<td>2015-12-13</td>
+							<td>匹配完成</td>
+							<td>等待匹配人打款</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="panel panel-default">
-				<label class="panel-heading" style="font-family: 微软雅黑;">已经完成匹配帮助订单</label>
+				<label class="panel-heading" style="font-family: 微软雅黑;">完成匹配帮助订单</label>
 				<table class="table">
 					<thead>
 						<tr>
@@ -246,6 +250,8 @@
 							<th>提供帮助人</th>
 							<th>联系方式</th>
 							<th>订单状态</th>
+							<th>转账证明</th>
+							<th>确认打款</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -256,6 +262,8 @@
 							<td>王斌</td>
 							<td>13611177881</td>
 							<td>正在打款</td>
+							<td>查看</td>
+							<td><button class="btn">确认</button></td>
 						</tr>
 						<tr>
 							<td>2</td>
@@ -264,6 +272,8 @@
 							<td>王斌</td>
 							<td>13611177881</td>
 							<td>正在打款</td>
+							<td>查看</td>
+							<td><button class="btn">确认</button></td>
 						</tr>
 						<tr>
 							<td>3</td>
@@ -272,6 +282,8 @@
 							<td>王斌</td>
 							<td>13611177881</td>
 							<td>正在打款</td>
+							<td>查看</td>
+							<td><button class="btn">确认</button></td>
 						</tr>
 						<tr>
 							<td>4</td>
@@ -280,6 +292,8 @@
 							<td>王斌</td>
 							<td>13611177881</td>
 							<td>正在打款</td>
+							<td>查看</td>
+							<td><button class="btn">确认</button></td>
 						</tr>
 						<tr>
 							<td>5</td>
@@ -288,6 +302,8 @@
 							<td>王斌</td>
 							<td>13611177881</td>
 							<td>正在打款</td>
+							<td>查看</td>
+							<td><button class="btn">确认</button></td>
 						</tr>
 						<tr>
 							<td>6</td>
@@ -296,21 +312,12 @@
 							<td>王斌</td>
 							<td>13611177881</td>
 							<td>正在打款</td>
+							<td>查看</td>
+							<td><button class="btn">确认</button></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<footer>
-				<hr>
-
-				<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-				<p class="pull-right">
-					A <a href="">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a>
-				</p>
-				<p>
-					© 2014 <a href="#">Portnine</a>
-				</p>
-			</footer>
 		</div>
 	</div>
 
