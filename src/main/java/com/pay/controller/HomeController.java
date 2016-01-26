@@ -329,7 +329,7 @@ public class HomeController {
 		}
 	}
 
-	// 匹配详情界面
+	// 帮助用户注册
 	@RequestMapping("user-register")
 	public String user_register(HttpSession session, Model model) {
 		if (session.getAttribute("sign_id") != null) {
@@ -339,6 +339,30 @@ public class HomeController {
 		} else {
 			return "sign-in";
 		}
+	}
+
+	// 帮助用户注册AJAX
+	@RequestMapping(value = "user-register-ajax", method = RequestMethod.GET)
+	@ResponseBody
+	public String user_register_ajax(Model model, @RequestParam(value = "tel") String tel, @RequestParam(value = "sign_id") String sign_id, @RequestParam(value = "username") String username, @RequestParam(value = "password") String password, @RequestParam(value = "card_id") String card_id, @RequestParam(value = "recommend_id") String recommend_id) {
+		String result = "";
+		HashMap<String, String> map_json = new HashMap<String, String>();
+		if (!tel.equals("") && !sign_id.equals("") && !username.equals("") && !password.equals("")) {
+			String register_result = homeService.userSign_up(sign_id, username, card_id, tel, password, recommend_id);
+			if (register_result.equals("exist")) {
+				map_json.put("result", "exist");
+			} else if (register_result.equals("inexistent")) {
+				map_json.put("result", "success");
+			} else {
+				map_json.put("result", "error");
+			}
+		}
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			result = objectMapper.writeValueAsString(map_json);
+		} catch (Exception e) {
+		}
+		return result;
 	}
 
 	@RequestMapping("kaptcha")

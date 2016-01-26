@@ -215,82 +215,56 @@
 		}
 	</script>
 	<script type="text/javascript">
-		$(function() {
-			$("#update").click(function() {
-				$("#bank_name").attr('disabled', false);
-				$("#bank_id").attr('disabled', false);
-				$("#bank_branch").attr('disabled', false);
-				$("#wechat").attr('disabled', false);
-				$("#alipay").attr('disabled', false);
-				if ($("#password_2").val() != '') {
-					$("#password_2").attr('disabled', true);
-				} else {
-					$("#password_2").attr('disabled', false);
-				}
-			});
-		});
-	</script>
-	<script type="text/javascript">
-		$(function() {
-			$("#save").click(
-					function() {
-						var user_name = $("#user_name").val();
-						var bank_name = $("#bank_name").val();
-						var bank_id = $("#bank_id").val();
-						var bank_branch = $("#bank_branch").val();
-						var wechat = $("#wechat").val();
-						var alipay = $("#alipay").val();
-						var password_2 = $("#password_2").val();
-						if (user_name == '') {
-							show_model("请输入收款人");
-							return;
-						} else if (bank_name == '') {
-							show_model("请输入银行名称");
-							return;
-						} else if (bank_id == '') {
-							show_model("请输入银行卡号");
-							return;
-						} else if (bank_branch == '') {
-							show_model("请输入开户银行");
-							return;
-						} else if (password_2 == '') {
-							show_model("请输入交易密码");
-							return;
-						}
-						var params = '{"user_name":"' + user_name
-								+ '","bank_name":"' + bank_name
-								+ '","bank_id":"' + bank_id
-								+ '","bank_branch":"' + bank_branch
-								+ '","bank_branch":"' + bank_branch
-								+ '","wechat":"' + wechat + '","alipay":"'
-								+ alipay + '","password_2":"' + password_2
-								+ '"}';
-						$.ajax({
-							type : "POST",
-							contentType : "application/json;",
-							url : "../pay/account.do",
-							data : params,
-							dataType : 'json',
-							success : function(data) {
-								if (data.result == 'success') {
-									show_model("更新成功");
-								} else {
-									show_model("更新失败");
-								}
-								$("#user_name").attr('disabled', true);
-								$("#bank_name").attr('disabled', true);
-								$("#bank_id").attr('disabled', true);
-								$("#bank_branch").attr('disabled', true);
-								$("#wechat").attr('disabled', true);
-								$("#alipay").attr('disabled', true);
-								$("#password_2").attr('disabled', true);
-							},
-							error : function(data) {
-								show_model("加载失败");
+	$(function(){
+		$(function(){
+			$("#sign_up").click(
+				function(){
+					var tel=$("#tel").val();
+					var sign_id=$("#sign_id").val();
+					var username=$("#username").val();
+					var password=$("#password").val();
+					var card_id=$("#card_id").val();
+					var recommend_id=$("#recommend_id").val();
+					if(tel==''){
+						show_model("请输入手机号");
+						return;
+					}else if(sign_id==''){
+						show_model("请输入登陆账号");
+						return;
+					}else if(username==''){
+						show_model("请输入姓名");
+						return;
+					}else if(card_id==''){
+						show_model("请输入个人身份证号");
+						return;
+					}else if(password==''){
+						show_model("请输入密码");
+						return;
+					}
+					var params="tel="+tel+"&sign_id="+sign_id+"&username="+username+"&password="+password+"&card_id="+card_id+"&recommend_id="+recommend_id;
+					$.ajax({
+						type : "GET",
+						contentType : "application/json",
+						url : "../pay/user-register-ajax.do",
+						data : params,
+						dataType : 'json',
+						success : function(data) {
+							if(data.result=='success'){
+								show_model("注册成功");
+							}else if(data.result=='exist'){
+								show_model("登陆账号已存在，请换一个登陆账号");
+							}else if(data.result=='error'){
+								show_model("注册失败");
 							}
-						});
+						},
+						error : function(data) {
+							show_model("加载失败");
+						}
 					});
+				}
+			);
 		});
+	});
 	</script>
 	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">

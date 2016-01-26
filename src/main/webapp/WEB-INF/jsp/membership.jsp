@@ -136,7 +136,6 @@
 			<li><ul class="accounts-menu nav nav-list collapse">
 					<li><a href="../pay/offer-help.do"><span class="fa fa-caret-right"></span>提供帮助</a></li>
 					<li><a href="../pay/receive-help.do"><span class="fa fa-caret-right"></span>接受帮助</a></li>
-					<li><a href="../pay/account-transfer.do"><span class="fa fa-caret-right"></span>账户转账</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu-2" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-briefcase"></i>资金管理 <span class="label label-info">+2</span></a></li>
@@ -267,21 +266,8 @@
 					</tbody>
 				</table>
 			</div>
-			<footer>
-				<hr>
-
-				<!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-				<p class="pull-right">
-					A <a href="">Free Bootstrap Theme</a> by <a href="">Portnine</a>
-				</p>
-				<p>
-					© 2014 <a href="#">Portnine</a>
-				</p>
-			</footer>
 		</div>
 	</div>
-
-
 	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">
 		$("[rel=tooltip]").tooltip();

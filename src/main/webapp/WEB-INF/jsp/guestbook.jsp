@@ -116,7 +116,6 @@
 			<li><ul class="accounts-menu nav nav-list collapse">
 					<li><a href="../pay/offer-help.do"><span class="fa fa-caret-right"></span>提供帮助</a></li>
 					<li><a href="../pay/receive-help.do"><span class="fa fa-caret-right"></span>接受帮助</a></li>
-					<li><a href="../pay/account-transfer.do"><span class="fa fa-caret-right"></span>账户转账</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu-2" class="nav-header collapsed" data-toggle="collapse"><i
 					class="fa fa-fw fa-briefcase"></i>资金管理 <span class="label label-info">+2</span></a></li>
@@ -160,23 +159,17 @@
 				</div>
 				<input id="sunmit" type="submit" value="提交" class="btn btn-primary" style="display: block;">
 			</div>
+			
 			<div class="col-sm-9 main-content">
+			<hr/>
 				<c:forEach var="result" items="${result}">
-					<h4>${result.title}</h4>
-					<h5>问题</h5>
+					<h4><button type="button" class="btn btn-info" disabled="disabled">标题：${result.title}</button></h4>
+					<h5>您的问题：</h5>
 					${result.question}
-					<h5>答案</h5>
+					<h5>客服反馈：</h5>
 					${result.answer}
+					<hr/>
 				</c:forEach>
-				<footer>
-					<hr>
-					<p class="pull-right">
-						A <a href="#">Free Bootstrap Theme</a> by <a href="#" target="_blank">Portnine</a>
-					</p>
-					<p>
-						© 2014 <a href="#" >Portnine</a>
-					</p>
-				</footer>
 			</div>
 		</div>
 	</div>
