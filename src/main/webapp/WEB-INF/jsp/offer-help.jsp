@@ -190,20 +190,20 @@
 					<p class="form-control-static">输入金额：</p>
 				</div>
 				<div class="form-group" style="width: 15%;"> 
-					<input type="password" class="form-control" style="width: 90%;" placeholder="金额在100-100000之间">
+					<input id="funds" type="text" class="form-control" style="width: 90%;" placeholder="金额在100-100000之间">
 				</div>
 				<div class="form-group">
 					<label class="sr-only"></label>
 					<p class="form-control-static">输入诚意金号码：</p>
 				</div>
 				<div class="form-group" style="width: 15%;"> 
-					<input type="text" class="form-control" style="width: 80%;" placeholder="输入诚意金号码">
+					<input id="margin" type="text" class="form-control" style="width: 80%;" placeholder="输入诚意金号码">
 				</div>
-				<button type="submit" class="btn btn-default">提交</button>
+				<button id="submit" type="button" class="btn btn-default">提交</button>
 			</form>
 			<hr/>
 			<div class="panel panel-default">
-				<label class="panel-heading" style="font-family: 微软雅黑;">未完成提供帮助的订单</label>
+				<label class="panel-heading" style="font-family: 微软雅黑;">正在匹配订单</label>
 				<table class="table">
 					<thead>
 						<tr>
@@ -212,7 +212,7 @@
 							<th>时间</th>
 							<th>受助人编号</th>
 							<th>订单状态</th>
-							<th>去转款</th>
+							<th>订单详情</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -222,22 +222,22 @@
 							<td>2015-12-13</td>
 							<td>123456</td>
 							<td>未转款</td>
-							<td><a href="account-transfer.do"><i class="fa fa-pencil"></i></a></td>
+							<td><a href="#">点击查看详情</a></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="panel panel-default">
-				<label class="panel-heading" style="font-family: 微软雅黑;">已完成提供帮助的订单</label>
+				<label class="panel-heading" style="font-family: 微软雅黑;">完成匹配订单</label>
 				<table class="table">
 					<thead>
 						<tr>
 							<th>订单号</th>
 							<th>金额</th>
 							<th>时间</th>
-							<th>提供帮助人</th>
-							<th>联系方式</th>
+							<th>受助人编号</th>
 							<th>订单状态</th>
+							<th>订单详情</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -294,8 +294,25 @@
 			</div>
 		</div>
 	</div>
-
-
+	<!-- 模态框 Begin-->
+	<div id="alert_msg" class="modal fade" >
+  		<div class="modal-dialog">
+   			<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       				<h4 class="modal-title" style="font-family: 微软雅黑;">友情提示</h4>
+      			</div>
+      		<div class="modal-body">
+        		<p id="alert_data" style="font-family: 微软雅黑;">&hellip;</p>
+      		</div>
+      		<div class="modal-footer">
+      			<button id="confirm" type="button" class="btn btn-primary">确认</button>
+        		<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+      		</div>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!-- 模态框 End-->
 	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">
 		$("[rel=tooltip]").tooltip();
@@ -305,7 +322,47 @@
 			});
 		});
 	</script>
-
-
+	<script type="text/javascript">
+		function show_model(content){
+			$("#alert_data").html(content);
+			$('#alert_msg').modal('show');
+		}
+	</script>
+	<script type="text/javascript">
+		$(function(){
+			$("#submit").click(function(){
+				show_model("您已了解量子互助的相关条款并予以遵守，点击确定确认提供帮助！");
+			});
+		});
+		$("#confirm").click(function(){
+			var funds=$("#funds").val();
+			var margin=$("#margin").val();
+			if(funds==''){
+				show_model("funds");
+				return;
+			}else if(margin==''){
+				show_model("margin");
+				return;
+			}
+			var params='{"funds":"'+funds+'","margin":"'+margin+'"}';
+			$.ajax({
+				type : "POST",
+				contentType : "application/json;",
+				url : "../pay/offer-help-ajax.do",
+				data : params,
+				dataType : 'json',
+				success : function(data) {
+					if(data.result=='success'){
+						show_model("申请成功，我们将为您匹配");
+					}else{
+						show_model("申请失败");
+					}
+				},
+				error : function(data) {
+					show_model("加载失败");
+				}
+			});
+		});
+	</script>
 </body>
 </html>

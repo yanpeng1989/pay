@@ -187,19 +187,19 @@
 			<form class="form-inline">
 				<div class="form-group">
 					<label class="sr-only"></label>
-					<p class="form-control-static">您可申请的动态金额为：10000元</p>
+					<p class="form-control-static">您的静态钱包资金为：${funds+static_bonus}元</p>
 				</div>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<div class="form-group">
 					<label class="sr-only"></label>
-					<p class="form-control-static">您可申请的静态金额为：10000元</p>
+					<p class="form-control-static">您的动态钱包资金为：${dynamic_bonus}元</p>
 				</div>
 				</form>
 			<hr/>
 			<form class="form-inline">
 				<div class="form-group">
 					<label class="sr-only"></label>
-					<p class="form-control-static">动态帮助金额：</p>
+					<p class="form-control-static">申请静态钱包：</p>
 				</div>
 				<div class="form-group" style="width: 200px;"> 
 					<input type="password" class="form-control" style="width: 175px;" placeholder="金额在100-100000之间">
@@ -207,7 +207,7 @@
 				<button type="submit" class="btn btn-default">提交</button>&nbsp;&nbsp;&nbsp;
 				<div class="form-group">
 					<label class="sr-only"></label>
-					<p class="form-control-static">动态帮助金额：</p>
+					<p class="form-control-static">申请动态钱包金额：</p>
 				</div>
 				<div class="form-group" style="width: 200px;"> 
 					<input type="text" class="form-control" style="width: 175px;" placeholder="动态帮助金额">

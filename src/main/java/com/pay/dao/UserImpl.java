@@ -46,7 +46,11 @@ public class UserImpl implements UserInterface {
 		if (usermap != null && usermap.size() > 0) {
 			return "exist";
 		} else {
+			params.put("funds", "0");
+			params.put("dynamic_bonus", "0");
+			params.put("static_bonus", "0");
 			sqlSessionTemplate.insert("userSign_up", params);
+			sqlSessionTemplate.insert("walletInsert", params);
 			return "inexistent";
 		}
 	}
@@ -96,5 +100,13 @@ public class UserImpl implements UserInterface {
 		params.put("question", question);
 		params.put("answer", answer);
 		sqlSessionTemplate.insert("guestbookInsert", params);
+	}
+
+	@Override
+	public HashMap<String, String> walletMsg(String sign_id) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("sign_id", sign_id);
+		HashMap<String, String> result = sqlSessionTemplate.selectOne("walletMsg", params);
+		return result;
 	}
 }

@@ -21,6 +21,13 @@
 	<insert id="userSign_up" parameterType="map">
 		insert into user(sign_id,name,card_id,tel,password_1,recommend_id) values(#{sign_id},#{name},#{card_id},#{tel},#{password_1},#{recommend_id})
 	</insert>
+	<!-- 钱包 -->
+	<select id="walletMsg" parameterType="map" resultType="Map">
+		SELECT sign_id,funds,dynamic_bonus,static_bonus FROM wallet WHERE sign_id=#{sign_id}
+	</select>
+	<insert id="walletInsert" parameterType="map">
+		INSERT INTO wallet(sign_id,funds,dynamic_bonus,static_bonus) VALUES (#{sign_id},#{funds},#{dynamic_bonus},#{static_bonus})
+	</insert>
 	<!--交易资料 -->
 	<select id="accountCheck" parameterType="map" resultType="Map">
 		SELECT user_name,bank_id,bank_name,bank_branch,wechat,alipay,password_2 from account where sign_id=#{sign_id}

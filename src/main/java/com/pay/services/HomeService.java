@@ -26,8 +26,8 @@ public class HomeService {
 	}
 
 	// 注册
-	public String userSign_up(String sign_id, String name,String card_id, String tel, String password_1,String recommend_id) {
-		return userImpl.userSign_up(sign_id, name,card_id, tel, password_1,recommend_id);
+	public String userSign_up(String sign_id, String name, String card_id, String tel, String password_1, String recommend_id) {
+		return userImpl.userSign_up(sign_id, name, card_id, tel, password_1, recommend_id);
 	}
 
 	// 获取交易账户
@@ -36,16 +36,22 @@ public class HomeService {
 	}
 
 	// 更新交易账户
-	public String accountOperate(String sign_id, String user_name, String bank_id, String bank_name, String bank_branch, String wechat, String alipay,String password_2) {
-		return userImpl.accountOperate(sign_id, user_name, bank_id, bank_name, bank_branch, wechat, alipay,password_2);
+	public String accountOperate(String sign_id, String user_name, String bank_id, String bank_name, String bank_branch, String wechat, String alipay, String password_2) {
+		return userImpl.accountOperate(sign_id, user_name, bank_id, bank_name, bank_branch, wechat, alipay, password_2);
 	}
-	//用户历史提问
+
+	// 用户历史提问
 	public List<HashMap<String, String>> guestbookCheck(String sign_id) {
 		return userImpl.guestbookCheck(sign_id);
 	}
 
-	//用户新建提问
+	// 用户新建提问
 	public void guestbookInsert(String sign_id, String title, String tel, String question, String answer) {
 		userImpl.guestbookInsert(sign_id, title, tel, question, answer);
+	}
+
+	// 获取钱包信息
+	public HashMap<String, String> walletMsg(String sign_id) {
+		return userImpl.walletMsg(sign_id);
 	}
 }

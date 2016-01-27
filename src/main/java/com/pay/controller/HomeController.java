@@ -281,8 +281,11 @@ public class HomeController {
 
 	// 接受帮助界面
 	@RequestMapping("receive-help")
-	public String receive_help(HttpSession session) {
+	public String receive_help(HttpSession session, Model model) {
 		if (session.getAttribute("sign_id") != null) {
+			String sign_id = String.valueOf(session.getAttribute("sign_id"));
+			HashMap<String, String> result = homeService.walletMsg(sign_id);
+			model.addAllAttributes(result);
 			return "receive-help";
 		} else {
 			return "sign-in";
@@ -293,6 +296,19 @@ public class HomeController {
 	@RequestMapping("offer-help")
 	public String offer_help(HttpSession session) {
 		if (session.getAttribute("sign_id") != null) {
+
+			return "offer-help";
+		} else {
+			return "sign-in";
+		}
+	}
+
+	// 提供帮助请求
+	@RequestMapping("offer-help-ajax")
+	@ResponseBody
+	public String offer_help_ajax(HttpSession session) {
+		if (session.getAttribute("sign_id") != null) {
+
 			return "offer-help";
 		} else {
 			return "sign-in";
@@ -319,7 +335,7 @@ public class HomeController {
 		}
 	}
 
-	// 匹配详情界面
+	// 直属会员界面
 	@RequestMapping("membership")
 	public String membership(HttpSession session) {
 		if (session.getAttribute("sign_id") != null) {
