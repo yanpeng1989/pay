@@ -294,9 +294,11 @@ public class HomeController {
 
 	// 提供帮助界面
 	@RequestMapping("offer-help")
-	public String offer_help(HttpSession session) {
+	public String offer_help(HttpSession session,Model model) {
 		if (session.getAttribute("sign_id") != null) {
-
+			String sign_id = String.valueOf(session.getAttribute("sign_id"));
+			List<HashMap<String,String>> result=homeService.offer_helpSelect(sign_id);
+			model.addAttribute("result", result);
 			return "offer-help";
 		} else {
 			return "sign-in";
@@ -318,7 +320,7 @@ public class HomeController {
 				String offer_funds = params.get("funds");
 				HashMap<String, String> marginCheck = homeService.marginCheck(margin);
 				if (marginCheck != null && marginCheck.size() > 0) {
-					homeService.offer_helpInsert(sign_id, offer_funds, "1");
+					homeService.offer_helpInsert(sign_id, offer_funds, "正在排队");
 					homeService.marginUpdate(margin);
 					map_json.put("result", "success");
 				} else {

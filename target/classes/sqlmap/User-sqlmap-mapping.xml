@@ -28,7 +28,7 @@
 	<insert id="walletInsert" parameterType="map">
 		INSERT INTO wallet(sign_id,funds,dynamic_bonus,static_bonus) VALUES (#{sign_id},#{funds},#{dynamic_bonus},#{static_bonus})
 	</insert>
-	<!--授权码资料 -->
+	<!--授权码 -->
 	<select id="marginCheck" parameterType="map" resultType="Map">
 		SELECT margin,valid FROM margin WHERE margin=#{margin} AND valid=1
 	</select>
@@ -36,9 +36,13 @@
         update margin set valid=0 where margin=#{margin}
     </update>
 	<!--提供帮助 -->
+	<select id="offer_helpSelect" parameterType="map" resultType="Map">
+		SELECT offer_id,offer_funds,temps,status FROM offer_help WHERE sign_id=#{sign_id}
+	</select>
 	<insert id="offer_helpInsert" parameterType="map">
 		INSERT INTO offer_help (sign_id,offer_funds,status) VALUES (#{sign_id},#{offer_funds},#{status})
 	</insert>
+	
 	<!--交易资料 -->
 	<select id="accountCheck" parameterType="map" resultType="Map">
 		SELECT user_name,bank_id,bank_name,bank_branch,wechat,alipay,password_2 from account where sign_id=#{sign_id}
@@ -49,7 +53,7 @@
 	<update id="accountUpdate" parameterType="map" >
         update account set user_name=#{user_name},bank_id=#{bank_id},bank_name=#{bank_name},bank_branch=#{bank_branch},wechat=#{wechat},alipay=#{alipay},password_2=#{password_2} where sign_id=#{sign_id}
     </update>
-    <!--交易资料 -->
+    <!--问答模块 -->
     <select id="guestbookCheck" parameterType="map" resultType="Map">
 		select title,tel,question,answer FROM guestbook where sign_id=#{sign_id} order by temps desc limit 0,3  
 	</select>

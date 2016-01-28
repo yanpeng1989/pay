@@ -27,6 +27,8 @@ public interface UserInterface {
 
 	public void marginUpdate(String margin);
 
+	public List<HashMap<String, String>> offer_helpSelect(String sign_id);
+
 	public void offer_helpInsert(String sign_id, String offer_funds, String status);
 
 	public HashMap<String, String> checkPassword_2(String sign_id, String password_2);

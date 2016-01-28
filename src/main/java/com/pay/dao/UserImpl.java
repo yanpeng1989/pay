@@ -142,4 +142,11 @@ public class UserImpl implements UserInterface {
 		HashMap<String, String> result = sqlSessionTemplate.selectOne("checkPassword_2", params);
 		return result;
 	}
+
+	@Override
+	public List<HashMap<String, String>> offer_helpSelect(String sign_id) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("sign_id", sign_id);
+		return sqlSessionTemplate.selectList("offer_helpSelect", params);
+	}
 }

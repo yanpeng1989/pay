@@ -217,45 +217,20 @@
 							<th>订单号</th>
 							<th>金额</th>
 							<th>时间</th>
-							<th>受助人编号</th>
 							<th>订单状态</th>
 							<th>订单详情</th>
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="result" items="${result}">
 						<tr>
-							<td>1</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>123456</td>
-							<td>未转款</td>
-							<td><a href="#">点击查看详情</a></td>
+							<td>${result.offer_id}</td>
+							<td>${result.offer_funds}</td>
+							<td>${result.temps}</td>
+							<td>${result.status}</td>
+							<td><a href="../pay/details.do?offer_id=${sign_id}">点击查看详情</a></td>
 						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="panel panel-default">
-				<label class="panel-heading" style="font-family: 微软雅黑;">完成匹配订单</label>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>订单号</th>
-							<th>金额</th>
-							<th>时间</th>
-							<th>受助人编号</th>
-							<th>订单状态</th>
-							<th>订单详情</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>王斌</td>
-							<td>13611177881</td>
-							<td>等待确认</td>
-						</tr>
+						</c:forEach>						
 					</tbody>
 				</table>
 			</div>

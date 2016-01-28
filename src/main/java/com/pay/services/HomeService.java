@@ -64,9 +64,15 @@ public class HomeService {
 	public void marginUpdate(String margin) {
 		userImpl.marginUpdate(margin);
 	}
-	//交易密码查询
+
+	// 交易密码查询
 	public HashMap<String, String> checkPassword_2(String sign_id, String password_2) {
 		return userImpl.checkPassword_2(sign_id, password_2);
+	}
+
+	// 提供查询
+	public List<HashMap<String, String>> offer_helpSelect(String sign_id) {
+		return userImpl.offer_helpSelect(sign_id);
 	}
 
 	// 提供帮助插入
