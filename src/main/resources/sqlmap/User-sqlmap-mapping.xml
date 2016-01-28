@@ -28,6 +28,17 @@
 	<insert id="walletInsert" parameterType="map">
 		INSERT INTO wallet(sign_id,funds,dynamic_bonus,static_bonus) VALUES (#{sign_id},#{funds},#{dynamic_bonus},#{static_bonus})
 	</insert>
+	<!--授权码资料 -->
+	<select id="marginCheck" parameterType="map" resultType="Map">
+		SELECT margin,valid FROM margin WHERE margin=#{margin} AND valid=1
+	</select>
+	<update id="marginUpdate" parameterType="map" >
+        update margin set valid=0 where margin=#{margin}
+    </update>
+	<!--提供帮助 -->
+	<insert id="offer_helpInsert" parameterType="map">
+		INSERT INTO offer_help (sign_id,offer_funds,status) VALUES (#{sign_id},#{offer_funds},#{status})
+	</insert>
 	<!--交易资料 -->
 	<select id="accountCheck" parameterType="map" resultType="Map">
 		SELECT user_name,bank_id,bank_name,bank_branch,wechat,alipay,password_2 from account where sign_id=#{sign_id}
@@ -45,7 +56,10 @@
     <insert id="guestbookInsert" parameterType="map">
 		insert into guestbook(sign_id,title,tel,question,answer) values(#{sign_id},#{title},#{tel},#{question},#{answer})
 	</insert>
-	
+	<!--交易密码验证 -->
+	<select id="checkPassword_2" parameterType="map" resultType="Map">
+		SELECT sign_id,password_2 FROM account WHERE sign_id=#{sign_id} AND password_2=#{password_2}
+	</select>
 	<select id="pagingNews" parameterType="map" resultType="com.pay.model.News">
 		SELECT * from news LIMIT #{begin},#{end}
 	</select>

@@ -54,4 +54,23 @@ public class HomeService {
 	public HashMap<String, String> walletMsg(String sign_id) {
 		return userImpl.walletMsg(sign_id);
 	}
+
+	// 获取授权码信息
+	public HashMap<String, String> marginCheck(String margin) {
+		return userImpl.marginCheck(margin);
+	}
+
+	// 更新授权码状态
+	public void marginUpdate(String margin) {
+		userImpl.marginUpdate(margin);
+	}
+	//交易密码查询
+	public HashMap<String, String> checkPassword_2(String sign_id, String password_2) {
+		return userImpl.checkPassword_2(sign_id, password_2);
+	}
+
+	// 提供帮助插入
+	public void offer_helpInsert(String sign_id, String offer_funds, String status) {
+		userImpl.offer_helpInsert(sign_id, offer_funds, status);
+	}
 }

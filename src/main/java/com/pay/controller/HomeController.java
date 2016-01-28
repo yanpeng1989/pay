@@ -306,13 +306,36 @@ public class HomeController {
 	// 提供帮助请求
 	@RequestMapping("offer-help-ajax")
 	@ResponseBody
-	public String offer_help_ajax(HttpSession session) {
+	public String offer_help_ajax(HttpSession session, @RequestBody Map<String, String> params) {
+		String result = "";
+		HashMap<String, String> map_json = new HashMap<String, String>();
 		if (session.getAttribute("sign_id") != null) {
-
-			return "offer-help";
+			String sign_id = String.valueOf(session.getAttribute("sign_id"));
+			String password_2 = params.get("password_2");
+			HashMap<String, String> password_2_Check = homeService.checkPassword_2(sign_id, password_2);
+			if (password_2_Check != null && password_2_Check.size() > 0) {
+				String margin = params.get("margin");
+				String offer_funds = params.get("funds");
+				HashMap<String, String> marginCheck = homeService.marginCheck(margin);
+				if (marginCheck != null && marginCheck.size() > 0) {
+					homeService.offer_helpInsert(sign_id, offer_funds, "1");
+					homeService.marginUpdate(margin);
+					map_json.put("result", "success");
+				} else {
+					map_json.put("result", "margin_invalid");
+				}
+			} else {
+				map_json.put("result", "password_2_invalid");
+			}
 		} else {
-			return "sign-in";
+			map_json.put("result", "sign_in_error");
 		}
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			result = objectMapper.writeValueAsString(map_json);
+		} catch (Exception e) {
+		}
+		return result;
 	}
 
 	// 账户转账界面

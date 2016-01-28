@@ -34,7 +34,7 @@ public class UserImpl implements UserInterface {
 	}
 
 	@Override
-	public String userSign_up(String sign_id, String name, String card_id,String tel, String password_1,String recommend_id) {
+	public String userSign_up(String sign_id, String name, String card_id, String tel, String password_1, String recommend_id) {
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("sign_id", sign_id);
 		params.put("name", name);
@@ -56,7 +56,7 @@ public class UserImpl implements UserInterface {
 	}
 
 	@Override
-	public String accountOperate(String sign_id, String user_name, String bank_id, String bank_name, String bank_branch, String wechat, String alipay,String password_2) {
+	public String accountOperate(String sign_id, String user_name, String bank_id, String bank_name, String bank_branch, String wechat, String alipay, String password_2) {
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("sign_id", sign_id);
 		params.put("user_name", user_name);
@@ -107,6 +107,39 @@ public class UserImpl implements UserInterface {
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("sign_id", sign_id);
 		HashMap<String, String> result = sqlSessionTemplate.selectOne("walletMsg", params);
+		return result;
+	}
+
+	@Override
+	public HashMap<String, String> marginCheck(String margin) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("margin", margin);
+		HashMap<String, String> result = sqlSessionTemplate.selectOne("marginCheck", params);
+		return result;
+	}
+
+	@Override
+	public void offer_helpInsert(String sign_id, String offer_funds, String status) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("sign_id", sign_id);
+		params.put("offer_funds", offer_funds);
+		params.put("status", status);
+		sqlSessionTemplate.insert("offer_helpInsert", params);
+	}
+
+	@Override
+	public void marginUpdate(String margin) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("margin", margin);
+		sqlSessionTemplate.update("marginUpdate", params);
+	}
+
+	@Override
+	public HashMap<String, String> checkPassword_2(String sign_id, String password_2) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("sign_id", sign_id);
+		params.put("password_2", password_2);
+		HashMap<String, String> result = sqlSessionTemplate.selectOne("checkPassword_2", params);
 		return result;
 	}
 }

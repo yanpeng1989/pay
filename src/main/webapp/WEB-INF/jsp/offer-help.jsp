@@ -199,7 +199,14 @@
 				<div class="form-group" style="width: 15%;"> 
 					<input id="margin" type="text" class="form-control" style="width: 80%;" placeholder="输入诚意金号码">
 				</div>
-				<button id="submit" type="button" class="btn btn-default">提交</button>
+				<div class="form-group">
+					<label class="sr-only"></label>
+					<p class="form-control-static">交易密码：</p>
+				</div>
+				<div class="form-group" style="width: 15%;">
+					<input id="password_2" type="text" class="form-control" style="width: 80%;" placeholder="输入交易密码">
+				</div>
+				<button id="confirm" type="button" class="btn btn-default">提交</button>
 			</form>
 			<hr/>
 			<div class="panel panel-default">
@@ -249,46 +256,6 @@
 							<td>13611177881</td>
 							<td>等待确认</td>
 						</tr>
-						<tr>
-							<td>2</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>王斌</td>
-							<td>13611177881</td>
-							<td>等待确认</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>王斌</td>
-							<td>13611177881</td>
-							<td>已完成</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>王斌</td>
-							<td>13611177881</td>
-							<td>已完成</td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>王斌</td>
-							<td>13611177881</td>
-							<td>已完成</td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>王斌</td>
-							<td>13611177881</td>
-							<td>已完成</td>
-						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -306,8 +273,25 @@
         		<p id="alert_data" style="font-family: 微软雅黑;">&hellip;</p>
       		</div>
       		<div class="modal-footer">
-      			<button id="confirm" type="button" class="btn btn-primary">确认</button>
         		<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+      		</div>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!-- 模态框 End-->
+	<!-- 模态框2 Begin-->
+	<div id="success_alert" class="modal fade" >
+  		<div class="modal-dialog">
+   			<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       				<h4 class="modal-title" style="font-family: 微软雅黑;">友情提示</h4>
+      			</div>
+      		<div class="modal-body">
+        		<p style="font-family: 微软雅黑;">申请成功，我们将为您匹配！&hellip;</p>
+      		</div>
+      		<div class="modal-footer">
+        		<button id="refresh" type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
       		</div>
     		</div><!-- /.modal-content -->
   		</div><!-- /.modal-dialog -->
@@ -329,22 +313,26 @@
 		}
 	</script>
 	<script type="text/javascript">
-		$(function(){
-			$("#submit").click(function(){
-				show_model("您已了解量子互助的相关条款并予以遵守，点击确定确认提供帮助！");
-			});
+		$("#refresh").click(function(){
+			window.location.href = "../pay/offer-help.do";
 		});
+	</script>
+	<script type="text/javascript">
 		$("#confirm").click(function(){
 			var funds=$("#funds").val();
 			var margin=$("#margin").val();
+			var password_2=$("#password_2").val();
 			if(funds==''){
-				show_model("funds");
+				show_model("请输入提供帮助的资金");
 				return;
 			}else if(margin==''){
-				show_model("margin");
+				show_model("请输入诚意金号码");
+				return;
+			}else if(password_2==''){
+				show_model("请输入交易密码");
 				return;
 			}
-			var params='{"funds":"'+funds+'","margin":"'+margin+'"}';
+			var params='{"funds":"'+funds+'","margin":"'+margin+'","password_2":"'+password_2+'"}';
 			$.ajax({
 				type : "POST",
 				contentType : "application/json;",
@@ -353,9 +341,13 @@
 				dataType : 'json',
 				success : function(data) {
 					if(data.result=='success'){
-						show_model("申请成功，我们将为您匹配");
-					}else{
-						show_model("申请失败");
+						$("#success_alert").modal('show');
+					}else if(data.result=='margin_invalid'){
+						show_model("您的诚意金号码不正确，请输入正确的诚意金号码！");
+					}else if(data.result=='sign_in_error'){
+						window.location.href = "../pay/sign-in.do";
+					}else if(data.result=='password_2_invalid'){
+						show_model("交易密码错误，请重新输入交易密码！");
 					}
 				},
 				error : function(data) {
