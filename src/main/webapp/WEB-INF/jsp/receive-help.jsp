@@ -128,6 +128,7 @@
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
 			<li><ul class="dashboard-menu nav nav-list collapse">
 					<li><a href="../pay/index.do"><span class="fa fa-caret-right"></span>个人中心</a></li>
+					<li><a href="../pay/user-register.do"><span class="fa fa-caret-right"></span>会员注册</a></li>
 					<li><a href="../pay/membership.do"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
@@ -187,12 +188,12 @@
 			<form class="form-inline">
 				<div class="form-group">
 					<label class="sr-only"></label>
-					<p class="form-control-static">您的静态钱包资金为：${funds+static_bonus}元</p>
+					<p class="form-control-static">您的静态钱包资金为：<span class="label label-danger">${funds+static_bonus}</span>元</p>
 				</div>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<div class="form-group">
 					<label class="sr-only"></label>
-					<p class="form-control-static">您的动态钱包资金为：${dynamic_bonus}元</p>
+					<p class="form-control-static">您的动态钱包资金为：<span class="label label-success">${dynamic_bonus}</span>元</p>
 				</div>
 				</form>
 			<hr/>

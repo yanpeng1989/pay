@@ -42,6 +42,7 @@
 	<insert id="offer_helpInsert" parameterType="map">
 		INSERT INTO offer_help (sign_id,offer_funds,status) VALUES (#{sign_id},#{offer_funds},#{status})
 	</insert>
+	<!--接受帮助 -->
 	
 	<!--交易资料 -->
 	<select id="accountCheck" parameterType="map" resultType="Map">
