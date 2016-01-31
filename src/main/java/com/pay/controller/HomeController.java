@@ -292,12 +292,58 @@ public class HomeController {
 		}
 	}
 
-	// 提供帮助界面
-	@RequestMapping("offer-help")
-	public String offer_help(HttpSession session,Model model) {
+	// 接受帮助AJAX
+	@RequestMapping("receive-help-ajax")
+	@ResponseBody
+	public String receive_help_ajax(HttpSession session, @RequestBody Map<String, String> params) {
+		String result = "";
+		HashMap<String, String> map_json = new HashMap<String, String>();
 		if (session.getAttribute("sign_id") != null) {
 			String sign_id = String.valueOf(session.getAttribute("sign_id"));
-			List<HashMap<String,String>> result=homeService.offer_helpSelect(sign_id);
+			String password_2 = params.get("password_2");
+			HashMap<String, String> password_2_Check = homeService.checkPassword_2(sign_id, password_2);
+			if (password_2_Check != null && password_2_Check.size() > 0) {
+				HashMap<String, String> wallet = homeService.walletMsg(sign_id);
+				double w_static_funds = Double.valueOf(wallet.get("funds")).doubleValue() + Double.valueOf(wallet.get("static_bonus")).doubleValue();
+				double w_dynamic_funds = Double.valueOf(wallet.get("dynamic_bonus")).doubleValue();
+				double funds = Double.valueOf(params.get("funds")).doubleValue();
+				String type = params.get("funds");
+				if (type.equals("static_help")) {
+					if (funds > w_static_funds) {
+						// 静态不足
+						map_json.put("result", "lack");
+					} else {
+						// 静态资金满足
+					}
+				} else if (type.equals("dynamic_help")) {
+					if (funds > w_dynamic_funds) {
+						// 静态不足
+						map_json.put("result", "lack");
+					} else {
+						// 动态资金满足
+					}
+				}
+			} else {
+				// 交易密码错误
+				map_json.put("result", "password_2_invalid");
+			}
+		} else {
+			map_json.put("result", "sign_in_error");
+		}
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			result = objectMapper.writeValueAsString(map_json);
+		} catch (Exception e) {
+		}
+		return result;
+	}
+
+	// 提供帮助界面
+	@RequestMapping("offer-help")
+	public String offer_help(HttpSession session, Model model) {
+		if (session.getAttribute("sign_id") != null) {
+			String sign_id = String.valueOf(session.getAttribute("sign_id"));
+			List<HashMap<String, String>> result = homeService.offer_helpSelect(sign_id);
 			model.addAttribute("result", result);
 			return "offer-help";
 		} else {

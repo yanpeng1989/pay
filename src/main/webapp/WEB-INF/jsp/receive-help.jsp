@@ -197,23 +197,39 @@
 				</div>
 				</form>
 			<hr/>
-			<form class="form-inline">
+			<form class="form-inline" >
 				<div class="form-group">
 					<label class="sr-only"></label>
-					<p class="form-control-static">申请静态钱包：</p>
+					<p class="form-control-static">申请帮助类型：</p>
 				</div>
-				<div class="form-group" style="width: 200px;"> 
-					<input type="password" class="form-control" style="width: 175px;" placeholder="金额在100-100000之间">
-				</div>
-				<button type="submit" class="btn btn-default">提交</button>&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;
+  				<div class="checkbox">
+   					<label style="font-family: 微软雅黑;color: #5BC0DE;">
+    					<input type="radio" name="help" id="static_help" checked="checked" value="static_help">
+    					静态帮助
+  					</label>
+  					&nbsp;&nbsp;
+  					<label style="font-family: 微软雅黑;color: #5BC0DE;">
+    					<input type="radio" name="help" id="dynamic_help" value="dynamic_help">
+    					动态帮助
+  					</label>
+ 				</div>
+ 				&nbsp;&nbsp;&nbsp;
 				<div class="form-group">
 					<label class="sr-only"></label>
-					<p class="form-control-static">申请动态钱包金额：</p>
+					<p class="form-control-static">申请金额：</p>
 				</div>
-				<div class="form-group" style="width: 200px;"> 
-					<input type="text" class="form-control" style="width: 175px;" placeholder="动态帮助金额">
+				<div class="form-group" style="width: 15%;"> 
+					<input id="funds" type="text" class="form-control" style="width:  80%;" placeholder="金额为100的整数倍">
 				</div>
-				<button type="submit" class="btn btn-default">提交</button>
+				<div class="form-group">
+					<label class="sr-only"></label>
+					<p class="form-control-static">交易密码：</p>
+				</div>
+				<div class="form-group" style="width: 15%;">
+					<input id="password_2" type="text" class="form-control" style="width: 80%;" placeholder="输入交易密码">
+				</div>
+				<button id="confirm" type=button class="btn btn-default">提交</button>
 			</form>
 			<hr/>
 			<div class="panel panel-default">
@@ -265,63 +281,29 @@
 							<td>查看</td>
 							<td><button class="btn">确认</button></td>
 						</tr>
-						<tr>
-							<td>2</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>王斌</td>
-							<td>13611177881</td>
-							<td>正在打款</td>
-							<td>查看</td>
-							<td><button class="btn">确认</button></td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>王斌</td>
-							<td>13611177881</td>
-							<td>正在打款</td>
-							<td>查看</td>
-							<td><button class="btn">确认</button></td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>王斌</td>
-							<td>13611177881</td>
-							<td>正在打款</td>
-							<td>查看</td>
-							<td><button class="btn">确认</button></td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>王斌</td>
-							<td>13611177881</td>
-							<td>正在打款</td>
-							<td>查看</td>
-							<td><button class="btn">确认</button></td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>王斌</td>
-							<td>13611177881</td>
-							<td>正在打款</td>
-							<td>查看</td>
-							<td><button class="btn">确认</button></td>
-						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
-
-
+	<!-- 模态框 Begin-->
+	<div id="alert_msg" class="modal fade" >
+  		<div class="modal-dialog">
+   			<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       				<h4 class="modal-title" style="font-family: 微软雅黑;">友情提示</h4>
+      			</div>
+      		<div class="modal-body">
+        		<p id="alert_data" style="font-family: 微软雅黑;">&hellip;</p>
+      		</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+      		</div>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!-- 模态框 End-->
 	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">
 		$("[rel=tooltip]").tooltip();
@@ -331,7 +313,47 @@
 			});
 		});
 	</script>
-
-
+	<script type="text/javascript">
+		function show_model(content){
+			$("#alert_data").html(content);
+			$('#alert_msg').modal('show');
+		}
+	</script>
+	<script type="text/javascript">
+	$("#confirm").click(function(){
+		var type=$('input:radio:checked').val();
+		var funds=$("#funds").val();
+		var password_2=$("#password_2").val();
+		if(funds==''){
+			show_model("请输入获取帮助的金额，金额为100的整数倍！");
+			return;
+		}else if(password_2==''){
+			show_model("请输入交易密码！");
+			return;
+		}
+		var params='{"funds":"'+funds+'","type":"'+type+'","password_2":"'+password_2+'"}';
+		$.ajax({
+			type : "POST",
+			contentType : "application/json;",
+			url : "../pay/receive-help-ajax.do",
+			data : params,
+			dataType : 'json',
+			success : function(data) {
+				if(data.result=='success'){
+					$("#success_alert").modal('show');
+				}else if(data.result=='margin_invalid'){
+					show_model("您的诚意金号码不正确，请输入正确的诚意金号码！");
+				}else if(data.result=='sign_in_error'){
+					window.location.href = "../pay/sign-in.do";
+				}else if(data.result=='password_2_invalid'){
+					show_model("交易密码错误，请重新输入交易密码！");
+				}
+			},
+			error : function(data) {
+				show_model("加载失败");
+			}
+		});
+	});
+	</script>
 </body>
 </html>

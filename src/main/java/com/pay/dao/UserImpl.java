@@ -106,7 +106,7 @@ public class UserImpl implements UserInterface {
 	public HashMap<String, String> walletMsg(String sign_id) {
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("sign_id", sign_id);
-		HashMap<String, String> result = sqlSessionTemplate.selectOne("walletMsg", params);
+		HashMap<String, String> result = sqlSessionTemplate.selectOne("walletSelect", params);
 		return result;
 	}
 
