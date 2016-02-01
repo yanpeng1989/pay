@@ -17,7 +17,7 @@ public interface UserInterface {
 
 	public HashMap<String, String> accountCheck(String sign_id);
 
-	public HashMap<String, String> walletMsg(String sign_id);
+	public HashMap<String, Object> walletMsg(String sign_id);
 
 	public List<HashMap<String, String>> guestbookCheck(String sign_id);
 
@@ -32,4 +32,11 @@ public interface UserInterface {
 	public void offer_helpInsert(String sign_id, String offer_funds, String status);
 
 	public HashMap<String, String> checkPassword_2(String sign_id, String password_2);
+
+	public List<HashMap<String, String>> receive_helpSelect(String sign_id);
+
+	public void receive_helpInsert(String sign_id, double receive_funds, String status);
+
+	public void walletAvailableUpdate(String sign_id, double available_funds);
+	public void walletDynamicUpdate(String sign_id, double available_funds);
 }

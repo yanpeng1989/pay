@@ -21,10 +21,6 @@
 	<insert id="userSign_up" parameterType="map">
 		insert into user(sign_id,name,card_id,tel,password_1,recommend_id) values(#{sign_id},#{name},#{card_id},#{tel},#{password_1},#{recommend_id})
 	</insert>
-	
-	<insert id="walletInsert" parameterType="map">
-		INSERT INTO wallet(sign_id,funds,dynamic_bonus,static_bonus) VALUES (#{sign_id},#{funds},#{dynamic_bonus},#{static_bonus})
-	</insert>
 	<!--授权码 -->
 	<select id="marginCheck" parameterType="map" resultType="Map">
 		SELECT margin,valid FROM margin WHERE margin=#{margin} AND valid=1
@@ -40,10 +36,25 @@
 		INSERT INTO offer_help (sign_id,offer_funds,status) VALUES (#{sign_id},#{offer_funds},#{status})
 	</insert>
 	<!--接受帮助 -->
+	<select id="receive_helpSelect" parameterType="map" resultType="Map">
+		SELECT receive_id,sign_id,receive_funds,temps,status,match_time,complete_time,confirm_time FROM receive_help WHERE sign_id=#{sign_id}  AND status != "订单完成"
+	</select>
+	<insert id="receive_helpInsert" parameterType="map">
+		INSERT INTO receive_help(sign_id,receive_funds,status) VALUES (#{sign_id},#{receive_funds},#{status})
+	</insert>
 	<!--钱包信息 -->
 	<select id="walletSelect" parameterType="map" resultType="Map">
-		SELECT sign_id,funds,dynamic_bonus,static_bonus FROM wallet WHERE sign_id=#{sign_id}
+		SELECT sign_id,funds,dynamic_bonus,static_bonus,available_funds FROM wallet WHERE sign_id=#{sign_id}
 	</select>
+	<insert id="walletInsert" parameterType="map">
+		INSERT INTO wallet(sign_id,funds,dynamic_bonus,static_bonus,available_funds) VALUES (#{sign_id},#{funds},#{dynamic_bonus},#{static_bonus},#{available_funds})
+	</insert>
+	<update id="walletAvailableUpdate" parameterType="map" >
+        update wallet set available_funds=#{available_funds} where sign_id=#{sign_id}
+    </update>
+    <update id="walletDynamicUpdate" parameterType="map" >
+        update wallet set available_funds=#{dynamic_bonus} where sign_id=#{sign_id}
+    </update>
 	<!--交易资料 -->
 	<select id="accountCheck" parameterType="map" resultType="Map">
 		SELECT user_name,bank_id,bank_name,bank_branch,wechat,alipay,password_2 from account where sign_id=#{sign_id}

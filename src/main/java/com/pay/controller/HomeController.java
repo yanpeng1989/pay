@@ -284,8 +284,10 @@ public class HomeController {
 	public String receive_help(HttpSession session, Model model) {
 		if (session.getAttribute("sign_id") != null) {
 			String sign_id = String.valueOf(session.getAttribute("sign_id"));
-			HashMap<String, String> result = homeService.walletMsg(sign_id);
+			HashMap<String, Object> result = homeService.walletMsg(sign_id);
 			model.addAllAttributes(result);
+			List<HashMap<String, String>> receive_help = homeService.receive_helpSelect(sign_id);
+			model.addAttribute("result", receive_help);
 			return "receive-help";
 		} else {
 			return "sign-in";
@@ -303,17 +305,28 @@ public class HomeController {
 			String password_2 = params.get("password_2");
 			HashMap<String, String> password_2_Check = homeService.checkPassword_2(sign_id, password_2);
 			if (password_2_Check != null && password_2_Check.size() > 0) {
-				HashMap<String, String> wallet = homeService.walletMsg(sign_id);
-				double w_static_funds = Double.valueOf(wallet.get("funds")).doubleValue() + Double.valueOf(wallet.get("static_bonus")).doubleValue();
-				double w_dynamic_funds = Double.valueOf(wallet.get("dynamic_bonus")).doubleValue();
+				HashMap<String, Object> wallet = homeService.walletMsg(sign_id);
+				double w_static_funds = Double.valueOf(wallet.get("available_funds").toString()).doubleValue();
+				double w_dynamic_funds = Double.valueOf(wallet.get("dynamic_bonus").toString()).doubleValue();
 				double funds = Double.valueOf(params.get("funds")).doubleValue();
-				String type = params.get("funds");
+				String type = params.get("type");
+				System.out.println(type);
 				if (type.equals("static_help")) {
 					if (funds > w_static_funds) {
 						// 静态不足
 						map_json.put("result", "lack");
 					} else {
 						// 静态资金满足
+						List<HashMap<String, String>> receive_helpSelect = homeService.receive_helpSelect(sign_id);
+						if (receive_helpSelect == null ? true : receive_helpSelect.size() <= 0) {
+							homeService.receive_helpInsert(sign_id, funds, "正在排队");
+							double available_funds = w_static_funds - funds;
+							homeService.walletAvailableUpdate(sign_id, available_funds);
+							map_json.put("result", "success");
+						} else {
+							// 已有排单
+							map_json.put("result", "order_exit");
+						}
 					}
 				} else if (type.equals("dynamic_help")) {
 					if (funds > w_dynamic_funds) {
@@ -321,7 +334,13 @@ public class HomeController {
 						map_json.put("result", "lack");
 					} else {
 						// 动态资金满足
+						homeService.receive_helpInsert(sign_id, funds, "正在排队");
+						double dynamic_funds = w_dynamic_funds - funds;
+						homeService.walletDynamicUpdate(sign_id, dynamic_funds);
+						map_json.put("result", "success");
 					}
+				} else {
+					map_json.put("result", "error");
 				}
 			} else {
 				// 交易密码错误
@@ -335,6 +354,7 @@ public class HomeController {
 			result = objectMapper.writeValueAsString(map_json);
 		} catch (Exception e) {
 		}
+		System.out.println(result);
 		return result;
 	}
 

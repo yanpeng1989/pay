@@ -51,7 +51,7 @@ public class HomeService {
 	}
 
 	// 获取钱包信息
-	public HashMap<String, String> walletMsg(String sign_id) {
+	public HashMap<String, Object> walletMsg(String sign_id) {
 		return userImpl.walletMsg(sign_id);
 	}
 
@@ -70,7 +70,7 @@ public class HomeService {
 		return userImpl.checkPassword_2(sign_id, password_2);
 	}
 
-	// 提供查询
+	// 提供帮助查询
 	public List<HashMap<String, String>> offer_helpSelect(String sign_id) {
 		return userImpl.offer_helpSelect(sign_id);
 	}
@@ -78,5 +78,23 @@ public class HomeService {
 	// 提供帮助插入
 	public void offer_helpInsert(String sign_id, String offer_funds, String status) {
 		userImpl.offer_helpInsert(sign_id, offer_funds, status);
+	}
+
+	// 接受帮助信息
+	public List<HashMap<String, String>> receive_helpSelect(String sign_id) {
+		return userImpl.receive_helpSelect(sign_id);
+	}
+
+	// 插入接受帮助信息
+	public void receive_helpInsert(String sign_id, double receive_funds, String status) {
+		userImpl.receive_helpInsert(sign_id, receive_funds, status);
+	}
+	// 更新可用余额
+	public void walletAvailableUpdate(String sign_id, double available_funds) {
+		userImpl.walletAvailableUpdate(sign_id, available_funds);
+	}
+	// 静态余额
+	public void walletDynamicUpdate(String sign_id, double dynamic_bonus) {
+		userImpl.walletAvailableUpdate(sign_id, dynamic_bonus);
 	}
 }

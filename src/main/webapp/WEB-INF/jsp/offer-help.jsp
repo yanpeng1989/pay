@@ -289,7 +289,7 @@
 	</script>
 	<script type="text/javascript">
 		$("#refresh").click(function(){
-			window.location.href = "../pay/offer-help.do";
+			window.location.href = "../pay/receive-help.do";
 		});
 	</script>
 	<script type="text/javascript">

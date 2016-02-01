@@ -49,6 +49,7 @@ public class UserImpl implements UserInterface {
 			params.put("funds", "0");
 			params.put("dynamic_bonus", "0");
 			params.put("static_bonus", "0");
+			params.put("available_funds", "0");
 			sqlSessionTemplate.insert("userSign_up", params);
 			sqlSessionTemplate.insert("walletInsert", params);
 			return "inexistent";
@@ -103,10 +104,10 @@ public class UserImpl implements UserInterface {
 	}
 
 	@Override
-	public HashMap<String, String> walletMsg(String sign_id) {
+	public HashMap<String, Object> walletMsg(String sign_id) {
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("sign_id", sign_id);
-		HashMap<String, String> result = sqlSessionTemplate.selectOne("walletSelect", params);
+		HashMap<String, Object> result = sqlSessionTemplate.selectOne("walletSelect", params);
 		return result;
 	}
 
@@ -148,5 +149,37 @@ public class UserImpl implements UserInterface {
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("sign_id", sign_id);
 		return sqlSessionTemplate.selectList("offer_helpSelect", params);
+	}
+
+	@Override
+	public List<HashMap<String, String>> receive_helpSelect(String sign_id) {
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("sign_id", sign_id);
+		return sqlSessionTemplate.selectList("receive_helpSelect", params);
+	}
+
+	@Override
+	public void receive_helpInsert(String sign_id, double receive_funds, String status) {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("sign_id", sign_id);
+		params.put("receive_funds", receive_funds);
+		params.put("status", status);
+		sqlSessionTemplate.insert("receive_helpInsert", params);
+	}
+
+	@Override
+	public void walletAvailableUpdate(String sign_id, double available_funds) {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("sign_id", sign_id);
+		params.put("available_funds", available_funds);
+		sqlSessionTemplate.update("walletAvailableUpdate", params);
+	}
+
+	@Override
+	public void walletDynamicUpdate(String sign_id, double dynamic_bonus) {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("sign_id", sign_id);
+		params.put("dynamic_bonus", dynamic_bonus);
+		sqlSessionTemplate.update("walletDynamicUpdate", params);
 	}
 }

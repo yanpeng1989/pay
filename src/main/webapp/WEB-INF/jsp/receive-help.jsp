@@ -233,29 +233,6 @@
 			</form>
 			<hr/>
 			<div class="panel panel-default">
-				<label class="panel-heading" style="font-family: 微软雅黑;">正在匹配帮助</label>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>订单号</th>
-							<th>金额</th>
-							<th>时间</th>
-							<th>匹配状态</th>
-							<th>订单状态</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>匹配完成</td>
-							<td>等待匹配人打款</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="panel panel-default">
 				<label class="panel-heading" style="font-family: 微软雅黑;">完成匹配帮助订单</label>
 				<table class="table">
 					<thead>
@@ -263,24 +240,20 @@
 							<th>订单号</th>
 							<th>金额</th>
 							<th>时间</th>
-							<th>提供帮助人</th>
-							<th>联系方式</th>
 							<th>订单状态</th>
-							<th>转账证明</th>
-							<th>确认打款</th>
+							<th>订单详情</th>
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="result" items="${result}">
 						<tr>
-							<td>1</td>
-							<td>1000</td>
-							<td>2015-12-13</td>
-							<td>王斌</td>
-							<td>13611177881</td>
-							<td>正在打款</td>
-							<td>查看</td>
-							<td><button class="btn">确认</button></td>
+							<td>${result.receive_id}</td>
+							<td>${result.receive_funds}</td>
+							<td>${result.temps}</td>
+							<td>${result.status}</td>
+							<td><a href="../pay/details.do?offer_id=${sign_id}">点击查看详情</a></td>
 						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -304,6 +277,23 @@
   		</div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	<!-- 模态框 End-->
+	<div id="success_alert" class="modal fade" >
+  		<div class="modal-dialog">
+   			<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       				<h4 class="modal-title" style="font-family: 微软雅黑;">友情提示</h4>
+      			</div>
+      		<div class="modal-body">
+        		<p style="font-family: 微软雅黑;">申请成功，我们将为您匹配！&hellip;</p>
+      		</div>
+      		<div class="modal-footer">
+        		<button id="refresh" type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+      		</div>
+    		</div><!-- /.modal-content -->
+  		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!-- 模态框 End-->
 	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">
 		$("[rel=tooltip]").tooltip();
@@ -318,6 +308,11 @@
 			$("#alert_data").html(content);
 			$('#alert_msg').modal('show');
 		}
+	</script>
+	<script type="text/javascript">
+		$("#refresh").click(function(){
+			window.location.href = "../pay/offer-help.do";
+		});
 	</script>
 	<script type="text/javascript">
 	$("#confirm").click(function(){
@@ -341,12 +336,16 @@
 			success : function(data) {
 				if(data.result=='success'){
 					$("#success_alert").modal('show');
-				}else if(data.result=='margin_invalid'){
-					show_model("您的诚意金号码不正确，请输入正确的诚意金号码！");
+				}else if(data.result=='lack'){
+					show_model("金额不足！");
 				}else if(data.result=='sign_in_error'){
 					window.location.href = "../pay/sign-in.do";
 				}else if(data.result=='password_2_invalid'){
 					show_model("交易密码错误，请重新输入交易密码！");
+				}else if(data.result=='order_exit'){
+					show_model("您现在有未完成的单子，请完成后再申请！");
+				}else{
+					show_model("出错了，请再次申请！");
 				}
 			},
 			error : function(data) {
