@@ -29,9 +29,7 @@
 
 </head>
 <body class=" theme-blue">
-
 	<!-- Demo page code -->
-
 	<script type="text/javascript">
 		$(function() {
 			var match = document.cookie.match(new RegExp('color=([^;]+)'));
@@ -47,7 +45,6 @@
 			$('[data-popover="true"]').popover({
 				html : true
 			});
-
 		});
 	</script>
 	<style type="text/css">
@@ -94,11 +91,7 @@
 
 	<div class="navbar navbar-default" role="navigation">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="" href="index.do"><span class="navbar-brand"><span class="fa fa-paper-plane"></span>&nbsp;&nbsp;量子互助</span></a>
+			<a href="index.do"><span class="navbar-brand"><span class="fa fa-paper-plane"></span>&nbsp;&nbsp;量子互助</span></a>
 		</div>
 
 		<div class="navbar-collapse collapse" style="height: 1px;">
@@ -127,7 +120,7 @@
 			<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
 			<li><ul class="dashboard-menu nav nav-list collapse">
-					<li><a href="../pay/index.do"><span class="fa fa-caret-right"></span>个人中心</a></li>
+					<li><a href="../pay/index.do"><span class="fa fa-caret-right"></span>首页</a></li>
 					<li><a href="../pay/membership.do"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
 				</ul></li>
 			<li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
@@ -160,13 +153,13 @@
 		<div class="header">
 			<div class="stats">
 				<p class="stat">
-					<span class="label label-info">5</span>消息
+					静态钱包资金<span class="label label-info">5000元</span>
 				</p>
 				<p class="stat">
-					<span class="label label-success">27</span>通知
+					动态钱包资金<span class="label label-success">270元</span>
 				</p>
 				<p class="stat">
-					<span class="label label-danger">15</span>公告
+					会员等级<span class="label label-danger">5级</span>
 				</p>
 			</div>
 			<h1 class="page-title">提供帮助</h1>
@@ -176,14 +169,6 @@
 			</ul>
 		</div>
 		<div class="main-content">
-			<div class="btn-toolbar list-toolbar">
-				<a href="../pay/receive-help.do">
-					<button class="btn btn-success btn-lg btn-block">
-						<i class="fa fa-plus"></i>申请接受帮助
-					</button>
-				</a>
-			</div>
-			<hr/>
 			<form class="form-inline">
 				<div class="form-group">
 					<label class="sr-only"></label>

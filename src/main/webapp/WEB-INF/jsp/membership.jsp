@@ -127,7 +127,7 @@
 			<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
 			<li><ul class="dashboard-menu nav nav-list collapse in">
-					<li><a href="../pay/index.do"><span class="fa fa-caret-right"></span>个人中心</a></li>
+					<li><a href="../pay/index.do"><span class="fa fa-caret-right"></span>首页</a></li>
 					<li><a href="../pay/user-register.do"><span class="fa fa-caret-right"></span>会员注册</a></li>
 					<li  class="active"><a href="../pay/membership.do"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
 				</ul></li>
@@ -161,36 +161,22 @@
 		<div class="header">
 			<div class="stats">
 				<p class="stat">
-					<span class="label label-info">5</span>消息
+					静态钱包资金<span class="label label-info">5000元</span>
 				</p>
 				<p class="stat">
-					<span class="label label-success">27</span>通知
+					动态钱包资金<span class="label label-success">270元</span>
 				</p>
 				<p class="stat">
-					<span class="label label-danger">15</span>公告
+					会员等级<span class="label label-danger">5级</span>
 				</p>
 			</div>
 			<h1 class="page-title">直推会员统计</h1>
 			<ul class="breadcrumb">
-				<li><a href="#">个人中心</a></li>
+				<li><a href="#">首页</a></li>
 				<li class="active">直推会员统计</li>
 			</ul>
 		</div>
 		<div class="main-content">
-			<div class="btn-toolbar list-toolbar">
-				<a href="../pay/offer-help.do">
-				<button class="btn btn-danger btn-lg btn-block">
-					<i class="fa fa-plus"></i>申请提供帮助
-				</button>
-				</a>
-				<br/>
-				<a href="../pay/receive-help.do">
-				<button class="btn btn-success btn-lg btn-block">
-					<i class="fa fa-plus"></i>申请接受帮助
-				</button>
-				</a>
-			</div>
-			<hr/>
 			<form class="form-inline">
 				<div class="form-group">
 					<label class="sr-only"></label>
@@ -209,7 +195,7 @@
 			</form>
 			<hr/>
 			<div class="panel panel-default">
-				<label class="panel-heading" style="font-family: 微软雅黑;">完成匹配帮助订单</label>
+				<label class="panel-heading" style="font-family: 微软雅黑;">直推会员统计详细信息</label>
 				<table class="table">
 					<thead>
 						<tr>

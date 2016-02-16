@@ -94,13 +94,8 @@
 
 	<div class="navbar navbar-default" role="navigation">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="" href="index.do"><span class="navbar-brand"><span class="fa fa-paper-plane"></span>&nbsp;&nbsp;量子互助</span></a>
+			<a href="../pay/index.do"><span class="navbar-brand"><span class="fa fa-paper-plane"></span>&nbsp;&nbsp;量子互助</span></a>
 		</div>
-
 		<div class="navbar-collapse collapse" style="height: 1px;">
 			<ul id="main-menu" class="nav navbar-nav navbar-right">
 				<li class="dropdown hidden-xs"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span
@@ -127,7 +122,7 @@
 			<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
 			<li><ul class="dashboard-menu nav nav-list collapse in">
-					<li class="active"><a href="../pay/index.do"><span class="fa fa-caret-right"></span>个人中心</a></li>
+					<li class="active"><a href="../pay/index.do"><span class="fa fa-caret-right"></span>首页</a></li>
 					<li><a href="../pay/user-register.do"><span class="fa fa-caret-right"></span>会员注册</a></li>
 					<li><a href="../pay/membership.do"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
 				</ul></li>
@@ -161,149 +156,84 @@
 		<div class="header">
 			<div class="stats">
 				<p class="stat">
-					<span class="label label-info">5</span>消息
+					静态钱包资金<span class="label label-info">5000元</span>
 				</p>
 				<p class="stat">
-					<span class="label label-success">27</span>通知
+					动态钱包资金<span class="label label-success">270元</span>
 				</p>
 				<p class="stat">
-					<span class="label label-danger">15</span>公告
+					会员等级<span class="label label-danger">5级</span>
 				</p>
 			</div>
 			<h1 class="page-title">基本信息</h1>
 			<ul class="breadcrumb">
-				<li><a href="#">个人中心</a></li>
+				<li><a href="#">首页</a></li>
 				<li class="active">个人基本信息</li>
 			</ul>
 		</div>
 		<div class="main-content">
 			<div class="btn-toolbar list-toolbar">
 				<a href="../pay/offer-help.do">
-				<button class="btn btn-danger btn-lg btn-block">
-					<i class="fa fa-plus"></i>申请提供帮助
+				<button class="btn label-info btn-lg" style="height: 200px;width: 49%">
+					<i class="fa fa-plus"  style="color: #FFFFFF;">申请提供帮助</i>
 				</button>
-				<br/>
 				</a>
 				<a href="../pay/receive-help.do">
-				<button class="btn btn-success btn-lg btn-block">
-					<i class="fa fa-plus"></i>申请接受帮助
+				<button class="btn label-danger btn-lg" style="height: 200px;width: 49%">
+					<i class="fa fa-plus" style="color: #FFFFFF;">申请接受帮助</i>
 				</button>
 				</a>
 			</div>
-			
-			<div class="row">
-				<div class="col-sm-6 col-md-6">
-					<div class="panel panel-default">
-						<div class="panel-heading no-collapse" style="font-family: 微软雅黑;">
-							等待打款订单<span class="label label-warning">总额：10000元</span>
-						</div>
-						<table class="table table-bordered table-striped">
-							<thead>
-								<tr>
-									<th>编号</th>
-									<th>状态</th>
-									<th>金额</th>
-									<th>转款人</th>
-									<th>操作</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>001</td>
-									<td>已确认</td>
-									<td>10元</td>
-									<td>张三</td>
-									<td><a href="#">点击查看详情</a></td>
-								</tr>
-								<tr>
-									<td>001</td>
-									<td>已确认</td>
-									<td>10元</td>
-									<td>张三</td>
-									<td><a href="#">点击查看详情</a></td>
-								</tr>
-								<tr>
-									<td>001</td>
-									<td>已确认</td>
-									<td>10元</td>
-									<td>张三</td>
-									<td><a href="#">点击查看详情</a></td>
-								</tr>
-								<tr>
-									<td>001</td>
-									<td>已确认</td>
-									<td>10元</td>
-									<td>张三</td>
-									<td><a href="#">点击查看详情</a></td>
-								</tr>
-								<tr>
-									<td>001</td>
-									<td>未转款</td>
-									<td>10元</td>
-									<td>张三</td>
-									<td><a href="#">点击查看详情</a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-6">
-					<div class="panel panel-default">
-						<div class="panel-heading no-collapse" style="font-family: 微软雅黑;">
-							等待转款订单<span class="label label-warning">总额：10000元</span>
-						</div>
-						<table class="table table-bordered table-striped">
-							<thead>
-								<tr>
-									<th>编号</th>
-									<th>状态</th>
-									<th>金额</th>
-									<th>转款人</th>
-									<th>操作</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>001</td>
-									<td>已确认</td>
-									<td>10元</td>
-									<td>张三</td>
-									<td><a href="#">点击查看详情</a></td>
-								</tr>
-								<tr>
-									<td>001</td>
-									<td>已确认</td>
-									<td>10元</td>
-									<td>张三</td>
-									<td><a href="#">点击查看详情</a></td>
-								</tr>
-								<tr>
-									<td>001</td>
-									<td>已确认</td>
-									<td>10元</td>
-									<td>张三</td>
-									<td><a href="#">点击查看详情</a></td>
-								</tr>
-								<tr>
-									<td>001</td>
-									<td>已确认</td>
-									<td>10元</td>
-									<td>张三</td>
-									<td><a href="#">点击查看详情</a></td>
-								</tr>
-								<tr>
-									<td>001</td>
-									<td>已确认</td>
-									<td>10元</td>
-									<td>张三</td>
-									<td><a href="#">点击查看详情</a></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+			<div class="panel panel-default">
+				<label class="panel-heading" style="font-family: 微软雅黑;">提供帮助匹配列表</label>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>编号</th>
+							<th>接受人编号</th>
+							<th>匹配时间</th>
+							<th>匹配金额</th>
+							<th>订单状态</th>
+							<th>订单详情</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>11</td>
+							<td>2015-12-13</td>
+							<td>1000元</td>
+							<td>完成匹配</td>
+							<td><a href="">查看详情</a></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			
+			<div class="panel panel-default">
+				<label class="panel-heading" style="font-family: 微软雅黑;">接受帮助匹配列表</label>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>编号</th>
+							<th>提供人编号</th>
+							<th>匹配时间</th>
+							<th>匹配金额</th>
+							<th>订单状态</th>
+							<th>订单详情</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>11</td>
+							<td>2015-12-13</td>
+							<td>1000元</td>
+							<td>完成匹配</td>
+							<td><a href="">查看详情</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 			<div class="form-group">
     			<div class="input-group">
       				<div class="input-group-addon">我的推广链接：</div>
@@ -311,59 +241,7 @@
       				<div class="input-group-addon"><a href="#">点击打开推广链接</a></div>
     			</div>
   			</div>
-  			<hr/>
-			<form class="form-inline">
-				<div class="form-group">
-					<label class="sr-only"></label>
-					<p class="form-control-static">您的直接推荐会员人数为：100人</p>
-				</div>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<div class="form-group">
-					<label class="sr-only"></label>
-					<p class="form-control-static">您累计获得静态金额为：10000元</p>
-				</div>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<div class="form-group">
-					<label class="sr-only"></label>
-					<p class="form-control-static">您的等级为：5星</p>
-				</div>
-			</form>
 			<hr/>
-			<div class="panel panel-default">
-				<a href="#page-stats" class="panel-heading" data-toggle="collapse" style="font-family: 微软雅黑;">个人账户基本信息</a>
-				<div id="page-stats" class="panel-collapse panel-body collapse in">
-					<div class="row">
-						<div class="col-md-3 col-sm-6">
-							<div class="knob-container">
-								<input class="knob" data-width="200" data-min="0" data-max="2500" data-displayPrevious="true" value="2500"
-									data-fgColor="#92A3C2" data-readOnly=true;>
-								<h3 class="text-muted text-center">可接受帮助金额</h3>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6">
-							<div class="knob-container">
-								<input class="knob" data-width="200" data-min="0" data-max="4500" data-displayPrevious="true" value="4500"
-									data-fgColor="#92A3C2" data-readOnly=true;>
-								<h3 class="text-muted text-center">已提供帮助金额</h3>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6">
-							<div class="knob-container">
-								<input class="knob" data-width="200" data-min="0" data-max="2700" data-displayPrevious="true" value="2700"
-									data-fgColor="#92A3C2" data-readOnly=true;>
-								<h3 class="text-muted text-center">已获取静态奖金</h3>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6">
-							<div class="knob-container">
-								<input class="knob" data-width="200" data-min="0" data-max="15000" data-displayPrevious="true" value="15000"
-									data-fgColor="#92A3C2" data-readOnly=true;>
-								<h3 class="text-muted text-center">已获取动态奖金</h3>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 
