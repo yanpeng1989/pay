@@ -157,13 +157,13 @@
 		<div class="header">
 			<div class="stats">
 				<p class="stat">
-					静态钱包资金<span class="label label-info">5000元</span>
+					静态钱包资金<span class="label label-info">${funds+static_bonus}元</span>
 				</p>
 				<p class="stat">
-					动态钱包资金<span class="label label-success">270元</span>
+					动态钱包资金<span class="label label-success">${dynamic_bonus}元</span>
 				</p>
 				<p class="stat">
-					会员等级<span class="label label-danger">5级</span>
+					会员等级<span class="label label-danger">${level}级</span>
 				</p>
 			</div>
 			<h1 class="page-title">直推会员统计</h1>

@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pay.services.HomeService;
 
 @Controller
-@SessionAttributes({ "sign_id", "name" })
+@SessionAttributes({ "sign_id", "name","level" })
 public class HomeController {
 
 	@Autowired
@@ -45,8 +45,10 @@ public class HomeController {
 				HashMap<String, String> usermap = homeService.userLogin(sign_id, password_1);
 				if (usermap == null ? false : usermap.size() > 0) {
 					String name = usermap.get("name");
+					String level=usermap.get("level");
 					model.addAttribute("sign_id", sign_id);
 					model.addAttribute("name", name);
+					model.addAttribute("level", level);
 					map_json.put("result", "sign_success");
 				} else {
 					map_json.put("result", "sign_unsuccess");
@@ -104,6 +106,13 @@ public class HomeController {
 			String sign_id = String.valueOf(session.getAttribute("sign_id"));
 			model.addAttribute("OfferTrade", homeService.getOfferTradeById(sign_id));
 			model.addAttribute("ReceiveTrade", homeService.getReceiveTradeById(sign_id));
+			//钱包信息
+			HashMap<String, Object> walletMsg = homeService.walletMsg(sign_id);
+			model.addAllAttributes(walletMsg);
+			//登记信息
+			String level=String.valueOf(session.getAttribute("level"));
+			model.addAttribute("level", level);
+			
 			return "index";
 		} else {
 			return "sign-in";
@@ -291,6 +300,12 @@ public class HomeController {
 			model.addAllAttributes(result);
 			List<HashMap<String, String>> receive_help = homeService.receive_helpSelect(sign_id);
 			model.addAttribute("result", receive_help);
+			//钱包信息
+			HashMap<String, Object> walletMsg = homeService.walletMsg(sign_id);
+			model.addAllAttributes(walletMsg);
+			//等级信息
+			String level=String.valueOf(session.getAttribute("level"));
+			model.addAttribute("level", level);
 			return "receive-help";
 		} else {
 			return "sign-in";
@@ -368,6 +383,12 @@ public class HomeController {
 			String sign_id = String.valueOf(session.getAttribute("sign_id"));
 			List<HashMap<String, String>> result = homeService.offer_helpSelect(sign_id);
 			model.addAttribute("result", result);
+			//钱包信息
+			HashMap<String, Object> walletMsg = homeService.walletMsg(sign_id);
+			model.addAllAttributes(walletMsg);
+			//等级信息
+			String level=String.valueOf(session.getAttribute("level"));
+			model.addAttribute("level", level);
 			return "offer-help";
 		} else {
 			return "sign-in";
@@ -431,8 +452,16 @@ public class HomeController {
 
 	// 直属会员界面
 	@RequestMapping("membership")
-	public String membership(HttpSession session) {
+	public String membership(HttpSession session,Model model) {
 		if (session.getAttribute("sign_id") != null) {
+			model.addAttribute("name", session.getAttribute("name"));
+			String sign_id = String.valueOf(session.getAttribute("sign_id"));
+			//钱包信息
+			HashMap<String, Object> walletMsg = homeService.walletMsg(sign_id);
+			model.addAllAttributes(walletMsg);
+			//等级信息
+			String level=String.valueOf(session.getAttribute("level"));
+			model.addAttribute("level", level);
 			return "membership";
 		} else {
 			return "sign-in";
