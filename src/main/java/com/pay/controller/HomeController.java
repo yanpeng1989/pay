@@ -101,6 +101,9 @@ public class HomeController {
 	public String index(Model model, HttpSession session) {
 		if (session.getAttribute("name") != null) {
 			model.addAttribute("name", session.getAttribute("name"));
+			String sign_id = String.valueOf(session.getAttribute("sign_id"));
+			model.addAttribute("OfferTrade", homeService.getOfferTradeById(sign_id));
+			model.addAttribute("ReceiveTrade", homeService.getReceiveTradeById(sign_id));
 			return "index";
 		} else {
 			return "sign-in";

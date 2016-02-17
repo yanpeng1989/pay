@@ -73,13 +73,8 @@
 
     <div class="navbar navbar-default" role="navigation">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
 			<a class="" href="index.do"><span class="navbar-brand"><span class="fa fa-paper-plane"></span>&nbsp;&nbsp;量子互助</span></a>
 		</div>
-
 		<div class="navbar-collapse collapse" style="height: 1px;">
 			<ul id="main-menu" class="nav navbar-nav navbar-right">
 				<li class="dropdown hidden-xs"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span
@@ -103,7 +98,7 @@
 		<ul>
 			<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="dashboard-menu nav nav-list collapse in">
+			<li><ul class="dashboard-menu nav nav-list collapse">
 					<li><a href="../pay/index.do"><span class="fa fa-caret-right"></span>首页</a></li>
 					<li><a href="../pay/user-register.do"><span class="fa fa-caret-right"></span>会员注册</a></li>
 					<li><a href="../pay/membership.do"><span class="fa fa-caret-right"></span>直推会员统计</a></li>

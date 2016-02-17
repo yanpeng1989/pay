@@ -38,5 +38,10 @@ public interface UserInterface {
 	public void receive_helpInsert(String sign_id, double receive_funds, String status);
 
 	public void walletAvailableUpdate(String sign_id, double available_funds);
+
 	public void walletDynamicUpdate(String sign_id, double available_funds);
+
+	public List<HashMap<String, String>> getOfferTradeById(String sign_id);
+
+	public List<HashMap<String, String>> getReceiveTradeById(String sign_id);
 }

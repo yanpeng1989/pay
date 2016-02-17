@@ -82,4 +82,11 @@
 	<select id="numberNews" resultType="java.lang.Integer">
 		SELECT COUNT(*) AS number FROM news
 	</select>
+	<!--匹配信息 -->
+	<select id="getOfferTradeById" resultType="trade">
+		SELECT trade_id,offer_id,receive_id,funds,status,evidence,confirm_time,temps FROM trade WHERE offer_id=#{offer_id} AND status !="订单完成"
+	</select>
+	<select id="getReceiveTradeById" resultType="trade">
+		SELECT trade_id,offer_id,receive_id,funds,status,evidence,confirm_time,temps FROM trade WHERE receive_id=#{receive_id} AND status !="订单完成"
+	</select>
 </mapper>

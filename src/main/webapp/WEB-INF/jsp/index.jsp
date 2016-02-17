@@ -115,8 +115,6 @@
 			</ul>
 		</div>
 	</div>
-
-
 	<div class="sidebar-nav">
 		<ul>
 			<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
@@ -171,19 +169,20 @@
 				<li class="active">个人基本信息</li>
 			</ul>
 		</div>
-		<div class="main-content">
-			<div class="btn-toolbar list-toolbar">
-				<a href="../pay/offer-help.do">
-				<button class="btn label-info btn-lg" style="height: 200px;width: 49%">
-					<i class="fa fa-plus"  style="color: #FFFFFF;">申请提供帮助</i>
-				</button>
-				</a>
-				<a href="../pay/receive-help.do">
-				<button class="btn label-danger btn-lg" style="height: 200px;width: 49%">
-					<i class="fa fa-plus" style="color: #FFFFFF;">申请接受帮助</i>
-				</button>
-				</a>
+			<div class="main-content" >
+				<div class="btn-toolbar list-toolbar" style="margin: auto;">
+					<a href="../pay/offer-help.do">
+						<button class="btn label-info btn-lg" style="height: 200px; width: 49%">
+							<i class="fa fa-plus" style="color: #FFFFFF;">申请提供帮助</i>
+						</button>
+					</a> <a href="../pay/receive-help.do">
+						<button class="btn label-danger btn-lg" style="height: 200px; width: 49%">
+							<i class="fa fa-plus" style="color: #FFFFFF;">申请接受帮助</i>
+						</button>
+					</a>
+				</div>
 			</div>
+			<br />
 			<div class="panel panel-default">
 				<label class="panel-heading" style="font-family: 微软雅黑;">提供帮助匹配列表</label>
 				<table class="table">
@@ -198,14 +197,16 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="OfferTrade" items="${OfferTrade}">
 						<tr>
-							<td>1</td>
-							<td>11</td>
-							<td>2015-12-13</td>
-							<td>1000元</td>
-							<td>完成匹配</td>
-							<td><a href="">查看详情</a></td>
+							<td>${OfferTrade.trade_id}</td>
+							<td>${OfferTrade.receive_id}</td>
+							<td>${OfferTrade.temps}</td>
+							<td>${OfferTrade.funds}</td>
+							<td>${OfferTrade.status}</td>
+							<td><a href="../pay/details.do?offer_id=${OfferTrade.trade_id}">点击查看详情</a></td>
 						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -223,28 +224,30 @@
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="ReceiveTrade" items="${ReceiveTrade}">
 						<tr>
-							<td>1</td>
-							<td>11</td>
-							<td>2015-12-13</td>
-							<td>1000元</td>
-							<td>完成匹配</td>
-							<td><a href="">查看详情</a></td>
+							<td>${ReceiveTrade.trade_id}</td>
+							<td>${ReceiveTrade.receive_id}</td>
+							<td>${ReceiveTrade.temps}</td>
+							<td>${ReceiveTrade.funds}</td>
+							<td>${ReceiveTrade.status}</td>
+							<td><a href="../pay/details.do?offer_id=${ReceiveTrade.trade_id}">点击查看详情</a></td>
 						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 			<div class="form-group">
-    			<div class="input-group">
-      				<div class="input-group-addon">我的推广链接：</div>
-      					<span class="form-control" style="overflow: hidden;font-size: 18px;">http://loes-fund.com?sign_id=403130540</span>
-      				<div class="input-group-addon"><a href="#">点击打开推广链接</a></div>
-    			</div>
-  			</div>
-			<hr/>
+				<div class="input-group">
+					<div class="input-group-addon">我的推广链接：</div>
+					<span class="form-control" style="overflow: hidden; font-size: 18px;">http://loes-fund.com?sign_id=403130540</span>
+					<div class="input-group-addon">
+						<a href="#">点击打开推广链接</a>
+					</div>
+				</div>
+			</div>
+			<hr />
 		</div>
-	</div>
-
 
 	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">
@@ -255,7 +258,5 @@
 			});
 		});
 	</script>
-
-
 </body>
 </html>

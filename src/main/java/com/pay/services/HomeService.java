@@ -97,4 +97,13 @@ public class HomeService {
 	public void walletDynamicUpdate(String sign_id, double dynamic_bonus) {
 		userImpl.walletAvailableUpdate(sign_id, dynamic_bonus);
 	}
+	// 提供帮助匹配订单
+	public List<HashMap<String, String>> getOfferTradeById(String sign_id) {
+		return userImpl.getOfferTradeById(sign_id);
+	}
+
+	// 接受帮助匹配订单
+	public List<HashMap<String, String>> getReceiveTradeById(String sign_id) {
+		return userImpl.getReceiveTradeById(sign_id);
+	}
 }

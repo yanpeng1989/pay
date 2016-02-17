@@ -182,4 +182,18 @@ public class UserImpl implements UserInterface {
 		params.put("dynamic_bonus", dynamic_bonus);
 		sqlSessionTemplate.update("walletDynamicUpdate", params);
 	}
+
+	@Override
+	public List<HashMap<String, String>> getOfferTradeById(String sign_id) {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("offer_id", sign_id);
+		return sqlSessionTemplate.selectList("getOfferTradeById", params);
+	}
+
+	@Override
+	public List<HashMap<String, String>> getReceiveTradeById(String sign_id) {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("receive_id", sign_id);
+		return sqlSessionTemplate.selectList("getReceiveTradeById", params);
+	}
 }
