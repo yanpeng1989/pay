@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pay.services.HomeService;
 
 @Controller
-@SessionAttributes({ "sign_id", "name","level" })
+@SessionAttributes({ "sign_id", "name", "level" })
 public class HomeController {
 
 	@Autowired
@@ -45,7 +45,7 @@ public class HomeController {
 				HashMap<String, String> usermap = homeService.userLogin(sign_id, password_1);
 				if (usermap == null ? false : usermap.size() > 0) {
 					String name = usermap.get("name");
-					String level=usermap.get("level");
+					String level = usermap.get("level");
 					model.addAttribute("sign_id", sign_id);
 					model.addAttribute("name", name);
 					model.addAttribute("level", level);
@@ -106,13 +106,13 @@ public class HomeController {
 			String sign_id = String.valueOf(session.getAttribute("sign_id"));
 			model.addAttribute("OfferTrade", homeService.getOfferTradeById(sign_id));
 			model.addAttribute("ReceiveTrade", homeService.getReceiveTradeById(sign_id));
-			//钱包信息
+			// 钱包信息
 			HashMap<String, Object> walletMsg = homeService.walletMsg(sign_id);
 			model.addAllAttributes(walletMsg);
-			//登记信息
-			String level=String.valueOf(session.getAttribute("level"));
+			// 登记信息
+			String level = String.valueOf(session.getAttribute("level"));
 			model.addAttribute("level", level);
-			
+
 			return "index";
 		} else {
 			return "sign-in";
@@ -300,11 +300,11 @@ public class HomeController {
 			model.addAllAttributes(result);
 			List<HashMap<String, String>> receive_help = homeService.receive_helpSelect(sign_id);
 			model.addAttribute("result", receive_help);
-			//钱包信息
+			// 钱包信息
 			HashMap<String, Object> walletMsg = homeService.walletMsg(sign_id);
 			model.addAllAttributes(walletMsg);
-			//等级信息
-			String level=String.valueOf(session.getAttribute("level"));
+			// 等级信息
+			String level = String.valueOf(session.getAttribute("level"));
 			model.addAttribute("level", level);
 			return "receive-help";
 		} else {
@@ -383,11 +383,11 @@ public class HomeController {
 			String sign_id = String.valueOf(session.getAttribute("sign_id"));
 			List<HashMap<String, String>> result = homeService.offer_helpSelect(sign_id);
 			model.addAttribute("result", result);
-			//钱包信息
+			// 钱包信息
 			HashMap<String, Object> walletMsg = homeService.walletMsg(sign_id);
 			model.addAllAttributes(walletMsg);
-			//等级信息
-			String level=String.valueOf(session.getAttribute("level"));
+			// 等级信息
+			String level = String.valueOf(session.getAttribute("level"));
 			model.addAttribute("level", level);
 			return "offer-help";
 		} else {
@@ -452,15 +452,15 @@ public class HomeController {
 
 	// 直属会员界面
 	@RequestMapping("membership")
-	public String membership(HttpSession session,Model model) {
+	public String membership(HttpSession session, Model model) {
 		if (session.getAttribute("sign_id") != null) {
 			model.addAttribute("name", session.getAttribute("name"));
 			String sign_id = String.valueOf(session.getAttribute("sign_id"));
-			//钱包信息
+			// 钱包信息
 			HashMap<String, Object> walletMsg = homeService.walletMsg(sign_id);
 			model.addAllAttributes(walletMsg);
-			//等级信息
-			String level=String.valueOf(session.getAttribute("level"));
+			// 等级信息
+			String level = String.valueOf(session.getAttribute("level"));
 			model.addAttribute("level", level);
 			return "membership";
 		} else {
@@ -504,9 +504,28 @@ public class HomeController {
 		return result;
 	}
 
+	// 接受帮助匹配详情
+	@RequestMapping(value = "detail-receive", method = RequestMethod.GET)
+	public String detail_receive(HttpSession session, Model model, @RequestParam(value = "trade_id") String trade_id) {
+		if (session.getAttribute("sign_id") != null) {
+			String sign_id = String.valueOf(session.getAttribute("sign_id"));
+			model.addAttribute("sign_id", sign_id);
+			// 匹配订单详情
+			HashMap<String, Object> detail = homeService.getTradeById(trade_id);
+			if (detail == null ? false : detail.size() > 0) {
+				model.addAttribute(detail);
+				// 提供人信息
+				HashMap<String, Object> user = homeService.getOfferUserByTradeId(trade_id);
+				model.addAttribute("offer_user", user);
+			}
+			return "detail-receive";
+		} else {
+			return "sign-in";
+		}
+	}
+
 	@RequestMapping("kaptcha")
 	public String kaptcha(HttpSession session) {
-		System.out.println(session.getAttribute("kaptchaExpected"));
 		return "kaptcha";
 	}
 }

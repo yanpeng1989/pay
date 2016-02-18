@@ -119,8 +119,8 @@
 		<ul>
 			<li><a href="#" data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
 					class="fa fa-fw fa-dashboard"></i>我的市场<i class="fa fa-collapse"></i></a></li>
-			<li><ul class="dashboard-menu nav nav-list collapse in">
-					<li class="active"><a href="../pay/index.do"><span class="fa fa-caret-right"></span>首页</a></li>
+			<li><ul class="dashboard-menu nav nav-list collapse">
+					<li><a href="../pay/index.do"><span class="fa fa-caret-right"></span>首页</a></li>
 					<li><a href="../pay/user-register.do"><span class="fa fa-caret-right"></span>会员注册</a></li>
 					<li><a href="../pay/membership.do"><span class="fa fa-caret-right"></span>直推会员统计</a></li>
 				</ul></li>
@@ -152,102 +152,76 @@
 
 	<div class="content">
 		<div class="header">
-			<div class="stats">
-				<p class="stat">
-					静态钱包资金<span class="label label-info">${funds+static_bonus}元</span>
-				</p>
-				<p class="stat">
-					动态钱包资金<span class="label label-success">${dynamic_bonus}元</span>
-				</p>
-				<p class="stat">
-					会员等级<span class="label label-danger">${level}级</span>
-				</p>
-			</div>
-			<h1 class="page-title">基本信息</h1>
+			<h1 class="page-title">接受帮助匹配信息</h1>
 			<ul class="breadcrumb">
 				<li><a href="#">首页</a></li>
-				<li class="active">个人基本信息</li>
+				<li class="active">匹配列表详细信息</li>
 			</ul>
 		</div>
-			<div class="main-content" >
-				<div class="btn-toolbar list-toolbar" style="margin: auto;">
-					<a href="../pay/offer-help.do">
-						<button class="btn label-info btn-lg" style="height: 200px; width: 49%">
-							<i class="fa fa-plus" style="color: #FFFFFF;">申请提供帮助</i>
-						</button>
-					</a> <a href="../pay/receive-help.do">
-						<button class="btn label-danger btn-lg" style="height: 200px; width: 49%">
-							<i class="fa fa-plus" style="color: #FFFFFF;">申请接受帮助</i>
-						</button>
-					</a>
-				</div>
-			</div>
-			<br />
-			<div class="panel panel-default">
-				<label class="panel-heading" style="font-family: 微软雅黑;">提供帮助匹配列表</label>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>编号</th>
-							<th>接受帮助编号</th>
-							<th>匹配时间</th>
-							<th>匹配金额</th>
-							<th>订单状态</th>
-							<th>订单详情</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="OfferTrade" items="${OfferTrade}">
-						<tr>
-							<td>${OfferTrade.trade_id}</td>
-							<td>${OfferTrade.receive_id}</td>
-							<td>${OfferTrade.temps}</td>
-							<td>${OfferTrade.funds}</td>
-							<td>${OfferTrade.status}</td>
-							<td><a href="../pay/details.do?trade_id=${OfferTrade.trade_id}">点击查看详情</a></td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-			<div class="panel panel-default">
-				<label class="panel-heading" style="font-family: 微软雅黑;">接受帮助匹配列表</label>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>编号</th>
-							<th>提供帮助编号</th>
-							<th>匹配时间</th>
-							<th>匹配金额</th>
-							<th>订单状态</th>
-							<th>订单详情</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="ReceiveTrade" items="${ReceiveTrade}">
-						<tr>
-							<td>${ReceiveTrade.trade_id}</td>
-							<td>${ReceiveTrade.offer_id}</td>
-							<td>${ReceiveTrade.temps}</td>
-							<td>${ReceiveTrade.funds}</td>
-							<td>${ReceiveTrade.status}</td>
-							<td><a href="../pay/detail-receive.do?trade_id=${ReceiveTrade.trade_id}">点击查看详情</a></td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-			<div class="form-group">
-				<div class="input-group">
-					<div class="input-group-addon">我的推广链接：</div>
-					<span class="form-control" style="overflow: hidden; font-size: 18px;">http://loes-fund.com?sign_id=403130540</span>
-					<div class="input-group-addon">
-						<a href="#">点击打开推广链接</a>
+		<div class="main-content">
+
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#base" data-toggle="tab">基本信息</a></li>
+				<li><a href="#offer_msg" data-toggle="tab">提供帮助人信息</a></li>
+				<li><a href="#prove" data-toggle="tab">提供帮助证明</a></li>
+			</ul>
+			<div class="row">
+				<div class="col-md-4">
+					<br>
+					<div class="tab-content">
+						<div class="tab-pane active in" id="base">
+							<div class="input-group">
+								<span class="input-group-addon">匹配编号</span> 
+								<input type="text" value="${trade_id}" class="form-control"  disabled="disabled">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-addon">提供帮助编号</span> 
+								<input type="text" value="${offer_id}" class="form-control"  disabled="disabled">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-addon">匹配时间</span> 
+								<input type="text" value="${temps}" class="form-control"  disabled="disabled">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-addon">匹配金额</span> 
+								<input type="text" value="${funds}" class="form-control"  disabled="disabled">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-addon">订单状态</span> 
+								<input type="text" value="${status}" class="form-control"  disabled="disabled">
+							</div>
+						</div>
+						<div class="tab-pane fade" id="offer_msg">
+							<div class="input-group">
+								<span class="input-group-addon">账号</span> 
+								<input type="text" value="${offer_user.sign_id}" class="form-control"  disabled="disabled">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-addon">姓名</span> 
+								<input type="text" value="${offer_user.name}" class="form-control"  disabled="disabled">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-addon">电话</span> 
+								<input type="text" value="${offer_user.tel}" class="form-control"  disabled="disabled">
+							</div>
+						</div>
+						<div class="tab-pane fade" id="prove">
+							<div class="input-group">
+								<span class="input-group-addon">匹配编号</span> 
+								<input type="text" class="form-control"  disabled="disabled">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<hr />
 		</div>
+	</div>
 
 	<script src="../pay/template/lib/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">

@@ -106,4 +106,12 @@ public class HomeService {
 	public List<HashMap<String, String>> getReceiveTradeById(String sign_id) {
 		return userImpl.getReceiveTradeById(sign_id);
 	}
+	//匹配订单详情
+	public HashMap<String, Object> getTradeById(String trade_id) {
+		return userImpl.getTradeById(trade_id);
+	}
+	//提供帮助人员信息
+	public HashMap<String, Object> getOfferUserByTradeId(String trade_id) {
+		return userImpl.getOfferUserByTradeId(trade_id);
+	}
 }

@@ -89,4 +89,10 @@
 	<select id="getReceiveTradeById" resultType="trade">
 		SELECT trade_id,offer_id,receive_id,funds,status,evidence,confirm_time,temps FROM trade WHERE receive_id=#{receive_id} AND status !="订单完成"
 	</select>
+	<select id="getTradeById" resultType="Map">
+		SELECT trade_id,offer_id,receive_id,funds,status,evidence,confirm_time,temps FROM trade WHERE trade_id=#{trade_id}
+	</select>
+	<select id="getOfferUserByTradeId" parameterType="map" resultType="Map">
+		SELECT sign_id,name,tel FROM user WHERE sign_id=( SELECT o.sign_id FROM offer_help o,trade t WHERE o.offer_id=t.offer_id  AND t.trade_id=#{trade_id} LIMIT 0,1)
+	</select> 
 </mapper>

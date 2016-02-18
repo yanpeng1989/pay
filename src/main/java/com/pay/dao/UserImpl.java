@@ -196,4 +196,18 @@ public class UserImpl implements UserInterface {
 		params.put("receive_id", sign_id);
 		return sqlSessionTemplate.selectList("getReceiveTradeById", params);
 	}
+
+	@Override
+	public HashMap<String, Object> getTradeById(String trade_id) {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("trade_id", trade_id);
+		return sqlSessionTemplate.selectOne("getTradeById", params);
+	}
+
+	@Override
+	public HashMap<String, Object> getOfferUserByTradeId(String trade_id) {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("trade_id", trade_id);
+		return sqlSessionTemplate.selectOne("getOfferUserByTradeId", params);
+	}
 }

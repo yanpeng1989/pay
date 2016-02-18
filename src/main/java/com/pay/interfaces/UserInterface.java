@@ -44,4 +44,8 @@ public interface UserInterface {
 	public List<HashMap<String, String>> getOfferTradeById(String sign_id);
 
 	public List<HashMap<String, String>> getReceiveTradeById(String sign_id);
+
+	public HashMap<String, Object> getTradeById(String trade_id);
+
+	public HashMap<String, Object> getOfferUserByTradeId(String trade_id);
 }
