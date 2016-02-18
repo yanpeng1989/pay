@@ -172,27 +172,27 @@
 						<div class="tab-pane active in" id="base">
 							<div class="input-group">
 								<span class="input-group-addon">匹配编号</span> 
-								<input type="text" value="${trade_id}" class="form-control"  disabled="disabled">
+								<input type="text" value="${detail.trade_id}" class="form-control"  disabled="disabled">
 							</div>
 							<br>
 							<div class="input-group">
 								<span class="input-group-addon">提供帮助编号</span> 
-								<input type="text" value="${offer_id}" class="form-control"  disabled="disabled">
+								<input type="text" value="${detail.offer_id}" class="form-control"  disabled="disabled">
 							</div>
 							<br>
 							<div class="input-group">
 								<span class="input-group-addon">匹配时间</span> 
-								<input type="text" value="${temps}" class="form-control"  disabled="disabled">
+								<input type="text" value="${detail.temps}" class="form-control"  disabled="disabled">
 							</div>
 							<br>
 							<div class="input-group">
 								<span class="input-group-addon">匹配金额</span> 
-								<input type="text" value="${funds}" class="form-control"  disabled="disabled">
+								<input type="text" value="${detail.funds}" class="form-control"  disabled="disabled">
 							</div>
 							<br>
 							<div class="input-group">
 								<span class="input-group-addon">订单状态</span> 
-								<input type="text" value="${status}" class="form-control"  disabled="disabled">
+								<input type="text" value="${detail.status}" class="form-control"  disabled="disabled">
 							</div>
 						</div>
 						<div class="tab-pane fade" id="offer_msg">

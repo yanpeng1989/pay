@@ -513,7 +513,7 @@ public class HomeController {
 			// 匹配订单详情
 			HashMap<String, Object> detail = homeService.getTradeById(trade_id);
 			if (detail == null ? false : detail.size() > 0) {
-				model.addAttribute(detail);
+				model.addAttribute("detail",detail);
 				// 提供人信息
 				HashMap<String, Object> user = homeService.getOfferUserByTradeId(trade_id);
 				model.addAttribute("offer_user", user);
